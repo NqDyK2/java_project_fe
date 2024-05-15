@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         'white': '#FFFFFF',
         'main-color': '#68A55B',
+        'green-light': '#50A41C',
       }
     },
   },

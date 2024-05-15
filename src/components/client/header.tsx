@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaFacebook } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
@@ -6,11 +6,22 @@ import { BsQuestionCircleFill } from "react-icons/bs";
 import { TiLockClosed } from "react-icons/ti";
 import { PiKeyFill } from "react-icons/pi";
 import imgLogo from "../../logoJavPrjFE.png"
+import diamond from "../../Group.png"
 import { GiVibratingSmartphone } from "react-icons/gi";
+import { FaCaretDown } from "react-icons/fa6";
+import {
+    Menu,
+    MenuHandler,
+    MenuList,
+    MenuItem,
+    Button,
+} from "@material-tailwind/react";
 
 type Props = {}
 
 const Header = (props: Props) => {
+
+
     return (
         <>
             {/* Top Header */}
@@ -47,10 +58,10 @@ const Header = (props: Props) => {
                             <div className="relative ml-12 mr-4">
                                 <div className="absolute inset-y-0 start-0 flex items-center ps-1 pointer-events-none">
                                     <svg className="w-5 h-5 text-gray-500 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search" className="block w-full pt-3 pr-4 pb-3 pl-12 ps-10 text-sm text-gray-900 shadow-lg bg-gray-50 rounded-2xl" placeholder="Tìm kiếm sản phẩm" required />
+                                <input type="search" id="default-search" className="block w-full pt-3 pr-4 pb-3 pl-14 ps-10 text-sm text-gray-900 shadow-lg bg-gray-50 rounded-2xl" placeholder="Tìm kiếm sản phẩm" required />
                                 <button type="submit" className="border-l border-gray-300 absolute end-2.5 bottom-1.5 font-medium text-base text-green-light px-3 py-1">Tìm kiếm</button>
                             </div>
                         </div>
@@ -63,8 +74,56 @@ const Header = (props: Props) => {
                 </div>
             </div>
             <div className='bg-main-color'>
-                <div className=' w-[1440px] mx-auto'>
-                    Bottom header
+                <div className=' w-[1440px] mx-auto flex'>
+                    <div className='bg-[#F4FFED] py-3'>
+                        <span className='flex font-semibold '>
+                            <Menu
+                                animate={{
+                                    mount: { y: 0 },
+                                    unmount: { y: 25 },
+                                }}
+                            >
+                                <div className=''>
+                                    <MenuHandler>
+                                        <Button className='text-black text-sm px-[8px]'>Danh mục sản phẩm</Button>
+                                    </MenuHandler>
+                                </div>
+                                <div className='ml-20 my-auto text-xs px-[8px]'>
+                                    <FaCaretDown />
+                                </div>
+                                <MenuList className='ml-[54px] pl-[8px] pr-[18px] border-none'>
+                                    <MenuItem className='flex gap-5 h-auto font-semibold py-3'>
+                                        <div>
+                                            <img src={diamond} alt="" width={24}/>
+                                        </div>
+                                        <div>
+                                            Độc quyền tại vườn xanh
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 2</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 4</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 3</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 5</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 6</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 7</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 8</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 9</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 10</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 11</MenuItem>
+                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
+                                </MenuList>
+                            </Menu>
+                        </span>
+                    </div>
+                    <div className='mx-auto text-center my-auto'>
+                        <ul className='' >
+                            <li className='inline-block px-5 text-white'>Giới thiệu</li>
+                            <li className='inline-block px-5 text-white'>Sản phẩm</li>
+                            <li className='inline-block px-5 text-white'>Hướng dẫn</li>
+                            <li className='inline-block px-5 text-white'>Giao hàng</li>
+                            <li className='inline-block px-5 text-white'>Liên hệ</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </>

@@ -91,7 +91,7 @@ const Header = (props: Props) => {
                                 <div className='ml-20 my-auto text-xs px-[8px]'>
                                     <FaCaretDown />
                                 </div>
-                                <MenuList placeholder={"Menu 2"} className='ml-[54px] pl-[8px] pr-[18px] border-none'>
+                                <MenuList placeholder={"Menu 2"} className='ml-[54px] pl-[8px] pr-[18px] bg-white border-none'>
                                     <MenuItem placeholder={"Menu 2"} className='flex gap-5 h-auto font-semibold py-3'>
                                         <div>
                                             <img src={diamond} alt="" width={24} />

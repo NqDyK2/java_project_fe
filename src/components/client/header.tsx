@@ -111,6 +111,7 @@ const Header = (props: Props) => {
                                     <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 10</MenuItem>
                                     <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 11</MenuItem>
                                     <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
+
                                 </MenuList>
                             </Menu>
                         </span>

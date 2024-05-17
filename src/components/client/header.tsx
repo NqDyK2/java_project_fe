@@ -85,32 +85,33 @@ const Header = (props: Props) => {
                             >
                                 <div className=''>
                                     <MenuHandler>
-                                        <Button className='text-black text-sm px-[8px]'>Danh mục sản phẩm</Button>
+                                        <Button placeholder={"Menu 2"} className='text-black text-sm px-[8px]'>Danh mục sản phẩm</Button>
                                     </MenuHandler>
                                 </div>
                                 <div className='ml-20 my-auto text-xs px-[8px]'>
                                     <FaCaretDown />
                                 </div>
-                                <MenuList className='ml-[54px] pl-[8px] pr-[18px] border-none'>
-                                    <MenuItem className='flex gap-5 h-auto font-semibold py-3'>
+                                <MenuList placeholder={"Menu 2"} className='ml-[54px] pl-[8px] pr-[18px] bg-white border-none'>
+                                    <MenuItem placeholder={"Menu 2"} className='flex gap-5 h-auto font-semibold py-3'>
                                         <div>
-                                            <img src={diamond} alt="" width={24}/>
+                                            <img src={diamond} alt="" width={24} />
                                         </div>
                                         <div>
                                             Độc quyền tại vườn xanh
                                         </div>
                                     </MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 2</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 4</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 3</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 5</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 6</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 7</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 8</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 9</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 10</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 11</MenuItem>
-                                    <MenuItem className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 2</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 4</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 3</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 5</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 6</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 7</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 8</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 9</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 10</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 11</MenuItem>
+                                    <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
+
                                 </MenuList>
                             </Menu>
                         </span>

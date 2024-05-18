@@ -1,11 +1,14 @@
 import React from 'react'
 import Banner from '../../components/client/component/banner'
+import Category from '../../components/client/component/category'
 
 const Home = () => {
     return (
         <>
             <Banner />
-            <div className='text-red-500'>Hê sờ lô hơ sờ ly ly</div>
+            <div className=''>
+                <Category />
+            </div>
         </>
     )
 }

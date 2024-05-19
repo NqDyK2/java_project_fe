@@ -5,8 +5,8 @@ import { FaBell } from "react-icons/fa6";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { TiLockClosed } from "react-icons/ti";
 import { PiKeyFill } from "react-icons/pi";
-import imgLogo from "../../logoJavPrjFE.png"
-import diamond from "../../Group.png"
+import imgLogo from "../../img/logoJavPrjFE.png"
+import diamond from "../../img/Group.png"
 import { GiVibratingSmartphone } from "react-icons/gi";
 import { FaCaretDown } from "react-icons/fa6";
 import {

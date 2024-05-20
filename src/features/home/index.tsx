@@ -1,11 +1,18 @@
 import React from 'react'
-import Banner from '../../components/client/component/banner'
+import Banner from '../../components/client/component/Banner'
+import Category from '../../components/client/component/Category'
+import Promotions from '../../components/client/component/Promotions'
+import Hint from '../../components/client/component/hint'
 
 const Home = () => {
     return (
         <>
             <Banner />
-            <div className='text-red-500'>Hê sờ lô hơ sờ ly ly</div>
+            <div className=''>
+                <Promotions />
+                <Category />
+                <Hint />
+            </div>
         </>
     )
 }

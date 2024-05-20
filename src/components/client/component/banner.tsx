@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import '../../../style/swiper.css'
 
-import bannerImg from '../../../banner.png'
+import bannerImg from '../../../img/banner.png'
 // import required modules
 import { Autoplay, Navigation } from 'swiper/modules';
 const Banner = () => {

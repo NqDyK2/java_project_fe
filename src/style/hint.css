@@ -1,0 +1,6 @@
+.background-img {
+    background-image: url("../img/bannerHint.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    border-radius: 10px;
+}

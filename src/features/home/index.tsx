@@ -1,7 +1,8 @@
 import React from 'react'
-import Banner from '../../components/client/component/Banner'
-import Category from '../../components/client/component/Category'
+import Banner from '../../components/client/component/banner'
+import Category from '../../components/client/component/category'
 import Promotions from '../../components/client/component/Promotions'
+import Hint from '../../components/client/component/hint'
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <div className=''>
                 <Promotions />
                 <Category />
+                <Hint />
             </div>
         </>
     )

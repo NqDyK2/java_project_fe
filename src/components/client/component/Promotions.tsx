@@ -7,7 +7,7 @@ type Props = {}
 const Promotions = (props: Props) => {
     return (
         <>
-            <div className='background-img border-none bg-green-light py-7'>
+            <div className='border-none bg-green-light py-7'>
                 <div className='bg-white  w-[1440px] mx-auto rounded-xl'>
                     <div className='flex justify-between px-5 pt-5'>
                         <div><span className='font-bold text-2xl'>Chương trình khuyến mãi</span></div>

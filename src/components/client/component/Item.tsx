@@ -1,17 +1,41 @@
 import React from 'react'
-import { CiLocationOn } from "react-icons/ci";
-import { IoMdStar } from "react-icons/io";
+import { CiLocationOn } from 'react-icons/ci'
+import { IoMdStar } from 'react-icons/io'
 import dummyImg from "../../../img/imgDummy.png"
-import "../../../style/hint.css"
-type Props = {}
+import { FaCaretRight } from 'react-icons/fa'
 
-const Hint = (props: Props) => {
+type Props = {
+    name: string
+    heading?: boolean | false
+    btnNext?: boolean | false
+}
+
+const Item = (props: Props) => {
     return (
         <>
-            <div className='background-img w-[1440px] mx-auto my-1'>
-                <div className='text-left text-white font-bold text-2xl py-3 px-9 border-b-[1px] border-white'>
-                    <span>Tươi ngon mỗi ngày</span>
-                </div>
+            <div className='w-[1440px] mx-auto my-5 bg-white rounded-xl'>
+                {
+                    props.btnNext ? <div className='flex justify-between px-5'>
+                        <div className='text-left font-bold text-2xl py-3 px-9'>
+                            <span>{props.name}</span>
+                        </div>
+                        <div className='mt-5'>
+                            <button className='border px-2 py-2 rounded-md border-green-light text-green-light text-sm'>
+                                <span>Xem đầy đủ <FaCaretRight className='inline-block mb-1 pl-2' /></span>
+                            </button>
+                        </div>
+                    </div> : <div className='text-left font-bold text-2xl pt-3 px-16'>
+                        <span>{props.name}</span>
+                    </div>
+                }
+                {
+                    props.heading ? <div className='text-left mx-12 mt-1 flex'>
+                        <div className='text-left mx-2 flex border border-green-light px-3 py-2 rounded-full  text-green-light'><span>Hoa quả Đà Lạt</span></div>
+                        <div className='text-left mx-2 flex border px-3 py-2 rounded-full text-gray-500'><span>Hoa quả nhập khẩu</span></div>
+                        <div className='text-left mx-2 flex border px-3 py-2 rounded-full text-gray-500'><span>Hoa quả xuất khẩu</span></div>
+                        <div className='text-left mx-2 flex border px-3 py-2 rounded-full text-gray-500'><span>Hoa quả đóng hộp</span></div>
+                    </div> : ""
+                }
                 <div className='flex justify-evenly py-5'>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
@@ -159,4 +183,4 @@ const Hint = (props: Props) => {
     )
 }
 
-export default Hint
+export default Item

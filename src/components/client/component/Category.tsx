@@ -14,7 +14,7 @@ type Props = {}
 const Category = (props: Props) => {
     return (
         <>
-            <div className='my-10'>
+            <div className='mt-10 mb-5'>
                 <div className='w-[1440px] bg-white mx-auto rounded-lg'>
                     <div className='flex justify-between px-5 pt-5'>
                         <div><span className='font-bold text-2xl'>Danh mục sản phẩm</span></div>

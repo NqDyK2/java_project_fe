@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../../style/promotions.css"
 import { FaCaretRight } from 'react-icons/fa'
-import imgPromo from '../../../img/promotions.png'
 import vegetable from '../../../img/vegetable.png'
-type Props = {}
+import { IData } from '../../../types/data'
+
+type Props = {
+    modePromotions?: boolean
+    nameComponent: string
+    data: IData[]
+}
 
 const Promotions = (props: Props) => {
+    const [statusBtn, setStatusBtn] = useState(true)
+    props.data.map((item) => {
+        // if (item.expired?.length) {
+        //     setStatusBtn(false)
+        // }
+    })
     return (
         <>
             <div className='border-none bg-green-light py-7 h-[570px]'>
@@ -19,97 +30,52 @@ const Promotions = (props: Props) => {
                         </div>
                     </div>
                     <div className='flex justify-between px-5'>
-                        <div className='mx-3 my-5 shadow-xl rounded-xl'>
-                            <div>
-                                <img src={imgPromo} alt="" width='100%' />
-                            </div>
-                            <div className='p-3'>
-                                <div className='text-left'>
-                                    <span className='font-bold'>Chương trình tháng 3 may mắn</span>
-                                </div>
-                                <div className='text-left mt-3'>
-                                    <span>
-                                        Đồ khô - giảm ngay 10% cho 100 khách hàng đầu tiên và những hội viên của chúng tôi
-                                    </span>
-                                </div>
-                                <div className='flex justify-between mt-6'>
-                                    <div className='text-left my-auto'>
-                                        <span className='text-sm font-semibold'>
-                                            Thời gian còn lại: 5 ngày
-                                        </span>
-                                    </div>
+                        {
+                            props.data?.map((item) => (
+                                <div className='mx-3 my-5 shadow-xl rounded-xl' key={item.id}>
                                     <div>
-                                        <button className='border px-2 py-2 rounded-md border-green-light text-white text-sm bg-green-light'>
-                                            <span className='font-semibold'>Xem ngay</span>
-                                        </button>
+                                        <img src={item.img} alt="" width='100%' />
+                                    </div>
+                                    <div className='p-3'>
+                                        <div className='text-left'>
+                                            <span className='font-bold'>{item.name}</span>
+                                        </div>
+                                        <div className='text-left mt-3 '>
+                                            <span>
+                                                {item.content}
+                                            </span>
+                                        </div>
+                                        {
+                                            item.expired ? <div className='flex justify-between mt-6'>
+                                                <div className='text-left my-auto'>
+                                                    <span className='text-sm font-semibold'>
+                                                        Thời gian còn lại: {item.expired}
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <button className='border px-2 py-2 rounded-md border-green-light text-white text-sm bg-green-light'>
+                                                        <span className='font-semibold'>Xem ngay</span>
+                                                    </button>
+                                                </div>
+                                            </div> : <div className='mt-4'></div>
+                                        }
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className='mx-3 my-5 shadow-xl rounded-xl'>
-                            <div>
-                                <img src={imgPromo} alt="" width='100%' />
-                            </div>
-                            <div className='p-3'>
-                                <div className='text-left'>
-                                    <span className='font-bold'>Chương trình tháng 3 may mắn</span>
-                                </div>
-                                <div className='text-left mt-3'>
-                                    <span>
-                                        Đồ khô - giảm ngay 10% cho 100 khách hàng đầu tiên và những hội viên của chúng tôi
-                                    </span>
-                                </div>
-                                <div className='flex justify-between mt-6'>
-                                    <div className='text-left my-auto'>
-                                        <span className='text-sm font-semibold'>
-                                            Thời gian còn lại: 5 ngày
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <button className='border px-2 py-2 rounded-md border-green-light text-white text-sm bg-green-light'>
-                                            <span className='font-semibold'>Xem ngay</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='mx-3 my-5 shadow-xl rounded-xl'>
-                            <div>
-                                <img src={imgPromo} alt="" width='100%' />
-                            </div>
-                            <div className='p-3'>
-                                <div className='text-left'>
-                                    <span className='font-bold'>Chương trình tháng 3 may mắn</span>
-                                </div>
-                                <div className='text-left mt-3'>
-                                    <span>
-                                        Đồ khô - giảm ngay 10% cho 100 khách hàng đầu tiên và những hội viên của chúng tôi
-                                    </span>
-                                </div>
-                                <div className='flex justify-between mt-6'>
-                                    <div className='text-left my-auto'>
-                                        <span className='text-sm font-semibold'>
-                                            Thời gian còn lại: 5 ngày
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <button className='border px-2 py-2 rounded-md border-green-light text-white text-sm bg-green-light'>
-                                            <span className='font-semibold'>Xem ngay</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
                 </div>
-                <div className='flex justify-between relative bottom-96 -mx-10'>
-                    <div>
-                        <img src={vegetable} alt="" />
-                    </div>
-                    <div>
-                        <img src={vegetable} alt="" />
-                    </div>
-                </div>
+                {
+                    props.modePromotions ? <div className='flex justify-between relative bottom-96 -mx-10'>
+                        <div>
+                            <img src={vegetable} alt="" />
+                        </div>
+                        <div>
+                            <img src={vegetable} alt="" />
+                        </div>
+                    </div> : ""
+                }
+
             </div>
         </>
     )

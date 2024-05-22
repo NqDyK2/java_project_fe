@@ -8,6 +8,7 @@ import imgPromotions from "../../img/promotions.png"
 import imgRelatedInfomation1 from "../../img/relatedInfo1.png";
 import imgRelatedInfomation2 from "../../img/relatedInfo2.png";
 import imgRelatedInfomation3 from "../../img/relatedInfo3.png";
+import Branch from '../../components/client/component/Branch'
 
 const Home = () => {
 
@@ -69,8 +70,8 @@ const Home = () => {
                 <div>
                     <Promotions modePromotions={false} nameComponent='An toàn thông tin thực phẩm' data={relatedInfomation}/>
                 </div>
-                <div className='mt-16 mb-5'>
-                    <h1 className='text-3xl font-semibold text-green-light'>CHI NHÁNH CỦA CHÚNG TÔI</h1>
+                <div>
+                    <Branch />
                 </div>
             </div>
         </>

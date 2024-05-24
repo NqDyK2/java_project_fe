@@ -19,7 +19,7 @@ const Promotions = (props: Props) => {
     })
     return (
         <>
-            <div className='border-none bg-green-light py-7 h-[570px]'>
+            <div className={`border-none bg-green-light py-7 ${props.modePromotions ? "h-[570px]" : "h-[517px]"} `}>
                 <div className='bg-white  w-[1440px] mx-auto sticky rounded-xl z-10'>
                     <div className='flex justify-between px-5 pt-5'>
                         <div><span className='font-bold text-2xl'>Chương trình khuyến mãi</span></div>

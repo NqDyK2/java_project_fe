@@ -16,6 +16,7 @@ import {
     MenuItem,
     Button,
 } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -118,9 +119,15 @@ const Header = (props: Props) => {
                     </div>
                     <div className='mx-auto text-center my-auto'>
                         <ul className='' >
-                            <li className='inline-block px-5 text-white'>Giới thiệu</li>
-                            <li className='inline-block px-5 text-white'>Sản phẩm</li>
-                            <li className='inline-block px-5 text-white'>Hướng dẫn</li>
+                            <Link to={'/'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>
+                            </Link>
+                            <Link to={'products'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Sản phẩm</li>
+                            </Link>
+                            <Link to={'news'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Tin tức</li>
+                            </Link>
                             <li className='inline-block px-5 text-white'>Giao hàng</li>
                             <li className='inline-block px-5 text-white'>Liên hệ</li>
                         </ul>

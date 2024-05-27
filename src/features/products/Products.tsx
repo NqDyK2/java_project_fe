@@ -48,14 +48,14 @@ const Products = (props: Props) => {
             <h1 className='text-center text-3xl text-green-light font-semibold mt-5 mb-8'>SẢN PHẨM</h1>
             <div className='flex justify-center gap-5 mx-auto'>
                 <div >
-                    <div className='bg-white'>
+                    <div className='bg-white rounded-md'>
                         <div>
                             <div className='border-b-green-light border-b-2 py-2 pl-3 pr-10 font-semibold'>
                                 <span className=''>
                                     <RxHamburgerMenu className='inline-block text-lg mb-1 mr-2' />TẤT CẢ DANH MỤC
                                 </span>
                             </div>
-                            <div className='pb-6'>
+                            <div className='pb-6 pt-3'>
                                 <div className="pl-1 flex items-center hover:cursor-pointer" onClick={() => handleClickButton('dropdown1')}>
                                     {
                                         dropdowns.dropdown1 ?
@@ -209,8 +209,116 @@ const Products = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    <div></div>
-                    <div></div>
+                    <div className='bg-white mt-3 rounded-md'>
+                        <div>
+                            <div className='border-b-green-light border-b-2 py-2 pl-3 pr-10 font-semibold text-left'>
+                                <span className=''>
+                                    NƠI BÁN
+                                </span>
+                            </div>
+                            <div className='pb-8 mb-3'>
+                                <div className='flex items-center gap-2 px-4 pb-1 pt-3'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Tất cả</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>An Giang</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Hà Nội</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Giang</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bình Dương</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Hải Phòng</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='bg-white mt-3 rounded-md'>
+                        <div>
+                            <div className='border-b-green-light border-b-2 py-2 pl-3 pr-10 font-semibold text-left'>
+                                <span className=''>
+                                    NƠI BÁN
+                                </span>
+                            </div>
+                            <div className='pb-8 mb-3'>
+                                <div className='flex items-center gap-2 px-4 pb-1 pt-3'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Tất cả</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>An Giang</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Hà Nội</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Giang</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bình Dương</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Hải Phòng</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                                <div className='flex items-center gap-2 px-4 py-1'>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <label className=''>Bắc Ninh</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div>
@@ -218,10 +326,10 @@ const Products = (props: Props) => {
                             <div className='border-b-2 border-b-green-light text-left mb-5 py-3 px-3'>
                                 <span className='font-semibold text-xl'>GIÁ ƯU ĐÃI</span>
                             </div>
-                            <div className='flex gap-3 px-3'>
+                            <div className='flex gap-3 px-3 pb-4'>
                                 <div className='flex gap-3 w-fit'>
                                     <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-full'/>
+                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
                                     </div>
                                     <div className='w-[260px] text-left'>
                                         <div className='w-[200px]'>
@@ -230,14 +338,14 @@ const Products = (props: Props) => {
                                         <div className='text-lg'>
                                             <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
                                         </div>
-                                        <div className='mt-10'>
-                                            <span className='bg-green-light text-white py-2 px-10 rounded-sm'>Liên hệ</span>
+                                        <div className='mt-4'>
+                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='flex gap-3 w-fit'>
                                     <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-full'/>
+                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
                                     </div>
                                     <div className='w-[260px] text-left'>
                                         <div className='w-[200px]'>
@@ -246,14 +354,14 @@ const Products = (props: Props) => {
                                         <div className='text-lg'>
                                             <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
                                         </div>
-                                        <div className='mt-10'>
-                                            <span className='bg-green-light text-white py-2 px-10 rounded-sm'>Liên hệ</span>
+                                        <div className='mt-4'>
+                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='flex gap-3 w-fit'>
                                     <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-full'/>
+                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
                                     </div>
                                     <div className='w-[260px] text-left'>
                                         <div className='w-[200px]'>
@@ -262,8 +370,8 @@ const Products = (props: Props) => {
                                         <div className='text-lg'>
                                             <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
                                         </div>
-                                        <div className='mt-10'>
-                                            <span className='bg-green-light text-white py-2 px-10 rounded-sm'>Liên hệ</span>
+                                        <div className='mt-4'>
+                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
                                         </div>
                                     </div>
                                 </div>

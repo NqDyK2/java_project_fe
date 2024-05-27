@@ -218,47 +218,47 @@ const Products = (props: Props) => {
                             </div>
                             <div className='pb-8 mb-3'>
                                 <div className='flex items-center gap-2 px-4 pb-1 pt-3'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Tất cả</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>An Giang</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Hà Nội</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Giang</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bình Dương</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Hải Phòng</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                             </div>
@@ -273,47 +273,47 @@ const Products = (props: Props) => {
                             </div>
                             <div className='pb-8 mb-3'>
                                 <div className='flex items-center gap-2 px-4 pb-1 pt-3'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Tất cả</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>An Giang</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Hà Nội</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Giang</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bình Dương</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Hải Phòng</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
-                                    <input type="checkbox" name="" id="" className='w-5 h-5'/>
+                                    <input type="checkbox" name="" id="" className='w-5 h-5' />
                                     <label className=''>Bắc Ninh</label>
                                 </div>
                             </div>
@@ -375,6 +375,20 @@ const Products = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className='mt-5 flex justify-between	'>
+                            <div className='text-left'>
+                                <label htmlFor="" className='mr-3'>Lọc sản phẩm:</label>
+                                <select name="" id="" className='text-left w-[250px] py-1 px-1 border border-gray-500 rounded-sm'>
+                                    <option selected className='text-left'>Tất cả (mới nhất) </option>
+                                    <option value="">Option 1</option>
+                                    <option value="">Option 2</option>
+                                    <option value="">Option 3</option>
+                                </select>
+                            </div>
+                            <div>
+                                <span>Hiển thị 16/200 sản phẩm</span>
                             </div>
                         </div>
                     </div>

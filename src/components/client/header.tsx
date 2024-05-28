@@ -86,7 +86,7 @@ const Header = (props: Props) => {
                             >
                                 <div className=''>
                                     <MenuHandler>
-                                        <Button placeholder={"Menu 2"} className='text-black text-sm px-[8px]'>Danh mục sản phẩm</Button>
+                                        <Button placeholder={"Menu 2"} className='text-black text-sm px-[8px] shadow-none'>Danh mục sản phẩm</Button>
                                     </MenuHandler>
                                 </div>
                                 <div className='ml-20 my-auto text-xs px-[8px]'>

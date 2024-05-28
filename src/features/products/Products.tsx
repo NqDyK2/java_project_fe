@@ -4,6 +4,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDropRightFill } from "react-icons/ri";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import grapeFruitPromotions from "../../img/grapeFruitProducts.png"
+import bananaPrds from "../../img/bananaPrds.png"
+import { IoMdStar } from 'react-icons/io';
+import { FaAngleLeft } from "react-icons/fa";
+
 type Props = {}
 
 type DropdownState = {
@@ -390,6 +394,377 @@ const Products = (props: Props) => {
                             <div>
                                 <span>Hiển thị 16/200 sản phẩm</span>
                             </div>
+                        </div>
+                        <div className='bg-white pb-1 mb-10'>
+                            <div className='flex justify-around my-5 pt-8 pb-2'>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex justify-around my-5 pt-2 pb-2'>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex justify-around my-5 pt-2 pb-2'>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex justify-around my-5 pt-2 pb-5'>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                                <div className='border border-gray-300 shadow-md mx-5 w-full rounded-lg'>
+                                    <div>
+                                        <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                    </div>
+                                    <div className='text-xl font-semibold mt-5'>
+                                        <span>Thăn nội bò Úc đông lạnh</span>
+                                    </div>
+                                    <div className='flex justify-center text-[#FF9933] my-2'>
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                        <IoMdStar className='text-xl' />
+                                    </div>
+                                    <div className='flex justify-center gap-5 mt-3'>
+                                        <div className='text-sm font-semibold mt-1'><span>1000gram</span></div>
+                                        <div><span className='text-green-light font-semibold'>200,000đ</span></div>
+                                    </div>
+                                    <div className='mt-7 mb-5'>
+                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div><span><FaAngleLeft /></span></div>
+                            <div><span></span></div>
+                            <div><span></span></div>
+                            <div><span></span></div>
+                            <div><span></span></div>
+                            <div><span></span></div>
+                            <div><span></span></div>
                         </div>
                     </div>
                 </div>

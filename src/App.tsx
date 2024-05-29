@@ -2,13 +2,21 @@ import "./App.css"
 import Home from "./features/home"
 import { Route, Routes } from "react-router-dom"
 import ClientLayout from "./layouts/client/layout"
+import Products from "./features/products/Products"
+import Company from "./features/company/Company"
+import Product from "./features/detail/Product"
+import News from "./features/news/News"
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App bg-gray-100 overflow-x-hidden	">
       <Routes>
         <Route element={<ClientLayout />} >
           <Route index path="/" element={<Home />} />
+          <Route path="products" element={<Products />}/>
+          <Route path="company" element={<Company />}/>
+          <Route path={`detail`} element={<Product />} />
+          <Route path='news' element={<News />} />
         </Route>
       </Routes>
     </div >

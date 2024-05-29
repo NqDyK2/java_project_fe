@@ -5,8 +5,8 @@ import { FaBell } from "react-icons/fa6";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { TiLockClosed } from "react-icons/ti";
 import { PiKeyFill } from "react-icons/pi";
-import imgLogo from "../../logoJavPrjFE.png"
-import diamond from "../../Group.png"
+import imgLogo from "../../img/logoJavPrjFE.png"
+import diamond from "../../img/Group.png"
 import { GiVibratingSmartphone } from "react-icons/gi";
 import { FaCaretDown } from "react-icons/fa6";
 import {
@@ -16,6 +16,7 @@ import {
     MenuItem,
     Button,
 } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -85,7 +86,7 @@ const Header = (props: Props) => {
                             >
                                 <div className=''>
                                     <MenuHandler>
-                                        <Button placeholder={"Menu 2"} className='text-black text-sm px-[8px]'>Danh mục sản phẩm</Button>
+                                        <Button placeholder={"Menu 2"} className='text-black text-sm px-[8px] shadow-none'>Danh mục sản phẩm</Button>
                                     </MenuHandler>
                                 </div>
                                 <div className='ml-20 my-auto text-xs px-[8px]'>
@@ -118,9 +119,15 @@ const Header = (props: Props) => {
                     </div>
                     <div className='mx-auto text-center my-auto'>
                         <ul className='' >
-                            <li className='inline-block px-5 text-white'>Giới thiệu</li>
-                            <li className='inline-block px-5 text-white'>Sản phẩm</li>
-                            <li className='inline-block px-5 text-white'>Hướng dẫn</li>
+                            <Link to={'/'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>
+                            </Link>
+                            <Link to={'products'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Sản phẩm</li>
+                            </Link>
+                            <Link to={'news'}>
+                                <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Tin tức</li>
+                            </Link>
                             <li className='inline-block px-5 text-white'>Giao hàng</li>
                             <li className='inline-block px-5 text-white'>Liên hệ</li>
                         </ul>

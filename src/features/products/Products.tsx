@@ -6,8 +6,8 @@ import { RiArrowDropDownFill } from "react-icons/ri";
 import grapeFruitPromotions from "../../img/grapeFruitProducts.png"
 import bananaPrds from "../../img/bananaPrds.png"
 import { IoMdStar } from 'react-icons/io';
-import { FaAngleLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 type Props = {}
 
@@ -50,6 +50,9 @@ const Products = (props: Props) => {
     };
     return (
         <>
+            <div className='w-[1440px] mx-auto mt-3 text-left font-semibold'>
+                <span>Trang chủ / Rau củ quả nhiệt đới</span>
+            </div>
             <h1 className='text-center text-3xl text-green-light font-semibold mt-5 mb-8'>SẢN PHẨM</h1>
             <div className='flex justify-center gap-5 mx-auto'>
                 <div >
@@ -790,14 +793,14 @@ const Products = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div><span><FaAngleLeft /></span></div>
-                            <div><span></span></div>
-                            <div><span></span></div>
-                            <div><span></span></div>
-                            <div><span></span></div>
-                            <div><span></span></div>
-                            <div><span></span></div>
+                        <div className='flex justify-center gap-4 mb-5'>
+                            <div className='border border-gray-400 px-1 rounded-sm pt-1'><span className='m-auto'><FaAngleLeft /></span></div>
+                            <div className='px-2 bg-green-light text-white rounded-sm'><span>1</span></div>
+                            <div className='border border-gray-400 px-2 rounded-sm'><span>2</span></div>
+                            <div className='border border-gray-400 px-2 rounded-sm'><span>...</span></div>
+                            <div className='border border-gray-400 px-2 rounded-sm'><span>6</span></div>
+                            <div className='border border-gray-400 px-2 rounded-sm'><span>7</span></div>
+                            <div className='border border-gray-400 px-1 rounded-sm pt-1'><span className='m-auto'><FaAngleRight /></span></div>
                         </div>
                     </div>
                 </div>

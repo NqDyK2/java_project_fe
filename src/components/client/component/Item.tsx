@@ -5,15 +5,16 @@ import dummyImg from "../../../img/imgDummy.png"
 import { FaCaretRight } from 'react-icons/fa'
 
 type Props = {
-    name: string
+    name?: string
     heading?: boolean | false
     btnNext?: boolean | false
+    mode?: string
 }
 
 const Item = (props: Props) => {
     return (
         <>
-            <div className='w-[1440px] mx-auto my-5 bg-white rounded-xl'>
+            <div className={` ${props.mode ? "" : 'w-[1440px]'} mx-auto my-5 bg-white rounded-xl`}>
                 {
                     props.btnNext ? <div className='flex justify-between px-5'>
                         <div className='text-left font-bold text-2xl py-3 px-9'>

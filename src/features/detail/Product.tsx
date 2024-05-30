@@ -10,7 +10,10 @@ import shield from "../../img/shield-tick.jpg";
 import like from "../../img/like.jpg";
 import music from "../../img/music-play.jpg";
 import new1 from "../../img/new1.png"
+import imgContent from "../../img/imgcontent.png";
+
 import { IoMdStar } from 'react-icons/io';
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { RiShieldCheckFill, RiShieldCheckLine } from "react-icons/ri";
 
 import Item from '../../components/client/component/Item';
@@ -71,8 +74,59 @@ const Product = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className='mt-4 bg-white'>
-            CONTENT
+          <div className='mt-4 bg-white rounded-lg'>
+            <div>
+              <ul className='text-left border border-b-gray-400'>
+                <li className='inline-block px-10 py-2 border border-gray-400 text-green-light rounded-tl-lg'>Chi tiết</li>
+                <li className='inline-block px-10 py-2 border border-gray-400'>Chứng thực</li>
+                <li className='inline-block px-10 py-2 border border-gray-400'>Video</li>
+                <li className='inline-block px-10 py-2 border border-gray-400'>Đánh giá (10)</li>
+              </ul>
+            </div>
+            <div className='px-5 pt-5'>
+              <div className='flex gap-1 text-sm text-gray-500 rounded-lg py-2'>
+                <div className='my-auto text-lg'>
+                  <span>
+                    <HiOutlineLocationMarker />
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    Bố Hạ, Yên Thế, Bắc Giang
+                  </span>
+                </div>
+              </div>
+              <div className='flex gap-1 text-sm text-gray-500 rounded-lg py-2'>
+                <div className='my-auto text-lg'>
+                  <span>
+                    <HiOutlineLocationMarker />
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    Đã được kiểm duyệt
+                  </span>
+                </div>
+              </div>
+              <div className='text-left px-1 text-wrap w-[900px]'>
+                <p>Xã Đại Minh (huyện Yên Bình, tỉnh Yên Bái) giáp ranh với huyện Đoan Hùng (tỉnh Phú Thọ) nằm cạnh bờ sông Chảy.
+                   Hiện vẫn còn nhiều cây bưởi cổ trên 100 tuổi được mệnh danh là “bưởi tiến vua” trên vùng đất ven sông Chảy.
+                  Vùng trồng bưởi ở xã Đại Minh có độ cao khoảng 500 đến 600 m so với mực nước biển. Đất trồng bưởi có độ tơi xốp cao, giàu mùn, nhiều dinh dưỡng. Trong vùng có lượng mưa bình quân lớn, khí hậu mát mẻ. Trên địa bàn có 780 hộ thì có tới 650 hộ trồng bưởi. Vài năm trở lại đây, được sự giúp đỡ của Viện nghiên cứu rau quả Trung ương, cán bộ khuyến nông huyện, xã và sự nỗ lực của bà con trong việc áp dụng những phương pháp khoa học kỹ thuật, cách chăm sóc mới, khiến bưởi ra quả nhiều hơn, năng suất cao hơn. Vì thế, diện tích bưởi cứ ngày một tăng lên.
+                  Bưởi Đại Minh ngon có tiếng, từ lâu đã trở thành đặc sản của vùng quê này và là niềm tự hào của người dân Yên Bái. Phát huy tiềm năng, thế mạnh sẵn có, Yên Bái đang tiếp tục nghiên cứu nâng cao chất lượng, sản lượng bưởi để mở rộng thị trường, xây dựng thương hiệu bưởi Đại Minh có chỗ đứng vững chắc trên thị trường. Bưởi Đại Minh hiện tại có rất nhiều loại Bưởi Tôm đỏ, Bưởi tôm vàng, Bưởi khả lĩnh, bưởi chua đại minh. Các cây bưởi ở đây rất sai quả, quả da mỏng, múi mọng. Bưởi ngọt mát có mùi thơm dịu.
+                  Lợi ích của việc ăn bưởi: Giúp tăng cường hệ thống miễn dịch, phòng chống sỏi thận, giúp đốt cháy chất béo tự nhiên, tăng cường trao đổi chất, giải độc gan, phòng chống lại căn bệnh ung thư tuyến tiền liệt, Ngăn ngừa ung thư phổi, Làm giảm lượng cholesterol xấu, giúp đối phó các bệnh về nướu.
+                  Vào mùa thu hoạch, bưởi Đại Minh được các thương lái tới tận nhà vườn để thu mua. Thậm chí các thương lái muốn có bưởi Đại Minh còn phải đến tận vườn bưởi từ khi trái bưởi còn nhỏ để thỏa thuận, đặt cọc với chủ nhà đến khi thu hoạch để họ giữ lại bán cho mình.</p>
+              </div>
+              <div className='mt-7 mb-6'>
+                <img src={imgContent} alt="" className='mx-auto' />
+              </div>
+              <div className='text-left px-1 pb-10 text-wrap w-[900px]'>
+                <p>Xã Đại Minh (huyện Yên Bình, tỉnh Yên Bái) giáp ranh với huyện Đoan Hùng (tỉnh Phú Thọ) nằm cạnh bờ sông Chảy. Hiện vẫn còn nhiều cây bưởi cổ trên 100 tuổi được mệnh danh là “bưởi tiến vua” trên vùng đất ven sông Chảy.
+                  Vùng trồng bưởi ở xã Đại Minh có độ cao khoảng 500 đến 600 m so với mực nước biển. Đất trồng bưởi có độ tơi xốp cao, giàu mùn, nhiều dinh dưỡng. Trong vùng có lượng mưa bình quân lớn, khí hậu mát mẻ. Trên địa bàn có 780 hộ thì có tới 650 hộ trồng bưởi. Vài năm trở lại đây, được sự giúp đỡ của Viện nghiên cứu rau quả Trung ương, cán bộ khuyến nông huyện, xã và sự nỗ lực của bà con trong việc áp dụng những phương pháp khoa học kỹ thuật, cách chăm sóc mới, khiến bưởi ra quả nhiều hơn, năng suất cao hơn. Vì thế, diện tích bưởi cứ ngày một tăng lên.
+                  Bưởi Đại Minh ngon có tiếng, từ lâu đã trở thành đặc sản của vùng quê này và là niềm tự hào của người dân Yên Bái. Phát huy tiềm năng, thế mạnh sẵn có, Yên Bái đang tiếp tục nghiên cứu nâng cao chất lượng, sản lượng bưởi để mở rộng thị trường, xây dựng thương hiệu bưởi Đại Minh có chỗ đứng vững chắc trên thị trường. Bưởi Đại Minh hiện tại có rất nhiều loại Bưởi Tôm đỏ, Bưởi tôm vàng, Bưởi khả lĩnh, bưởi chua đại minh. Các cây bưởi ở đây rất sai quả, quả da mỏng, múi mọng. Bưởi ngọt mát có mùi thơm dịu.
+                  Lợi ích của việc ăn bưởi: Giúp tăng cường hệ thống miễn dịch, phòng chống sỏi thận, giúp đốt cháy chất béo tự nhiên, tăng cường trao đổi chất, giải độc gan, phòng chống lại căn bệnh ung thư tuyến tiền liệt, Ngăn ngừa ung thư phổi, Làm giảm lượng cholesterol xấu, giúp đối phó các bệnh về nướu.
+                  Vào mùa thu hoạch, bưởi Đại Minh được các thương lái tới tận nhà vườn để thu mua. Thậm chí các thương lái muốn có bưởi Đại Minh còn phải đến tận vườn bưởi từ khi trái bưởi còn nhỏ để thỏa thuận, đặt cọc với chủ nhà đến khi thu hoạch để họ giữ lại bán cho mình.</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className='mt-5 ml-8 w-[32%]'>

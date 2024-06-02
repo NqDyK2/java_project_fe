@@ -41,10 +41,12 @@ const Header = (props: Props) => {
                                 <span className='px-2'><FaBell className='inline-block text-base mb-1 mr-2' />Thông báo</span>
                             </div>
                             <div className='my-auto flex pl-8'>
-                                <Link to={`https://www.figma.com/proto/N4oy5Urnom5Pyr37CF8rmV/V%C6%B0%E1%BB%9Dn-xanh-connect?page-id=0%3A1&node-id=343-1566&viewport=-52%2C609%2C0.28&t=D6uxNQ8rFKZtDlPC-1&scaling=min-zoom&starting-point-node-id=2%3A83`}>
+                                <Link to={'login'}>
                                     <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><TiLockClosed className='inline-block text-xl mb-1 mr-2 hover:underline hover:text-orange-300' />Đăng nhập</span>
                                 </Link>
-                                <span className='px-2'><PiKeyFill className='inline-block text-lg mb-1 mr-2' />Đăng ký</span>
+                                <Link to={'register'}>
+                                    <span className='px-2'><PiKeyFill className='inline-block text-lg mb-1 mr-2' />Đăng ký</span>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,8 @@ import Products from "./features/products/Products"
 import Company from "./features/company/Company"
 import Product from "./features/detail/Product"
 import News from "./features/news/News"
+import Login from "./features/login/login"
+import Register from "./features/register/register"
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="products" element={<ClientLayout />}>
           <Route path={`detail`} element={<Product />} />
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </div >
   )

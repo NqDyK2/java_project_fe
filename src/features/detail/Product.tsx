@@ -23,6 +23,9 @@ type Props = {}
 const Product = (props: Props) => {
   return (
     <>
+      <div className='text-left mx-auto w-[1440px] mt-3 mb-4'>
+        <span>Trang chủ / Rau củ quả nhiệt đới</span>
+      </div>
       <div className='flex mx-auto w-[1440px]'>
         <div>
           <div className='flex gap-10 bg-white rounded-lg mt-5'>
@@ -110,7 +113,7 @@ const Product = (props: Props) => {
               </div>
               <div className='text-left px-1 text-wrap w-[900px]'>
                 <p>Xã Đại Minh (huyện Yên Bình, tỉnh Yên Bái) giáp ranh với huyện Đoan Hùng (tỉnh Phú Thọ) nằm cạnh bờ sông Chảy.
-                   Hiện vẫn còn nhiều cây bưởi cổ trên 100 tuổi được mệnh danh là “bưởi tiến vua” trên vùng đất ven sông Chảy.
+                  Hiện vẫn còn nhiều cây bưởi cổ trên 100 tuổi được mệnh danh là “bưởi tiến vua” trên vùng đất ven sông Chảy.
                   Vùng trồng bưởi ở xã Đại Minh có độ cao khoảng 500 đến 600 m so với mực nước biển. Đất trồng bưởi có độ tơi xốp cao, giàu mùn, nhiều dinh dưỡng. Trong vùng có lượng mưa bình quân lớn, khí hậu mát mẻ. Trên địa bàn có 780 hộ thì có tới 650 hộ trồng bưởi. Vài năm trở lại đây, được sự giúp đỡ của Viện nghiên cứu rau quả Trung ương, cán bộ khuyến nông huyện, xã và sự nỗ lực của bà con trong việc áp dụng những phương pháp khoa học kỹ thuật, cách chăm sóc mới, khiến bưởi ra quả nhiều hơn, năng suất cao hơn. Vì thế, diện tích bưởi cứ ngày một tăng lên.
                   Bưởi Đại Minh ngon có tiếng, từ lâu đã trở thành đặc sản của vùng quê này và là niềm tự hào của người dân Yên Bái. Phát huy tiềm năng, thế mạnh sẵn có, Yên Bái đang tiếp tục nghiên cứu nâng cao chất lượng, sản lượng bưởi để mở rộng thị trường, xây dựng thương hiệu bưởi Đại Minh có chỗ đứng vững chắc trên thị trường. Bưởi Đại Minh hiện tại có rất nhiều loại Bưởi Tôm đỏ, Bưởi tôm vàng, Bưởi khả lĩnh, bưởi chua đại minh. Các cây bưởi ở đây rất sai quả, quả da mỏng, múi mọng. Bưởi ngọt mát có mùi thơm dịu.
                   Lợi ích của việc ăn bưởi: Giúp tăng cường hệ thống miễn dịch, phòng chống sỏi thận, giúp đốt cháy chất béo tự nhiên, tăng cường trao đổi chất, giải độc gan, phòng chống lại căn bệnh ung thư tuyến tiền liệt, Ngăn ngừa ung thư phổi, Làm giảm lượng cholesterol xấu, giúp đối phó các bệnh về nướu.

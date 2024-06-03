@@ -8,10 +8,12 @@ import Product from "./features/detail/Product"
 import News from "./features/news/News"
 import Login from "./features/login/login"
 import Register from "./features/register/register"
-
-const App = () => {
+interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
+const App: React.FC<IProps> = (props: IProps): JSX.Element => {
   return (
     <div className="App bg-gray-100 overflow-x-hidden	">
+      <StoreProvider>
+      </StoreProvider>
       <Routes>
         <Route element={<ClientLayout />} >
           <Route index path="/" element={<Home />} />

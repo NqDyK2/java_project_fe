@@ -3,9 +3,45 @@ import Footer from '../../components/client/footer'
 import imgLogo from '../../img/logoLogin.png'
 import fb from '../../img/fb.png'
 import gg from '../../img/gg.png'
-
+import { Resolver, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { callApiRegister } from './Register.action'
 type Props = {}
+
+type FormValues = {
+    account: string
+    password: string
+    confirmPassword: string
+}
 const Register = (props: Props) => {
+    const resolver: Resolver<FormValues> = async (values) => {
+        return {
+            values: values.account ? values : {},
+            errors: !values.account ? {
+                account: {
+                    type: "required",
+                    message: "Bạn cần nhập trường này."
+                },
+                password: {
+                    type: "required",
+                    message: "Bạn cần nhập trường này."
+                },
+            } : {
+
+            }
+        }
+    }
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver })
+    // const { result, loadling, error } = useAppSelector((state) => state.auth.account)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const onSubmit = handleSubmit((data: any) => {
+        console.log(data)
+        dispatch(callApiRegister(data))
+        navigate("/manager/rooms")
+    })
     return (
         <>
             <div className='flex flex-col min-h-screen'>
@@ -26,7 +62,7 @@ const Register = (props: Props) => {
                             <div>
                                 <form action="">
                                     <div className="mb-5">
-                                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" required />
+                                        <input {...register("account")} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" required />
                                     </div>
                                     <div className="mb-5">
                                         <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" required />

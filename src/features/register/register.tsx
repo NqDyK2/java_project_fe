@@ -5,8 +5,8 @@ import fb from '../../img/fb.png'
 import gg from '../../img/gg.png'
 import { Resolver, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { callApiRegister } from './Register.action'
+import { useAppDispatch } from '../../hooks/useStore'
 type Props = {}
 
 type FormValues = {
@@ -36,7 +36,7 @@ const Register = (props: Props) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver })
     // const { result, loadling, error } = useAppSelector((state) => state.auth.account)
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const onSubmit = handleSubmit((data: any) => {
         console.log(data)
         dispatch(callApiRegister(data))

@@ -1,27 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { callApiRegister } from "./Register.action";
 
+interface RegisterAccountState {
+    loading: boolean
+    error: string | null;
+    result: object | null;
+}
 const initialState = {
     loading: false,
-    result: [] as string[],
-    error: {},
+    error: null,
+    result: null,
 }
 
 const regisSlice = createSlice({
     name: "register",
     initialState,
-    reducers: {
-
-    },
-
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(callApiRegister.pending, (state) => {
-            // state.newAccount.loading = true
+            state.loading = true
         }).addCase(callApiRegister.fulfilled, (state, action) => {
-            // state.newAccount.loading = false
-            // state.newAccount.result = action.payload
+            state.loading = false
+            state.result = action.payload
         }).addCase(callApiRegister.rejected, (state) => {
 
         })
     },
 })
+
+export default regisSlice.reducer

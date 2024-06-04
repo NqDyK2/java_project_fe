@@ -33,15 +33,16 @@ const Register = (props: Props) => {
         }
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver })
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>({ resolver })
     // const { result, loadling, error } = useAppSelector((state) => state.auth.account)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const onSubmit = handleSubmit((data: any) => {
+    const onSubmit = ((data: any) => {
         console.log(data)
         dispatch(callApiRegister(data))
-        navigate("/manager/rooms")
+        // navigate("/manager/rooms")
     })
+    const password = watch("password", "");
     return (
         <>
             <div className='flex flex-col min-h-screen'>
@@ -60,18 +61,21 @@ const Register = (props: Props) => {
                                 <h3>ĐĂNG KÝ</h3>
                             </div>
                             <div>
-                                <form action="">
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-5">
-                                        <input {...register("account")} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" required />
+                                        <input {...register("account", { required: true, pattern: /^\S+@\S+$/i })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" />
                                     </div>
+                                    {errors.account && <p className='-mt-3 mb-5 text-left text-red-500'>Email không hợp lệ</p>}
                                     <div className="mb-5">
-                                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" required />
+                                        <input {...register("password", { required: true, minLength: 6 })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" />
                                     </div>
+                                    {errors.password && <p className='-mt-3 mb-5 text-left text-red-500'>Mật khẩu phải có ít nhất 6 ký tự</p>}
                                     <div className="mb-5">
-                                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Xác mật khẩu" required />
+                                        <input {...register("confirmPassword", { required: true, validate: value => value === password })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Xác mật khẩu" />
                                     </div>
+                                    {errors.confirmPassword && <p className='-mt-3 mb-5 text-left text-red-500'>Mật khẩu xác nhận không khớp</p>}
                                     <div className='bg-[#AAD490] text-white p-2.5 rounded-lg'>
-                                        <button>Đăng ký</button>
+                                        <button className='w-full'>Đăng ký</button>
                                     </div>
                                 </form>
                             </div>

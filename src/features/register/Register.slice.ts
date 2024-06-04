@@ -6,7 +6,7 @@ interface RegisterAccountState {
     error: string | null;
     result: object | null;
 }
-const initialState = {
+const initialState:RegisterAccountState = {
     loading: false,
     error: null,
     result: null,

@@ -10,3 +10,7 @@ export const login = (user: UserType) => {
     const url = `/auth/signin`;
     return instance.post(url, user)
 }
+export const logout = () => {
+    const url = `/auth/signout`;
+    return instance.post(url)
+}

@@ -9,6 +9,8 @@ import News from "./features/news/News"
 import Login from "./features/login/login"
 import Register from "./features/register/register"
 import StoreProvider from "./providers/index"
+
+
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
 const App: React.FC<IProps> = (props: IProps): JSX.Element => {
   return (
@@ -27,7 +29,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Routes>
-      </div >
+      </div>
     </StoreProvider>
 
   )

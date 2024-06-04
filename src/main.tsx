@@ -6,7 +6,8 @@ import App from "./App"
 import "./index.css"
 import { BrowserRouter } from "react-router-dom"
 import { store } from "./providers/storeConfig"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const container = document.getElementById("root")
 
 if (container) {
@@ -17,6 +18,7 @@ if (container) {
       <BrowserRouter>
         <Provider store={store}>
           <App />
+          <ToastContainer />
         </Provider>
       </BrowserRouter>
     </React.StrictMode>,

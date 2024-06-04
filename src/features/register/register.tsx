@@ -4,22 +4,24 @@ import imgLogo from '../../img/logoLogin.png'
 import fb from '../../img/fb.png'
 import gg from '../../img/gg.png'
 import { Resolver, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { callApiRegister } from './Register.action'
 import { useAppDispatch } from '../../hooks/useStore'
+import { toast } from 'react-toastify'
 type Props = {}
 
 type FormValues = {
-    account: string
+    email: string
     password: string
     confirmPassword: string
+    username: string
 }
 const Register = (props: Props) => {
     const resolver: Resolver<FormValues> = async (values) => {
         return {
-            values: values.account ? values : {},
-            errors: !values.account ? {
-                account: {
+            values: values.username ? values : {},
+            errors: !values.username ? {
+                username: {
                     type: "required",
                     message: "Bạn cần nhập trường này."
                 },
@@ -40,7 +42,8 @@ const Register = (props: Props) => {
     const onSubmit = ((data: any) => {
         console.log(data)
         dispatch(callApiRegister(data))
-        // navigate("/manager/rooms")
+        toast.success("Đăng ký thành công")
+        navigate("/login")
     })
     const password = watch("password", "");
     return (
@@ -63,17 +66,17 @@ const Register = (props: Props) => {
                             <div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-5">
-                                        <input {...register("account", { required: true, pattern: /^\S+@\S+$/i })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" />
+                                        <input {...register("username", { required: true, pattern: /^\S+@\S+$/i })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/username" />
+                                        {errors.username && <p className='text-left text-red-500'>Username không hợp lệ</p>}
                                     </div>
-                                    {errors.account && <p className='-mt-3 mb-5 text-left text-red-500'>Email không hợp lệ</p>}
                                     <div className="mb-5">
                                         <input {...register("password", { required: true, minLength: 6 })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" />
+                                        {errors.password && <p className='text-left text-red-500'>Mật khẩu phải có ít nhất 6 ký tự</p>}
                                     </div>
-                                    {errors.password && <p className='-mt-3 mb-5 text-left text-red-500'>Mật khẩu phải có ít nhất 6 ký tự</p>}
                                     <div className="mb-5">
                                         <input {...register("confirmPassword", { required: true, validate: value => value === password })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Xác mật khẩu" />
+                                        {errors.confirmPassword && <p className='text-left text-red-500'>Mật khẩu xác nhận không khớp</p>}
                                     </div>
-                                    {errors.confirmPassword && <p className='-mt-3 mb-5 text-left text-red-500'>Mật khẩu xác nhận không khớp</p>}
                                     <div className='bg-[#AAD490] text-white p-2.5 rounded-lg'>
                                         <button className='w-full'>Đăng ký</button>
                                     </div>
@@ -111,7 +114,10 @@ const Register = (props: Props) => {
                                 </div>
                             </div>
                             <div className='my-10'>
-                                <span>Bạn đã có tài khoản ?</span><span className='text-green-light font-semibold underline pl-2 cursor-pointer hover:text-orange-300'>Đăng nhập</span>
+                                <span>Bạn đã có tài khoản ?</span>
+                                <Link to={"/login"}>
+                                    <span className='text-green-light font-semibold underline pl-2 cursor-pointer hover:text-orange-300'>Đăng nhập</span>
+                                </Link>
                             </div>
                         </div>
                         <div>

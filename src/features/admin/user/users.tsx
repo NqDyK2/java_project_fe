@@ -3,6 +3,74 @@ import React from 'react'
 type Props = {}
 
 const Users = (props: Props) => {
+  function dropdownFunction(element :any) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
+    for (i = 0; i < dropdowns.length; i++) {
+      dropdowns[i].classList.add("hidden");
+    }
+    list.classList.toggle("hidden");
+  }
+  window.onclick = function (event: any) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        openDropdown.classList.add("hidden");
+      }
+    }
+  };
+  function checkAll(element: any) {
+    let rows = element.parentElement.parentElement.parentElement.nextElementSibling.children;
+    for (var i = 0; i < rows.length; i++) {
+      if (element.checked) {
+        rows[i].classList.add("bg-gray-100");
+        rows[i].classList.add("dark:bg-gray-700");
+        let checkbox = rows[i].getElementsByTagName("input")[0];
+        if (checkbox) {
+          checkbox.checked = true;
+        }
+      } else {
+        rows[i].classList.remove("bg-gray-100");
+        rows[i].classList.remove("dark:bg-gray-700");
+        let checkbox = rows[i].getElementsByTagName("input")[0];
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+      }
+    }
+  }
+  function tableInteract(element: any) {
+    var single = element.parentElement.parentElement;
+    single.classList.toggle("bg-gray-100");
+    single.classList.toggle("dark:bg-gray-700");
+  }
+  let temp = 0;
+  function pageView(val:any) {
+    let text: any = document.getElementById("page-view");
+    if (val) {
+      if (temp === 2) {
+        temp = 0;
+      } else {
+        temp = temp + 1;
+      }
+    } else if (temp !== 0) {
+      temp = temp - 1;
+    }
+    switch (temp) {
+      case 0:
+        text.innerHTML = "Viewing 1 - 20 of 60";
+        break;
+      case 1:
+        text.innerHTML = "Viewing 21 - 40 of 60";
+        break;
+      case 2:
+        text.innerHTML = "Viewing 41 - 60 of 60";
+      default:
+    }
+  }
   return (
     <>
       <div className="py-20">
@@ -55,13 +123,13 @@ const Users = (props: Props) => {
                 <p className="text-base text-gray-600 dark:text-gray-400" id="page-view">
                   Viewing 1 - 20 of 60
                 </p>
-                <a className="text-gray-600 dark:text-gray-400 ml-2 border-transparent border cursor-pointer rounded" onclick="pageView(false)">
+                <a className="text-gray-600 dark:text-gray-400 ml-2 border-transparent border cursor-pointer rounded" onClick={() => pageView(false)}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-left" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <polyline points="15 6 9 12 15 18" />
                   </svg>
                 </a>
-                <a className="text-gray-600 dark:text-gray-400 border-transparent border rounded focus:outline-none cursor-pointer" onclick="pageView(true)">
+                <a className="text-gray-600 dark:text-gray-400 border-transparent border rounded focus:outline-none cursor-pointer" onClick={() => pageView(true)}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-right" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <polyline points="9 6 15 12 9 18" />
@@ -99,7 +167,7 @@ const Users = (props: Props) => {
               <thead>
                 <tr className="w-full h-16 border-gray-300 dark:border-gray-200 border-b py-8">
                   <th className="pl-8 text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="checkAll(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => checkAll(this)} />
                   </th>
                   <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Invoice Number</th>
                   <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Client</th>
@@ -115,20 +183,20 @@ const Users = (props: Props) => {
               <tbody>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-indigo-400" />
                   </td>
@@ -141,7 +209,7 @@ const Users = (props: Props) => {
                       </ul>
                     </div>
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" onclick="dropdownFunction(this)" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" onClick={() => dropdownFunction(this)} className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />
@@ -152,26 +220,26 @@ const Users = (props: Props) => {
                 </tr>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() =>tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-red-400" />
                   </td>
                   <td className="pr-8 relative">
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none ">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onclick="dropdownFunction(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => dropdownFunction(this)}>
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />
@@ -189,26 +257,26 @@ const Users = (props: Props) => {
                 </tr>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() =>tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-indigo-400" />
                   </td>
                   <td className="pr-8 relative">
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onclick="dropdownFunction(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => dropdownFunction(this)}>
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />
@@ -226,26 +294,26 @@ const Users = (props: Props) => {
                 </tr>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-indigo-400" />
                   </td>
                   <td className="pr-8 relative">
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onclick="dropdownFunction(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => dropdownFunction(this)}>
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />
@@ -263,26 +331,26 @@ const Users = (props: Props) => {
                 </tr>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-red-400" />
                   </td>
                   <td className="pr-8 relative">
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onclick="dropdownFunction(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => dropdownFunction(this)}>
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />
@@ -300,26 +368,26 @@ const Users = (props: Props) => {
                 </tr>
                 <tr className="h-24 border-gray-300 dark:border-gray-200 border-b">
                   <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onclick="tableInteract(this)" />
+                    <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => tableInteract(this)} />
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">#MC10023</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">Toyota Motors</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">Toyota Motors</td>
                   <td className="pr-6 whitespace-no-wrap">
                     <div className="flex items-center">
                       <div className="h-8 w-8">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                       </div>
                       <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
                     </div>
                   </td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">$2,500</td>
-                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">02.03.20</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
+                  <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
                   <td className="pr-6">
                     <div className="w-2 h-2 rounded-full bg-gray-600" />
                   </td>
                   <td className="pr-8 relative">
                     <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onclick="dropdownFunction(this)">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" onClick={() => dropdownFunction(this)}>
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx={12} cy={12} r={1} />
                         <circle cx={12} cy={19} r={1} />

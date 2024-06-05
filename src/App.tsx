@@ -10,7 +10,8 @@ import Login from "./features/login/login"
 import Register from "./features/register/register"
 import StoreProvider from "./providers/index"
 import AdminLayout from "./layouts/admin/layout"
-import Users from "./features/admin/user/users"
+import Users from "./features/admin/user/manager-data/users"
+import AddUser from "./features/admin/user/add-user/addUser"
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -32,6 +33,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
           <Route path="register" element={<Register />} />
           <Route path="admin" element={<AdminLayout />}>
             <Route path="users" element={<Users />}/>
+            <Route path="add-user" element={<AddUser />}/>
           </Route>
         </Routes>
       </div>

@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import RegisterSlice from '../features/register/Register.slice';
 import LoginSlice from '../features/login/Login.slice';
 import addUserSlice from '../features/admin/user/add-user/addUser.slice';
+import allUsersSlice from '../features/admin/user/manager-data/Users.slice'
 // import RoomsSlice from "@client/features/rooms/room.slice";
 // import AuthSlice from '@client/features/auth/Auth.slice';
 // import ApartmentSlice from '@client/features/apartment/Apartment.slice';
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     // apartment: ApartmentSlice,
     login: LoginSlice,
     register: RegisterSlice,
-    addUser: addUserSlice
+    addUser: addUserSlice,
+    allUsers: allUsersSlice,
 });
 export const store = configureStore({
     reducer: rootReducer,

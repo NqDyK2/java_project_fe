@@ -9,7 +9,7 @@ interface AddUser {
 
 const initialState: AddUser = {
     loading: false,
-    result: null,
+    result: {},
     error: null
 }
 

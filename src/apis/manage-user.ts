@@ -13,10 +13,16 @@ const axiosConfig: AxiosRequestConfig = {
 
 export const addMore = (user: UserType) => {
     const url = `/users`;
-    return instance.post(url, user);
+    return instance.post(url, user, axiosConfig);
 }
 
-export const getAllUser = (page?: any, size?: any) => {
-    const url = `users`
+export const getAllUser = (page?: any) => {
+    const url = `/users?page=${page}&size=${7}`
+    // const url = `/users`
+    return instance.get(url, axiosConfig);
+}
+
+export const getAllUserPage = () => {
+    const url = `/users`
     return instance.get(url, axiosConfig);
 }

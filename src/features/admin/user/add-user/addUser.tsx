@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { apiAddUser } from './addUser.action';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../../hooks/useStore';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/useStore';
 import { toast } from 'react-toastify';
 import { Resolver, useForm } from 'react-hook-form';
 
@@ -32,17 +32,18 @@ const AddUser = (props: Props) => {
       }
     }
   }
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>({ resolver })
-  // const { result, loadling, error } = useAppSelector((state) => state.auth.account)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>({ resolver })
+  const { result, loadling, error } = useAppSelector((state: any) => state.addUser)
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit = ((data: any) => {
-    console.log(data)
     dispatch(apiAddUser(data))
-    toast.success("Thêm người dùng thành công")
-    // navigate("/login")
+    reset()
   })
-  const password = watch("password", "");
+  if (result?.message) {
+    toast.success("Thêm người dùng thành công")
+    navigate("/admin/users")
+  }
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

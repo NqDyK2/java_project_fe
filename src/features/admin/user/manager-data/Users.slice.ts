@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers } from "./Users.action";
+import { getAllUsers } from "./users.action";
 // import { apiAddUser } from "./addUser.action";
 
 interface allUsers {
@@ -11,14 +11,14 @@ interface allUsers {
 const initialState: allUsers = {
     loading: false,
     result: null,
-    error: null
+    error: null,
 }
 
-const allUsersSlice = createSlice({
+const allUserSlice = createSlice({
     name: "allUsers",
     initialState,
     reducers: {},
-    extraReducers(builder) {
+    extraReducers: (builder) => {
         builder.addCase(getAllUsers.pending, (state) => {
             state.loading = true
         }).addCase(getAllUsers.fulfilled, (state, action) => {
@@ -29,4 +29,4 @@ const allUsersSlice = createSlice({
         })
     },
 })
-export default allUsersSlice.reducer
+export default allUserSlice.reducer

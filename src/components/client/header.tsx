@@ -73,9 +73,11 @@ const Header = (props: Props) => {
                                         <Button placeholder={"Menu 2"} className='text-white ml-10 text-sm px-[8px] shadow-none w-fit hover:text-orange-300'>Xin chào, {fullName ? fullName : "Người dùng"}</Button>
                                     </MenuHandler>
                                     <MenuList placeholder={"Menu 2"} className='-mt-2'>
-                                        <MenuItem placeholder={"Menu"}>
-                                            Thông tin cá nhân
-                                        </MenuItem>
+                                        <Link to={`/infomation/${idUser}`}>
+                                            <MenuItem placeholder={"Menu"}>
+                                                Thông tin cá nhân
+                                            </MenuItem>
+                                        </Link>
                                         <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300'>
                                             Đăng xuất
                                         </MenuItem>

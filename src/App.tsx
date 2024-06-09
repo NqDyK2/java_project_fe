@@ -15,6 +15,7 @@ import AddUser from "./features/admin/user/add-user/addUser"
 import UpdateUser from "./features/update-info/update-infomation"
 import { useEffect, useState } from "react"
 import EditUser from "./features/admin/user/edit-user/editUser"
+import DetailSeller from "./features/detail-seller/detail"
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -28,7 +29,8 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="products" element={<Products />} />
             <Route path="company" element={<Company />} />
             <Route path='news' element={<News />} />
-            <Route path={``} element={<UpdateUser />} />
+            <Route path="infomation/:id" element={<UpdateUser />} />
+            <Route path="detail-seller/:id" element={<DetailSeller />} />
           </Route>
           <Route path="products" element={<ClientLayout />}>
             <Route path={`detail`} element={<Product />} />

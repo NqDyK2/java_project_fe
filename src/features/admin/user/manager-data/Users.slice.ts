@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers } from "./users.action";
+import { getAllUsers } from "./Users.action";
 // import { apiAddUser } from "./addUser.action";
 
 interface allUsers {

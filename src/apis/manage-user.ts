@@ -26,3 +26,13 @@ export const getAllUserPage = () => {
     const url = `/users`
     return instance.get(url, axiosConfig);
 }
+
+export const getUser = (id: any) => {
+    const url = `/users/info/${id}`
+    return instance.get(url, axiosConfig);
+}
+
+export const editUser = (id: any, infomation: any) => {
+    const url = `/users/${id}`
+    return instance.patch(url, infomation, axiosConfig);
+}

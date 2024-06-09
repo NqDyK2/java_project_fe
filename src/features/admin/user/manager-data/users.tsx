@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useStore';
 import { getAllUsers } from './users.action';
 import { getAllUserPage } from '../../../../apis/manage-user';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
 const Users = (props: Props) => {
 
-  function dropdownFunction(element: any) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
-    for (i = 0; i < dropdowns.length; i++) {
-      dropdowns[i].classList.add("hidden");
-    }
-    list.classList.toggle("hidden");
-  }
+  const [openPopUps, setOpenPopUps] = useState<{ [key: number]: boolean }>({});
+
+  const togglePopUp = (id: number) => {
+    setOpenPopUps((prevOpenPopUps: any) => ({
+      ...prevOpenPopUps,
+      [id]: !prevOpenPopUps[id],
+    }));
+  };
   window.onclick = function (event: any) {
     if (!event.target.matches(".dropbtn")) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -46,12 +46,6 @@ const Users = (props: Props) => {
       }
     }
   }
-  function tableInteract(element: any) {
-    var single = element.parentElement.parentElement;
-    single.classList.toggle("bg-gray-100");
-    single.classList.toggle("dark:bg-gray-700");
-  }
-  let temp = 0;
 
 
   // const { result, loading, error } = useAppSelector((state: any) => state.allUsers.result)
@@ -63,13 +57,11 @@ const Users = (props: Props) => {
   useEffect(() => {
     dispatch(getAllUsers(page))
   }, [dispatch])
- 
+
   useEffect(() => {
 
     const calTotalPage = Math.ceil(allUser.result?.result?.userList?.length / 5)
     if (calTotalPage) {
-      console.log("LENGTH:", allUser.result?.result?.userList?.length);
-      console.log(calTotalPage);
       setTotalPage(calTotalPage)
     }
   }, [allUser.result?.result?.userList])
@@ -133,9 +125,6 @@ const Users = (props: Props) => {
                   <ul className="flex justify-center items-center">
                     {
                       [...Array(totalP).keys()].map((item, index) => (
-                        // <button onClick={() => onChangePage(index)} className="text-base leading-none text-gray-800 border-b-2 border-transparent focus:outline-none focus:border-gray-800">
-                        //   <p>{item + 1}</p>
-                        // </button>
                         <li key={index}>
                           <span onClick={() => onChangePage(index)} className="flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none">{item + 1}</span>
                         </li>
@@ -176,9 +165,9 @@ const Users = (props: Props) => {
                     <th className="pl-8 text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">
                       <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => checkAll(this)} />
                     </th>
-                    <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Họ và tên</th>
-                    <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Địa chỉ</th>
                     <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Số điện thoại</th>
+                    <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Địa chỉ</th>
+                    <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Họ và tên</th>
                     <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Email</th>
                     <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Username</th>
                     <td className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">More</td>
@@ -189,30 +178,33 @@ const Users = (props: Props) => {
                     allUser.result?.result?.userList?.map((item: any) => (
                       <tr key={item.id} className="h-24 border-gray-300 dark:border-gray-200 border-b">
                         <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
-                          <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" onClick={() => tableInteract(this)} />
+                          <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none"/>
                         </td>
-                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">#MC10023</td>
-                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.name}</td>
+                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.phone ? item.phone : "Thiếu thông tin"}</td>
+                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.address ? item.address : "Thiếu thông tin"}</td>
                         <td className="pr-6 whitespace-no-wrap">
                           <div className="flex items-center">
                             <div className="h-8 w-8">
                               <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" className="h-full w-full rounded-full overflow-hidden shadow" />
                             </div>
-                            <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">Carrie Anthony</p>
+                            <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">{item.fullName ? item.fullName : "Thiếu thông tin"}</p>
                           </div>
                         </td>
-                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">$2,500</td>
-                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">02.03.20</td>
+                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.email ? item.email : "Thiếu thông tin"}</td>
+                        <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.username ? item.username : "Thiếu thông tin"}</td>
                         <td className="pr-8 relative text-left">
-                          <div className="dropdown-content mt-8 absolute left-0 -ml-12 shadow-md z-10 hidden w-32">
-                            <ul className="bg-white dark:bg-gray-800 shadow rounded py-1">
-                              <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Edit</li>
-                              <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Delete</li>
-                              <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Duplicate</li>
-                            </ul>
-                          </div>
+                          {
+                            openPopUps[item.id] && <div className={`dropdown-content mt-8 absolute left-0 -ml-12 shadow-md z-10 w-32`}>
+                              <ul className="bg-white dark:bg-gray-800 shadow rounded py-1">
+                                <Link to={`/admin/${item.id}/edit-user`}>
+                                  <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Edit</li>
+                                </Link>
+                                <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Delete</li>
+                              </ul>
+                            </div>
+                          }
                           <button className="text-gray-500 rounded cursor-pointer border border-transparent focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" onClick={() => dropdownFunction(this)} className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" onClick={() => togglePopUp(item.id)} className="icon icon-tabler icon-tabler-dots-vertical dropbtn" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                               <path stroke="none" d="M0 0h24v24H0z" />
                               <circle cx={12} cy={12} r={1} />
                               <circle cx={12} cy={19} r={1} />

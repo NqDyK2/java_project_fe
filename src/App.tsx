@@ -9,6 +9,12 @@ import News from "./features/news/News"
 import Login from "./features/login/login"
 import Register from "./features/register/register"
 import StoreProvider from "./providers/index"
+import AdminLayout from "./layouts/admin/layout"
+import Users from "./features/admin/user/manager-data/users"
+import AddUser from "./features/admin/user/add-user/addUser"
+import UpdateUser from "./features/update-info/update-infomation"
+import { useEffect, useState } from "react"
+import EditUser from "./features/admin/user/edit-user/editUser"
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -22,12 +28,18 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="products" element={<Products />} />
             <Route path="company" element={<Company />} />
             <Route path='news' element={<News />} />
+            <Route path={``} element={<UpdateUser />} />
           </Route>
           <Route path="products" element={<ClientLayout />}>
             <Route path={`detail`} element={<Product />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="admin" element={<AdminLayout />}>
+            <Route path="users" element={<Users />} />
+            <Route path="add-user" element={<AddUser />} />
+            <Route path={`:id/edit-user`} element={<EditUser />} />
+          </Route>
         </Routes>
       </div>
     </StoreProvider>

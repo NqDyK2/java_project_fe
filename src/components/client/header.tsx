@@ -25,12 +25,14 @@ const Header = (props: Props) => {
 
     const [statusAuth, setStatusAuth] = useState(false);
     const [fullName, setFullName] = useState("")
+    const [idUser, setIdUser] = useState()
     const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("account")) {
-            let name: any = localStorage.getItem("account")
-            name = JSON.parse(name)
-            setFullName(name.fullName)
+            let local: any = localStorage.getItem("account")
+            local = JSON.parse(local)
+            setIdUser(local.id)
+            setFullName(local.fullName)
             setStatusAuth(true)
         }
     }, [localStorage.getItem("account")])

@@ -34,7 +34,7 @@ const Login = (props: Props) => {
         }
     }
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver })
-    const { result, loadling, error } = useAppSelector((state: any) => state.login.result)
+    const { result, loadling, error } = useAppSelector((state: any) => state.login)
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -43,8 +43,8 @@ const Login = (props: Props) => {
     };
 
     useEffect(() => {
-        if (result) {
-            authenticated(result, () => {
+        if (result && result.result && result.token) {
+            authenticated(result.result, result.token,() => {
                 navigate("/");
                 toast.success(`Chào mừng ${result.fullName ? result.fullName : "người dùng"} trở lại.`)
             });

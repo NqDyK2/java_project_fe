@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useStore';
-import { getAllUsers } from './users.action';
+import { getAllUsers } from './Users.action';
 import { getAllUserPage } from '../../../../apis/manage-user';
 import { Link } from 'react-router-dom';
 

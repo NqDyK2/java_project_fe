@@ -16,24 +16,30 @@ const DetailSeller = (props: Props) => {
                 <div className="rounded relative h-48">
                   <img src="https://t3.ftcdn.net/jpg/01/63/13/30/240_F_163133061_TlMOMqgxAvBuwzLAjxOQ8v1FQ3OexfRG.jpg" className="w-full h-full object-cover rounded absolute shadow" />
                   <div className="absolute bg-black opacity-15 top-0 right-0 bottom-0 left-0 rounded" />
-                  <div className="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-5 shadow flex items-center justify-center border-2 border-white">
+                  <div className="w-24 h-24 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-5 shadow flex items-center justify-center border-2 border-white">
                     <img src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form2.jpg" className="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
                     <div className="absolute top-0 right-0 bottom-0 left-0 rounded-full z-0" />
                   </div>
                 </div>
-                <div className='flex gap-1 bg-green-light p-1 text-sm rounded-lg w-20 z-10'>
+                <div className='text-right mr-5 border w-fit float-right py-1 px-5 mt-3 rounded-lg'>
+                  <button>Theo dõi +</button>
+                </div>
+                <div className='flex gap-1 bg-green-light p-1 absolute text-sm rounded-lg w-20 z-10 mt-5 ml-7 text-white'>
                   <div className='my-auto text-lg'>
                     <span>
                       <RiShieldCheckFill />
                     </span>
                   </div>
-                  <div>
+                  <div className='font-semibold'>
                     <span>
                       Đối tác
                     </span>
                   </div>
                 </div>
               </div>
+            </div>
+            <div>
+              <h3>VƯỜN BƯỞI CHỊ ANH</h3>
             </div>
           </div>
           <div className='w-[70%]'>

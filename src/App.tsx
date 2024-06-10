@@ -16,6 +16,7 @@ import UpdateUser from "./features/update-info/update-infomation"
 import { useEffect, useState } from "react"
 import EditUser from "./features/admin/user/edit-user/editUser"
 import DetailSeller from "./features/detail-seller/detail"
+import FormFarmManage from "./features/farm-manage/formFarmMange"
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -31,6 +32,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path='news' element={<News />} />
             <Route path="infomation/:id" element={<UpdateUser />} />
             <Route path="detail-seller/:id" element={<DetailSeller />} />
+            <Route path="manage-data" element={<FormFarmManage />} />
           </Route>
           <Route path="products" element={<ClientLayout />}>
             <Route path={`detail`} element={<Product />} />

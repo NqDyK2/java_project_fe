@@ -74,11 +74,16 @@ const Header = (props: Props) => {
                                     </MenuHandler>
                                     <MenuList placeholder={"Menu 2"} className='-mt-2'>
                                         <Link to={`/infomation/${idUser}`}>
-                                            <MenuItem placeholder={"Menu"}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Thông tin cá nhân
                                             </MenuItem>
                                         </Link>
-                                        <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300'>
+                                        <Link to={`/manage-data`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Quản lý trang trại
+                                            </MenuItem>
+                                        </Link>
+                                        <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300 mt-1'>
                                             Đăng xuất
                                         </MenuItem>
                                     </MenuList>

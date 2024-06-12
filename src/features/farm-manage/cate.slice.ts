@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiAddCate } from "./cate.action"
+import { apiAddCate, apiGetAllCate } from "./manage-farm.action"
 
-interface AddCategory {
+interface Category {
     loading: boolean
     result: object | null
     error: string | null
 }
 
-const initialState: AddCategory = {
+const initialState: Category = {
     loading: false,
     result: {},
     error: null,
@@ -23,8 +23,11 @@ const categorySlice = createSlice({
         }).addCase(apiAddCate.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
-        }).addCase(apiAddCate.rejected, (state) => {
-
+        }).addCase(apiGetAllCate.pending, (state) => {
+            state.loading = true
+        }).addCase(apiGetAllCate.fulfilled, (state, action) => {
+            state.loading = false
+            state.result = action.payload
         })
     },
 })

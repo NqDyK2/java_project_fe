@@ -1,5 +1,5 @@
 import React from 'react'
-import avt from "../../img/avt.jpg"
+import avt from "../../img/avtfb.jpg"
 import grapeTree from "../../img/GrapeTree.png"
 import subImg1 from "../../img/subImg1.png";
 import subImg2 from "../../img/SubImg2.png";
@@ -136,7 +136,7 @@ const Product = (props: Props) => {
           <div className='bg-white rounded-lg'>
             <div className='flex'>
               <div className='ml-4 mt-3 w-[130px]'>
-                <img src={`https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/352805846_1708185722961590_7052693284025380994_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHNnHKi0NMRqwbqph2-SLUgIsSNGdAoRvkixI0Z0ChG-au_n9XTgW5SeXOOyZ3NmYFmjxCanBSBezx_rKixSYwM&_nc_ohc=I_cQKhg6JjUQ7kNvgHNd_Ra&_nc_ht=scontent.fhan5-8.fna&oh=00_AYBIQw1vMxtqZRe6jDMURQafIqlfyOKwMstp7hQyMERprA&oe=665E7879`} alt="" width={'100%'} className='rounded-full' />
+                <img src={avt} alt="" width={'100%'} className='rounded-full' />
               </div>
               <div className='ml-4 mt-3 w-full'>
                 <div className='text-left pl-2 mb-2'>

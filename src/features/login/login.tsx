@@ -1,11 +1,56 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../../components/client/footer'
 import imgLogo from '../../img/logoLogin.png'
 import fb from '../../img/fb.png'
 import gg from '../../img/gg.png'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore'
+import { Resolver, useForm } from 'react-hook-form'
+import { callApiLogin } from './Login.action'
+import { authenticated } from '../../utils/Authenticate'
+import { toast } from 'react-toastify'
 
 type Props = {}
+type FormValues = {
+    username: string
+    password: string
+}
 const Login = (props: Props) => {
+    const resolver: Resolver<FormValues> = async (values) => {
+        return {
+            values: values.username ? values : {},
+            errors: !values.username ? {
+                username: {
+                    type: "required",
+                    message: "Bạn cần nhập trường này."
+                },
+                password: {
+                    type: "required",
+                    message: "Bạn cần nhập trường này."
+                },
+            } : {
+
+            }
+        }
+    }
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver })
+    const { result, loadling, error } = useAppSelector((state: any) => state.login)
+
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const onSubmit = (data: any) => {
+        dispatch(callApiLogin(data));
+    };
+
+    useEffect(() => {
+        if (result && result.result && result.token) {
+            authenticated(result.result, result.token,() => {
+                navigate("/");
+                toast.success(`Chào mừng ${result.fullName ? result.fullName : "người dùng"} trở lại.`)
+            });
+        }
+    }, [result]);
+
     return (
         <>
             <div className='flex flex-col min-h-screen'>
@@ -24,15 +69,17 @@ const Login = (props: Props) => {
                                 <h3>CHÀO MỪNG QUAY TRỞ LẠI</h3>
                             </div>
                             <div>
-                                <form action="">
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-5">
-                                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" required />
+                                        <input {...register("username", { required: true })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" />
+                                        {errors.username && <p className='text-left text-red-500'>Email không hợp lệ</p>}
                                     </div>
                                     <div className="mb-5">
-                                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" required />
+                                        <input {...register("password", { required: true })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" />
+                                        {errors.password && <p className='text-left text-red-500'>Mật khẩu phải có ít nhất 6 ký tự</p>}
                                     </div>
                                     <div className='bg-[#AAD490] text-white p-2.5 rounded-lg'>
-                                        <button>Đăng nhập</button>
+                                        <button className='w-full'>Đăng nhập</button>
                                     </div>
                                 </form>
                                 <div className='flex justify-between mt-7'>
@@ -79,7 +126,10 @@ const Login = (props: Props) => {
                                 </div>
                             </div>
                             <div className='my-10'>
-                                <span>Bạn chưa có tài khoản ?</span><span className='text-green-light font-semibold underline pl-2 cursor-pointer hover:text-orange-300'>Đăng ký</span>
+                                <span>Bạn chưa có tài khoản ?</span>
+                                <Link to={"/register"}>
+                                    <span className='text-green-light font-semibold underline pl-2 cursor-pointer hover:text-orange-300'>Đăng ký</span>
+                                </Link>
                             </div>
                         </div>
                         <div>

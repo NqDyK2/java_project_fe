@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoMdStar } from "react-icons/io";
 import dummyImg from "../../../img/imgDummy.png"
 import "../../../style/hint.css"
+import { Link } from 'react-router-dom';
 type Props = {}
 
 const Hint = (props: Props) => {
@@ -43,9 +44,11 @@ const Hint = (props: Props) => {
                             </del>
                         </div>
                         <div>
-                            <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                <span className='font-semibold px-24'>Liên hệ</span>
-                            </button>
+                            <Link to={"detail-seller/1"}>
+                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                                    <span className='font-semibold px-24'>Liên hệ</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
@@ -78,9 +81,11 @@ const Hint = (props: Props) => {
                             </del>
                         </div>
                         <div>
-                            <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                <span className='font-semibold px-24'>Liên hệ</span>
-                            </button>
+                            <Link to={"detail-seller/1"}>
+                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                                    <span className='font-semibold px-24'>Liên hệ</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
@@ -113,9 +118,11 @@ const Hint = (props: Props) => {
                             </del>
                         </div>
                         <div>
-                            <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                <span className='font-semibold px-24'>Liên hệ</span>
-                            </button>
+                            <Link to={"detail-seller/1"}>
+                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                                    <span className='font-semibold px-24'>Liên hệ</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
@@ -148,9 +155,11 @@ const Hint = (props: Props) => {
                             </del>
                         </div>
                         <div>
-                            <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                <span className='font-semibold px-24'>Liên hệ</span>
-                            </button>
+                            <Link to={"detail-seller/1"}>
+                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                                    <span className='font-semibold px-24'>Liên hệ</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaFacebook } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
@@ -16,13 +16,35 @@ import {
     MenuItem,
     Button,
 } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
-
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { logout } from '../../apis/user';
+import { toast } from 'react-toastify';
 type Props = {}
 
 const Header = (props: Props) => {
 
+    const [statusAuth, setStatusAuth] = useState(false);
+    const [fullName, setFullName] = useState("")
+    const [idUser, setIdUser] = useState()
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (localStorage.getItem("account")) {
+            let local: any = localStorage.getItem("account")
+            local = JSON.parse(local)
+            setIdUser(local.id)
+            setFullName(local.fullName)
+            setStatusAuth(true)
+        }
+    }, [localStorage.getItem("account")])
 
+    const logoutBtn = async () => {
+        await logout();
+        localStorage.removeItem("account")
+        toast.info("Bạn sẽ đăng xuất sau 2s tiếp theo.")
+        setTimeout(() => {
+            navigate(0)
+        }, 2000);
+    }
     return (
         <>
             {/* Top Header */}
@@ -40,14 +62,36 @@ const Header = (props: Props) => {
                                 <span className='px-2'><BsQuestionCircleFill className='inline-block text-base mb-1 mr-2' />Hỗ trợ</span>
                                 <span className='px-2'><FaBell className='inline-block text-base mb-1 mr-2' />Thông báo</span>
                             </div>
-                            <div className='my-auto flex pl-8'>
-                                <Link to={'login'}>
-                                    <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><TiLockClosed className='inline-block text-xl mb-1 mr-2 hover:underline hover:text-orange-300' />Đăng nhập</span>
-                                </Link>
-                                <Link to={'register'}>
-                                    <span className='px-2'><PiKeyFill className='inline-block text-lg mb-1 mr-2' />Đăng ký</span>
-                                </Link>
-                            </div>
+                            {
+                                statusAuth ? <Menu
+                                    animate={{
+                                        mount: { y: 0 },
+                                        unmount: { y: 25 },
+                                    }}
+                                >
+                                    <MenuHandler>
+                                        <Button placeholder={"Menu 2"} className='text-white ml-10 text-sm px-[8px] shadow-none w-fit hover:text-orange-300'>Xin chào, {fullName ? fullName : "Người dùng"}</Button>
+                                    </MenuHandler>
+                                    <MenuList placeholder={"Menu 2"} className='-mt-2'>
+                                        <Link to={`/infomation/${idUser}`}>
+                                            <MenuItem placeholder={"Menu"}>
+                                                Thông tin cá nhân
+                                            </MenuItem>
+                                        </Link>
+                                        <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300'>
+                                            Đăng xuất
+                                        </MenuItem>
+                                    </MenuList>
+                                </Menu> : <div className='my-auto flex pl-8'>
+                                    <Link to={'login'}>
+                                        <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><TiLockClosed className='inline-block text-xl mb-1 mr-2 hover:underline hover:text-orange-300' />Đăng nhập</span>
+                                    </Link>
+                                    <Link to={'register'}>
+                                        <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><PiKeyFill className='inline-block text-lg mb-1 mr-2' />Đăng ký</span>
+                                    </Link>
+                                </div>
+                            }
+
                         </div>
                     </div>
                 </div>

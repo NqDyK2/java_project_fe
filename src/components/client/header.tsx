@@ -42,6 +42,7 @@ const Header = (props: Props) => {
         localStorage.removeItem("account")
         toast.info("Bạn sẽ đăng xuất sau 2s tiếp theo.")
         setTimeout(() => {
+            navigate("/")
             navigate(0)
         }, 2000);
     }
@@ -81,6 +82,11 @@ const Header = (props: Props) => {
                                         <Link to={`/manage-data`}>
                                             <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Quản lý trang trại
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={`/all-cate`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Quản lý loại quả
                                             </MenuItem>
                                         </Link>
                                         <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300 mt-1'>

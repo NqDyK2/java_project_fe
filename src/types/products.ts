@@ -5,5 +5,5 @@ export type ProductType = {
     price: number,
     amount: number,
     unit: string,
-    categories: string,
+    categories: string[],
 }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/useStore";
 import { apiAddCate, apiAddPrds, apiGetAllCate } from "./manage-farm.action";
 import { toast } from "react-toastify";
+import MultiSelect from "../../components/client/component/MultiSelect";
 
 type FormCategoryValue = {
     name: string
@@ -15,7 +16,7 @@ type FormProductsValue = {
     price: number
     amount: number
     unit: string
-    categories: string
+    categories: string[]
 }
 
 function FormFarmManage() {
@@ -26,7 +27,7 @@ function FormFarmManage() {
 
     const allCategories = useAppSelector((state: any) => state.category.result)
     // const { resultPrds, loadingPrds, errorPrds } = useAppSelector((state: any) => state.category)
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<FormCategoryValue | FormProductsValue>()
+    const { register, handleSubmit, reset, control, formState: { errors } } = useForm<FormCategoryValue | FormProductsValue>()
 
     const changeToAddCate = () => {
         setCategoryMode(true)
@@ -40,20 +41,21 @@ function FormFarmManage() {
     useEffect(() => {
         dispatch(apiGetAllCate(getIdLocal.id))
     }, [dispatch])
+    
 
     const onSubmit: SubmitHandler<FormCategoryValue | FormProductsValue> = (data) => {
-        if ('name' in data) {
-            dispatch(apiAddCate(data))
+        if ('title' in data) {
+            dispatch(apiAddPrds(data))
                 .unwrap().then(() => {
-                    toast.success("Thêm loại quả thành công.")
+                    toast.success("Thêm sản phẩm thành công.")
                     reset()
                 }).catch(() => {
                     toast.error("Đã có lỗi xảy ra!!!")
                 })
         } else {
-            dispatch(apiAddPrds(data))
+            dispatch(apiAddCate(data))
                 .unwrap().then(() => {
-                    toast.success("Thêm sản phẩm thành công.")
+                    toast.success("Thêm loại quả thành công.")
                     reset()
                 }).catch(() => {
                     toast.error("Đã có lỗi xảy ra!!!")
@@ -63,7 +65,6 @@ function FormFarmManage() {
     return (
         <>
             <div className="bg-gradient-to-b from-[#ABDF8A] to-white">
-
                 {
                     categoryMode ?
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -391,7 +392,7 @@ function FormFarmManage() {
                         :
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="flex flex-no-wrap items-start">
-                                <div className="w-full ">
+                                <div className="w-[1440px] mx-auto">
                                     <div className="py-4 px-2">
                                         <div className="bg-white rounded shadow py-7">
                                             <div className="hidden lg:block md:hidden">
@@ -692,27 +693,27 @@ function FormFarmManage() {
                                                             Tên sản phẩm
                                                         </p>
                                                         {/*-Dropdown*/}
-                                                        <input className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
+                                                        <input {...register("title")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
                                                     <div>
                                                         <p className="text-base font-medium leading-none text-gray-800">
                                                             Giá - Giá sản phẩm:
                                                         </p>
-                                                        <input className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
+                                                        <input {...register("price")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
                                                     <div>
                                                         <p className="text-base font-medium leading-none text-gray-800">
                                                             Khối lượng sản phẩm (Giá / khối lượng - Vd: 10.000đ/1kg)
                                                         </p>
-                                                        <input className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
+                                                        <input {...register("unit")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
                                                     <div>
                                                         <p className="text-base font-medium leading-none text-gray-800">
                                                             Sản lượng sản xuất - Số lượng sản phẩm
                                                         </p>
-                                                        <input className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
+                                                        <input {...register("amount")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
                                                 </div>
                                                 <div className="pt-6">
@@ -720,19 +721,16 @@ function FormFarmManage() {
                                                         Danh mục sản phẩm - Sản phẩm thuộc loại:
                                                     </p>
                                                     <div className="w-full pt-6">
-                                                        <select defaultValue={"default"} className="focus:bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                                                            <option value="default">Chọn loại quả - Danh mục sản phẩm</option>
-                                                            {
-                                                                allCategories.result?.categoryList.map((item: any) => (
-                                                                    <option key={item.id} value={item.id}>{item.name}</option>
-                                                                ))
-                                                            }
-                                                        </select>
-                                                        {/* <option value="default">Chọn loại quả - Danh mục sản phẩm</option>
-                                                            <option value="US">United States</option>
-                                                            <option value="CA">Canada</option>
-                                                            <option value="FR">France</option>
-                                                            <option value="DE">Germany</option> */}
+                                                        <Controller
+                                                            name="categories"
+                                                            control={control}
+                                                            render={({ field, fieldState }) => (
+                                                                <MultiSelect
+                                                                    onChange={(e) => field.onChange(e)}
+                                                                />
+                                                            )}
+                                                        />
+                                                        {/* <MultiSelect {...register("categories")} /> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -840,6 +838,7 @@ function FormFarmManage() {
                                                         </div>
                                                     </div>
                                                     <textarea
+                                                        {...register("content")}
                                                         className="resize-none w-full h-[170px] px-4 py-4 text-base outline-none text-slate-600"
                                                         placeholder="Start typing here ..."
                                                         defaultValue={" "}
@@ -861,7 +860,7 @@ function FormFarmManage() {
                             </div>
                         </form>
                 }
-            </div>
+            </div >
         </>
     );
 }

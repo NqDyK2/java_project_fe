@@ -17,8 +17,13 @@ export const getAllCate = (userId: any) => {
     return instance.get(url)
 }
 
-export const getAllProducts = (page?: any) => {
-    let url;
+export const getAllProducts = (page?: any, size?: any) => {
+    let url:string;
+    // Nếu có cả 2 => ghép cả 2
+    // Nếu có page mà không có size =>
+    // Nếu không có page mà có size =>
+    // Nếu không có cả 2 =>
+    console.log("TYPE PAGE?:", typeof page);
     if (page) {
         url = `/products/info?page=${page}&size=4`
     } else {

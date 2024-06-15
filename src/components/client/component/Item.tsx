@@ -10,13 +10,13 @@ type Props = {
     heading?: boolean | false
     btnNext?: boolean | false
     mode?: string
-    list: []
+    list?: []
 }
 
 type List = {
     id: any,
-    title:string,
-    content:  string,
+    title: string,
+    content: string,
     price: number,
     amount: number,
     unit: string,

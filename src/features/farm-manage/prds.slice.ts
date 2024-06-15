@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiAddCate, apiAddPrds } from "./manage-farm.action"
+import { apiAddCate, apiAddPrds, apiGetAllPrd } from "./manage-farm.action"
 
 interface Products {
     loading: boolean
@@ -25,6 +25,11 @@ const productSlice = createSlice({
             state.result = action.payload
         }).addCase(apiAddPrds.rejected, (state) => {
 
+        }).addCase(apiGetAllPrd.pending, (state) => {
+            state.loading = true
+        }).addCase(apiGetAllPrd.fulfilled, (state, action) => {
+            state.loading = false
+            state.result = action.payload
         })
     },
 })

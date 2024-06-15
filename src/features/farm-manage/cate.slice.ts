@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiAddCate, apiGetAllCate } from "./manage-farm.action"
+import { apiAddCate, apiGetAllCate, getDetailCateById } from "./manage-farm.action"
 
 interface Category {
     loading: boolean
@@ -26,6 +26,11 @@ const categorySlice = createSlice({
         }).addCase(apiGetAllCate.pending, (state) => {
             state.loading = true
         }).addCase(apiGetAllCate.fulfilled, (state, action) => {
+            state.loading = false
+            state.result = action.payload
+        }).addCase(getDetailCateById.pending, (state) => {
+            state.loading = true
+        }).addCase(getDetailCateById.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
         })

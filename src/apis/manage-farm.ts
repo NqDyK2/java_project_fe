@@ -13,12 +13,23 @@ const axiosConfig: AxiosRequestConfig = {
 };
 
 export const getAllCate = (userId: any) => {
-    const url = `/categories/info/${userId}` 
+    const url = `/categories/info/${userId}`
     return instance.get(url)
 }
 
-export const getAll = () => {
-    // const url = 
+export const getAllProducts = (page?: any) => {
+    let url;
+    if (page) {
+        url = `/products/info?page=${page}&size=4`
+    } else {
+        url = `/products/info?size=4`
+    }
+    return instance.get(url, axiosConfig)
+}
+
+export const getDetailCate = (idCate: any) => {
+    const url = `/categories/info/cate/${idCate}`
+    return instance.get(url)
 }
 
 export const getAllProductById = () => {
@@ -39,6 +50,7 @@ export const addPrds = (infoPrds: ProductType) => {
     return instance.post(url, infoPrds, axiosConfig)
 }
 
-export const updateCate = () => {
-
+export const updateCate = (id: any, infomation: any) => {
+    const url = `/categories/${id}`;
+    return instance.patch(url, infomation, axiosConfig)
 }

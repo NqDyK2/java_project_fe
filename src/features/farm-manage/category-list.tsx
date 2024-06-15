@@ -52,10 +52,9 @@ const Category = (props: Props) => {
   const [page, setPage] = useState(1)
   const [listAll, setListAll] = useState([])
   const [totalP, setTotalPage] = useState(0)
-  const local: any = localStorage.getItem("account")
-  const getIdLocal = JSON.parse(local);
-
   useEffect(() => {
+    const local: any = localStorage.getItem("account")
+    const getIdLocal = JSON.parse(local);
     dispatch(apiGetAllCate(getIdLocal.id))
   }, [dispatch])
   const onChangePage = (index: any) => {
@@ -170,7 +169,7 @@ const Category = (props: Props) => {
                           {
                             openPopUps[item.id] && <div className={`dropdown-content mt-8 absolute left-0 -ml-12 shadow-md z-10 w-32`}>
                               <ul className="bg-white dark:bg-gray-800 shadow rounded py-1">
-                                <Link to={`/`}>
+                                <Link to={`/edit-category/${item.id}`}>
                                   <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Edit</li>
                                 </Link>
                                 <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Delete</li>

@@ -21,7 +21,10 @@ export const apiGetAllCate = createAsyncThunk("GET_ALLS_CATE", async (id: number
     }
 })
 
-export const apiGetAllPrd = createAsyncThunk("GET_ALL_PRODUCTS", async () => {
+export const apiGetAllPrd = createAsyncThunk("GET_ALL_PRODUCTS", async (query: any) => {
+    console.log("QUERY PAGE:", query.page);
+    console.log("QUERY SIZE:", query.size);
+    
     try {
         const response = await getAllProducts()
         return response.data

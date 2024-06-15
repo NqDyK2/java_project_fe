@@ -18,16 +18,20 @@ export const getAllCate = (userId: any) => {
 }
 
 export const getAllProducts = (page?: any, size?: any) => {
-    let url:string;
+    let url: string;
     // Nếu có cả 2 => ghép cả 2
     // Nếu có page mà không có size =>
     // Nếu không có page mà có size =>
     // Nếu không có cả 2 =>
-    console.log("TYPE PAGE?:", typeof page);
-    if (page) {
+    if (page && size) {
+        url = `/products/info?page=${page}&size=${size}`
+    } else if (page = undefined && size) {
         url = `/products/info?page=${page}&size=4`
+
+    } else if (page && size == undefined) {
+        url = `/products/info?page=${page}&size=10`
     } else {
-        url = `/products/info?size=4`
+        url = `/products/info`
     }
     return instance.get(url, axiosConfig)
 }
@@ -37,12 +41,14 @@ export const getDetailCate = (idCate: any) => {
     return instance.get(url)
 }
 
-export const getAllProductById = () => {
-
+export const getAllProductByUserId = (idUser: any) => {
+    const url = `/products/user/${idUser}`
+    return instance.get(url)
 }
 
-export const getDetailProduct = () => {
-
+export const getDetailProduct = (productId: any) => {
+    const url = `/products/info/${productId}`
+    return instance.get(url)
 }
 
 export const addCate = (infoCate: CateType) => {

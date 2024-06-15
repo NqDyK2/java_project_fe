@@ -17,7 +17,7 @@ const Home = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(apiGetAllPrd())
+        dispatch(apiGetAllPrd({page: 1, size: 4}))
     }, [dispatch])
     const [promotions, setPromotions] = useState([
         {

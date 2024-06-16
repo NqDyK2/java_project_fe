@@ -45,7 +45,7 @@ const Products = (props: Props) => {
         dispatch(apiGetAllPrd({ page: page, size: 12 }))
     }, [dispatch, page])
 
-    for (let i = 0; i < result.result?.productList.length; i += 4) {
+    for (let i = 0; i < result.result?.productList?.length; i += 4) {
         groupedArray.push(result.result?.productList.slice(i, i + 4));
     }
 
@@ -432,9 +432,9 @@ const Products = (props: Props) => {
                         <div className='bg-white pb-1 mb-10'>
                             {
                                 groupedArray.map((block: any, index) => (
-                                    <div key={index} className={`flex  ${block.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
+                                    <div key={index} className={`flex  ${block?.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
                                         {block.map((item: any) => (
-                                            <div key={item.id} className={`border border-gray-300 shadow-md ${block.length == 4 ? "mx-5" : "mx-7"} w-full max-w-[245px] rounded-lg`}>
+                                            <div key={item.id} className={`border border-gray-300 shadow-md ${block?.length == 4 ? "mx-5" : "mx-7"} w-full max-w-[245px] rounded-lg`}>
                                                 <div>
                                                     <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
                                                 </div>

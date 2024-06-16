@@ -133,7 +133,7 @@ const Login = (props: Props) => {
                             </div>
                         </div>
                         <div>
-                            <img className=' rounded-r-[400px]  rounded-l-full w-[610px] h-full' src="https://s3-alpha-sig.figma.com/img/b11e/285c/48e1ebf2a17b48edab282ee42752f29b?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Y~PjmnWlWrzexH5FZEFi1WNde-8Nlt9mU59X8pLhZ~r4HYE3eDIY6QciLKwbmOP~h4vB6ONXkH8X71RB-J5KCEU6GEFeKVSlE8hOVo6t1aW51jNk2wHfhw-j0kC4Ta5Somilzji2EyeEFmP6T2WAYj2EsHbMOwUdrTfy-qMLJernjcYviHcUBtiuGKmDZQgo5pG5yq6kpKJa-cqzFKjzmIvXnvR7e1WQK7CyqaGmG-dhJuWXuCDTVHfmphLwxMhJPqqntA0wXd9yTrI6i9Ryj~hBWlMrN6T4Slb2yAnT1UzwrI52~rDa1M9Av78QC-pd~szm~Vas3Helj4wPviYUDA__" alt="" />
+                            <img className=' rounded-r-[400px]  rounded-l-full w-[610px] h-full' src="https://doanhnghiepkinhtexanh.vn/uploads/images/2022/09/26/a1-1664182170.jpg" alt="" />
                         </div>
                     </div>
                 </div>

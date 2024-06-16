@@ -19,6 +19,7 @@ import DetailSeller from "./features/detail-seller/detail"
 import FormFarmManage from "./features/farm-manage/formFarmMange"
 import Category from "./features/farm-manage/category-list"
 import EditCategory from "./features/farm-manage/editCategory"
+import ProductsList from "./features/farm-manage/products-list"
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -37,6 +38,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="manage-data" element={<FormFarmManage />} />
             <Route path="all-cate" element={<Category />} />
             <Route path="edit-category/:id" element={<EditCategory />} />
+            <Route path="all-prds" element={<ProductsList /> } />
           </Route>
           <Route path="products" element={<ClientLayout />}>
             <Route path={`detail/:id`} element={<Product />} />

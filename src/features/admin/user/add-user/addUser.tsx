@@ -65,21 +65,21 @@ const AddUser = (props: Props) => {
                   </div>
                   <div>
                     <div className="md:flex items-center lg:ml-24 lg:mt-0 mt-4">
-                      <div className="md:w-64">
+                      <div className="md:w-64 text-left">
                         <label className="text-sm leading-none text-gray-800" id="firstName" >Họ và tên</label>
                         <input type="name" {...register("fullName")} tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="firstName" placeholder="John" />
                       </div>
-                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4">
+                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4 text-left">
                         <label className="text-sm leading-none text-gray-800" id="lastName">Địa chỉ</label>
                         <input type="name" {...register("address")} tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="lastName" placeholder="Doe" />
                       </div>
                     </div>
                     <div className="md:flex items-center lg:ml-24 mt-8">
-                      <div className="md:w-64">
+                      <div className="md:w-64 text-left">
                         <label className="text-sm leading-none text-gray-800" id="emailAddress">Địa chỉ E-mail</label>
                         <input type="email" {...register("email")} tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="emailAddress" placeholder="youremail@example.com" />
                       </div>
-                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4">
+                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4 text-left">
                         <label className="text-sm leading-none text-gray-800" id="phone" >Số điện thoại</label>
                         <input type="name" {...register("phone")} tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="phone" placeholder="0373997970" />
                       </div>
@@ -95,16 +95,16 @@ const AddUser = (props: Props) => {
                   </div>
                   <div>
                     <div className="md:flex items-center lg:ml-24 lg:mt-0 mt-4">
-                      <div className="md:w-64">
+                      <div className="md:w-64 text-left">
                         <label className="text-sm leading-none text-gray-800" id="password">Tài khoản</label>
                         <input type="name" {...register("username", { required: true, pattern: /^\S+@\S+$/i })} tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="password" placeholder="Enter your password" />
                       </div>
-                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4">
+                      <div className="md:w-64 md:ml-12 md:mt-0 mt-4 text-left">
                         <label className="text-sm leading-none text-gray-800" id="securityCode">Role - Vai trò</label>
                         <input type="name" tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-300 cursor-not-allowed	" aria-labelledby="securityCode" value={"Nhà thầu"} disabled />
                       </div>
                     </div>
-                    <div className="md:flex items-center lg:ml-24 mt-8">
+                    <div className="md:flex items-center lg:ml-24 mt-8 text-left">
                       <div className="md:w-64">
                         <label className="text-sm leading-none text-gray-800" id="recoverEmail">Mật khẩu</label>
                         <input {...register("password")} type="password" tabIndex={0} className="w-full p-3 mt-3 bg-gray-100 border rounded border-gray-200 focus:outline-none focus:border-gray-600 text-sm font-medium leading-none text-gray-800" aria-labelledby="recoveryEmail" placeholder="Your recovery email" />

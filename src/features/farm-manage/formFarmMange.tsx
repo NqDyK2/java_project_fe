@@ -26,7 +26,7 @@ function FormFarmManage() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const allCategories = useAppSelector((state: any) => state.category.result)
+    const allCategories = useAppSelector((state: any) => state.category)
     // const { resultPrds, loadingPrds, errorPrds } = useAppSelector((state: any) => state.category)
     const { register, handleSubmit, reset, control, formState: { errors } } = useForm<FormCategoryValue | FormProductsValue>()
 
@@ -63,6 +63,9 @@ function FormFarmManage() {
                 })
         }
     };
+    if (allCategories.mode == true) {
+        navigate("/all-cate")
+    }
     return (
         <>
             <div className="bg-gradient-to-b from-[#ABDF8A] to-white">
@@ -165,7 +168,7 @@ function FormFarmManage() {
                                                                 </div>
                                                                 <div className="pl-3 heading-container">
                                                                     <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700">
-                                                                        Sản phẩm - sản lượng
+                                                                        Sản phẩm
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -259,7 +262,7 @@ function FormFarmManage() {
                                                                         className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600 group-hover:text-indigo-700 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:rounded w-full p-3"
                                                                         onClick={() => changeToAddPrd()}
                                                                     >
-                                                                        Sản phẩm - sản lượng
+                                                                        Sản phẩm
                                                                         <svg
                                                                             className=" group-hover:text-indigo-700"
                                                                             width={20}
@@ -487,7 +490,7 @@ function FormFarmManage() {
                                                             </div>
                                                             <div className="pl-3 heading-container">
                                                                 <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700" onClick={() => changeToAddPrd()}>
-                                                                    Sản phẩm - sản lượng
+                                                                    Sản phẩm
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -581,7 +584,7 @@ function FormFarmManage() {
                                                                     className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600  mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
                                                                     onClick={() => changeToAddPrd()}
                                                                 >
-                                                                    Sản phẩm - sản lượng
+                                                                    Sản phẩm
                                                                     <svg
                                                                         className=" group-hover:text-indigo-700"
                                                                         width={20}
@@ -689,7 +692,7 @@ function FormFarmManage() {
                                                     Thêm sản phẩm
                                                 </p>
                                                 <div className="grid w-full grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-7 mt-7 ">
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
                                                             Tên sản phẩm
                                                         </p>
@@ -697,37 +700,37 @@ function FormFarmManage() {
                                                         <input {...register("title")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Giá - Giá sản phẩm:
+                                                            Giá:
                                                         </p>
                                                         <input {...register("price")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Khối lượng sản phẩm (Giá / khối lượng - Vd: 10.000đ/1kg)
+                                                            Đơn vị bán (Ví dụ: kg, quả)
                                                         </p>
                                                         <input {...register("unit")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Sản lượng sản xuất - Số lượng sản phẩm
+                                                            Số lượng tồn kho
                                                         </p>
                                                         <input {...register("amount")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
                                                 </div>
-                                                <div className="w-full pt-6">
+                                                <div className="w-full pt-6 text-left">
                                                     <p className="text-base font-medium leading-none text-gray-800">
-                                                        Link hình ảnh sản phẩm
+                                                        Liên kết ảnh sản phẩm
                                                     </p>
                                                     {/*-Dropdown*/}
                                                     <input {...register("image")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     {/* end */}
                                                 </div>
-                                                <div className="pt-6">
+                                                <div className="pt-6 text-left">
                                                     <p className="text-base font-medium leading-none text-gray-800">
-                                                        Danh mục sản phẩm - Sản phẩm thuộc loại:
+                                                        Loại sản phẩm
                                                     </p>
                                                     <div className="w-full pt-6">
                                                         <Controller
@@ -743,11 +746,11 @@ function FormFarmManage() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="pt-6 border-gray-300 mt-2 px-7">
+                                            <div className="pt-6 border-gray-300 mt-2 px-7 ">
                                                 <p className="text-base font-semibold leading-4 text-gray-800">
-                                                    Mô tả sản phẩm
+                                                    Mô tả
                                                 </p>
-                                                <div className="mt-10 border border-gray-300 rounded">
+                                                <div className="mt-5 border border-gray-300 rounded">
                                                     <div className="flex flex-wrap items-center px-4 py-3 border-b border-gray-300">
                                                         <div className="flex h-full gap-2 p-2 rounded cursor-pointer hover:bg-blue-50 w-fit">
                                                             <p className="text-sm leading-none text-gray-600">

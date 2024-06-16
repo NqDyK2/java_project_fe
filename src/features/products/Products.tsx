@@ -81,9 +81,9 @@ const Products = (props: Props) => {
     return (
         <>
             <div className='w-[1440px] mx-auto mt-3 text-left font-semibold'>
-                <span>Trang chủ / Rau củ quả nhiệt đới</span>
+                <span>Trang chủ / Danh sách sản phẩm</span>
             </div>
-            <h1 className='text-center text-3xl text-green-light font-semibold mt-5 mb-8'>SẢN PHẨM</h1>
+            <h1 className='text-center text-3xl text-green-light font-semibold mt-5 mb-8'></h1>
             <div className='flex justify-center gap-5 mx-auto'>
                 <div >
                     <div className='bg-white rounded-md'>
@@ -109,17 +109,17 @@ const Products = (props: Props) => {
                                     <div className="pb-3">
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">USA</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Táo mỹ</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Germany</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Táo tàu</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Italy</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Táo xanh</p>
                                             </div>
                                         </div>
                                     </div>
@@ -128,10 +128,10 @@ const Products = (props: Props) => {
                                     {
                                         dropdowns.dropdown2 ?
                                             <>
-                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Táo</p>
+                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Bưởi</p>
                                             </> :
                                             <>
-                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Táo</p>
+                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Bưởi</p>
                                             </>
                                     }
                                 </div>
@@ -139,17 +139,17 @@ const Products = (props: Props) => {
                                     <div className="pb-3">
                                         <div className=" ">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">USA</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Bưởi Diễn</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Germany</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Bưởi T10</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Italy</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Bưởi da xanh</p>
                                             </div>
                                         </div>
                                     </div>
@@ -158,10 +158,10 @@ const Products = (props: Props) => {
                                     {
                                         dropdowns.dropdown3 ?
                                             <>
-                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Táo</p>
+                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Cam</p>
                                             </> :
                                             <>
-                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Táo</p>
+                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Cam</p>
                                             </>
                                     }
                                 </div>
@@ -169,17 +169,17 @@ const Products = (props: Props) => {
                                     <div className="pb-3">
                                         <div className=" ">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">USA</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Cam Canh</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Germany</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Cam Đường</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Italy</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Cam Sành</p>
                                             </div>
                                         </div>
                                     </div>
@@ -188,10 +188,10 @@ const Products = (props: Props) => {
                                     {
                                         dropdowns.dropdown4 ?
                                             <>
-                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Táo</p>
+                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Củ</p>
                                             </> :
                                             <>
-                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Táo</p>
+                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Củ</p>
                                             </>
                                     }
                                 </div>
@@ -199,17 +199,17 @@ const Products = (props: Props) => {
                                     <div className="pb-3">
                                         <div className=" ">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">USA</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Sắn</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Germany</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Khoai</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Italy</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Từ</p>
                                             </div>
                                         </div>
                                     </div>
@@ -218,10 +218,10 @@ const Products = (props: Props) => {
                                     {
                                         dropdowns.dropdown5 ?
                                             <>
-                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Táo</p>
+                                                <RiArrowDropDownFill className='text-2xl text-green-light' /> <p className="text-base ml-2 text-green-light font-semibold">Khác</p>
                                             </> :
                                             <>
-                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Táo</p>
+                                                <RiArrowDropRightFill className='text-2xl' /> <p className="text-base ml-2 text-gray-800 font-semibold">Khác</p>
                                             </>
                                     }
                                 </div>
@@ -229,17 +229,22 @@ const Products = (props: Props) => {
                                     <div className="">
                                         <div className=" ">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">USA</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Tổ Yến</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Germany</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Chân Yến</p>
                                             </div>
                                         </div>
                                         <div className="">
                                             <div className="">
-                                                <p className="text-gray-800 text-left pl-10 text-base">Italy</p>
+                                                <p className="text-gray-800 text-left pl-10 text-base">Yến Viên</p>
+                                            </div>
+                                        </div>
+                                        <div className="">
+                                            <div className="">
+                                                <p className="text-gray-800 text-left pl-10 text-base">Vải</p>
                                             </div>
                                         </div>
                                     </div>
@@ -285,19 +290,19 @@ const Products = (props: Props) => {
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Nam Định</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Ninh Bình</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Hưng Yên</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Nghệ An</label>
                                 </div>
                             </div>
                         </div>
@@ -340,19 +345,19 @@ const Products = (props: Props) => {
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Nam Định</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Ninh Bình</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Hưng Yên</label>
                                 </div>
                                 <div className='flex items-center gap-2 px-4 py-1'>
                                     <input type="checkbox" name="" id="" className='w-5 h-5' />
-                                    <label className=''>Bắc Ninh</label>
+                                    <label className=''>Nghệ An</label>
                                 </div>
                             </div>
                         </div>
@@ -432,11 +437,11 @@ const Products = (props: Props) => {
                         <div className='bg-white pb-1 mb-10'>
                             {
                                 groupedArray.map((block: any, index) => (
-                                    <div key={index} className={`flex  ${block?.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
+                                    <div key={index} className={`flex ${block?.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
                                         {block.map((item: any) => (
                                             <div key={item.id} className={`border border-gray-300 shadow-md ${block?.length == 4 ? "mx-5" : "mx-7"} w-full max-w-[245px] rounded-lg`}>
                                                 <div>
-                                                    <img src={bananaPrds} alt="" width={'100%'} className='rounded-lg px-2 pt-3' />
+                                                    <img src={item.image} alt="" className='rounded-lg px-2 pt-3 w-[245px] h-[165px]' />
                                                 </div>
                                                 <div className='text-xl font-semibold mt-5 truncate'>
                                                     <span title={`${item.title}`}>{item.title}</span>
@@ -472,7 +477,7 @@ const Products = (props: Props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

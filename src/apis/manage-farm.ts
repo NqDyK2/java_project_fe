@@ -57,7 +57,12 @@ export const updateCate = (id: any, infomation: any) => {
     return instance.patch(url, infomation, axiosConfig)
 }
 
-export const getProductsOfUser = (idUser: number, page: number, size: number) => {
-    const url = `/products/user/${idUser}?page=${page}&size=${size}`
+export const getProductsOfUser = (idUser: number, page?: number, size?: number) => {
+    let url: string;
+    if (page && size) {
+        url = `/products/user/${idUser}?page=${page}&size=${size}`
+    } else {
+        url = `/products/user/${idUser}`
+    }
     return instance.get(url)
 }

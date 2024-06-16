@@ -20,12 +20,13 @@ const MultiSelect: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
         value: category.id,
         label: category.name,
     }));
+    
     return (<Space style={{ width: '100%' }} direction="vertical">
         <Select
             mode="multiple"
             allowClear
-            style={{ width: '100%' }}
-            placeholder="Please select"
+            style={{ width: '100%'}}
+            placeholder="Chọn danh mục"
             // defaultValue={['a10', 'c12']}
             // onChange={handleChange}
             options={options}

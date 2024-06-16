@@ -23,12 +23,14 @@ const categorySlice = createSlice({
         }).addCase(apiAddCate.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
-        }).addCase(apiGetAllCate.pending, (state) => {
+        })
+        .addCase(apiGetAllCate.pending, (state) => {
             state.loading = true
         }).addCase(apiGetAllCate.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
-        }).addCase(getDetailCateById.pending, (state) => {
+        })
+        .addCase(getDetailCateById.pending, (state) => {
             state.loading = true
         }).addCase(getDetailCateById.fulfilled, (state, action) => {
             state.loading = false

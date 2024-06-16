@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiAddCate, apiAddPrds, apiGetAllPrd } from "./manage-farm.action"
+import { apiAddCate, apiAddPrds, apiGetAllPrd, apiGetDetailProductById } from "./manage-farm.action"
 
 interface Products {
     loading: boolean
@@ -28,6 +28,11 @@ const productSlice = createSlice({
         }).addCase(apiGetAllPrd.pending, (state) => {
             state.loading = true
         }).addCase(apiGetAllPrd.fulfilled, (state, action) => {
+            state.loading = false
+            state.result = action.payload
+        }).addCase(apiGetDetailProductById.pending, (state) => {
+            state.loading = true
+        }).addCase(apiGetDetailProductById.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
         })

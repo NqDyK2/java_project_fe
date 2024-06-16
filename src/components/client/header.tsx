@@ -181,7 +181,7 @@ const Header = (props: Props) => {
                             <Link to={'/'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>
                             </Link>
-                            <Link to={'products'}>
+                            <Link to={'/products'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Sản phẩm</li>
                             </Link>
                             <Link to={'news'}>

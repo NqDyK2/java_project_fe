@@ -19,17 +19,8 @@ export const getAllCate = (userId: any) => {
 
 export const getAllProducts = (page?: any, size?: any) => {
     let url: string;
-    // Nếu có cả 2 => ghép cả 2
-    // Nếu có page mà không có size =>
-    // Nếu không có page mà có size =>
-    // Nếu không có cả 2 =>
     if (page && size) {
         url = `/products/info?page=${page}&size=${size}`
-    } else if (page = undefined && size) {
-        url = `/products/info?page=${page}&size=4`
-
-    } else if (page && size == undefined) {
-        url = `/products/info?page=${page}&size=10`
     } else {
         url = `/products/info`
     }
@@ -64,4 +55,9 @@ export const addPrds = (infoPrds: ProductType) => {
 export const updateCate = (id: any, infomation: any) => {
     const url = `/categories/${id}`;
     return instance.patch(url, infomation, axiosConfig)
+}
+
+export const getProductsOfUser = (idUser: number, page: number, size: number) => {
+    const url = `/products/user/${idUser}?page=${page}&size=${size}`
+    return instance.get(url)
 }

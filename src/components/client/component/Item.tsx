@@ -19,6 +19,7 @@ type List = {
     content: string,
     price: number,
     amount: number,
+    image: string,
     unit: string,
     status: number,
     categories: []
@@ -65,19 +66,19 @@ const Item = (props: Props) => {
                         props.list?.map((item: List) => {
 
                             return (<div key={item.id} className='bg-white rounded-lg w-[280px] shadow-lg'>
-                                <div>
-                                    <img src={dummyImg} alt="" className='rounded-t-lg' />
+                                <div className='w-[280px] h-[300px]'>
+                                    <img src={item.image} alt="" className='rounded-t-lg h-[300px]' width={'100%'} height={'100%'} />
                                 </div>
                                 <div className='my-2 font-semibold text-xl'>
                                     <span>
                                         {item.title}
                                     </span>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <div className='px-2 py-1 text-lg text-gray-500'>
                                         <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className='flex justify-center text-[#FF9933] my-1'>
                                     <IoMdStar className='text-xl' />
                                     <IoMdStar className='text-xl' />
@@ -89,9 +90,6 @@ const Item = (props: Props) => {
                                     <span className='text-green-light text-xl font-semibold text-right  w-fit'>
                                         {formatPrice(item.price)} đ/{item.unit}
                                     </span>
-                                    <del className='text-gray-400 my-auto text-lg w-fit'>
-                                        {formatPrice(item.price)} đ/{item.unit}
-                                    </del>
                                 </div>
                                 <div>
                                     <Link to={"detail-seller/1"}>
@@ -103,154 +101,6 @@ const Item = (props: Props) => {
                             </div>)
                         })
                     }
-                    {/* <div className='bg-white rounded-lg w-[280px] shadow-lg'>
-                        <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
-                        </div>
-                        <div className='my-2 font-semibold text-xl'>
-                            <span>
-                                Bưởi da xanh
-                            </span>
-                        </div>
-                        <div>
-                            <div className='px-2 py-1 text-lg text-gray-500'>
-                                <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
-                            </div>
-                        </div>
-                        <div className='flex justify-center text-[#FF9933] my-1'>
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                        </div>
-                        <div className='flex justify-center gap-5'>
-                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
-                            </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
-                        </div>
-                        <div>
-                            <Link to={"detail-seller/1"}>
-                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                    <span className='font-semibold px-24'>Liên hệ</span>
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className='bg-white rounded-lg w-[280px] shadow-lg'>
-                        <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
-                        </div>
-                        <div className='my-2 font-semibold text-xl'>
-                            <span>
-                                Bưởi da xanh
-                            </span>
-                        </div>
-                        <div>
-                            <div className='px-2 py-1 text-lg text-gray-500'>
-                                <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
-                            </div>
-                        </div>
-                        <div className='flex justify-center text-[#FF9933] my-1'>
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                        </div>
-                        <div className='flex justify-center gap-5'>
-                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
-                            </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
-                        </div>
-                        <div>
-                            <Link to={"detail-seller/1"}>
-                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                    <span className='font-semibold px-24'>Liên hệ</span>
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className='bg-white rounded-lg w-[280px] shadow-lg'>
-                        <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
-                        </div>
-                        <div className='my-2 font-semibold text-xl'>
-                            <span>
-                                Bưởi da xanh
-                            </span>
-                        </div>
-                        <div>
-                            <div className='px-2 py-1 text-lg text-gray-500'>
-                                <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
-                            </div>
-                        </div>
-                        <div className='flex justify-center text-[#FF9933] my-1'>
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                        </div>
-                        <div className='flex justify-center gap-5'>
-                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
-                            </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
-                        </div>
-                        <div>
-                            <Link to={"detail-seller/1"}>
-                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                    <span className='font-semibold px-24'>Liên hệ</span>
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className='bg-white rounded-lg w-[280px] shadow-lg'>
-                        <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
-                        </div>
-                        <div className='my-2 font-semibold text-xl'>
-                            <span>
-                                Bưởi da xanh
-                            </span>
-                        </div>
-                        <div>
-                            <div className='px-2 py-1 text-lg text-gray-500'>
-                                <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
-                            </div>
-                        </div>
-                        <div className='flex justify-center text-[#FF9933] my-1'>
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                            <IoMdStar className='text-xl' />
-                        </div>
-                        <div className='flex justify-center gap-5'>
-                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
-                            </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
-                        </div>
-                        <div>
-                            <Link to={"detail-seller/1"}>
-                                <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                    <span className='font-semibold px-24'>Liên hệ</span>
-                                </button>
-                            </Link>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </>

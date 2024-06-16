@@ -39,7 +39,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="edit-category/:id" element={<EditCategory />} />
           </Route>
           <Route path="products" element={<ClientLayout />}>
-            <Route path={`detail`} element={<Product />} />
+            <Route path={`detail/:id`} element={<Product />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

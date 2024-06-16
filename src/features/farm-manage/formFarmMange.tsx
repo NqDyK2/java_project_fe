@@ -15,6 +15,7 @@ type FormProductsValue = {
     content: string
     price: number
     amount: number
+    image: string
     unit: string
     categories: string[]
 }
@@ -41,7 +42,7 @@ function FormFarmManage() {
     useEffect(() => {
         dispatch(apiGetAllCate(getIdLocal.id))
     }, [dispatch])
-    
+
 
     const onSubmit: SubmitHandler<FormCategoryValue | FormProductsValue> = (data) => {
         if ('title' in data) {
@@ -716,6 +717,14 @@ function FormFarmManage() {
                                                         <input {...register("amount")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
                                                 </div>
+                                                <div className="w-full pt-6">
+                                                    <p className="text-base font-medium leading-none text-gray-800">
+                                                        Link hình ảnh sản phẩm
+                                                    </p>
+                                                    {/*-Dropdown*/}
+                                                    <input {...register("image")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
+                                                    {/* end */}
+                                                </div>
                                                 <div className="pt-6">
                                                     <p className="text-base font-medium leading-none text-gray-800">
                                                         Danh mục sản phẩm - Sản phẩm thuộc loại:
@@ -808,9 +817,6 @@ function FormFarmManage() {
                                                             </button>
                                                         </div>
                                                         <div className="flex items-center justify-end ml-2 gap-x-3 lg:ml-auto md:ml-auto">
-                                                            <p className=" text-sm leading-none text-gray-600 cursor-pointer ">
-                                                                Add Image
-                                                            </p>
                                                             <svg
                                                                 className=" "
                                                                 width={20}

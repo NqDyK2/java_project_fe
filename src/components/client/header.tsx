@@ -42,6 +42,7 @@ const Header = (props: Props) => {
         localStorage.removeItem("account")
         toast.info("Bạn sẽ đăng xuất sau 2s tiếp theo.")
         setTimeout(() => {
+            navigate("/")
             navigate(0)
         }, 2000);
     }
@@ -74,11 +75,21 @@ const Header = (props: Props) => {
                                     </MenuHandler>
                                     <MenuList placeholder={"Menu 2"} className='-mt-2'>
                                         <Link to={`/infomation/${idUser}`}>
-                                            <MenuItem placeholder={"Menu"}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Thông tin cá nhân
                                             </MenuItem>
                                         </Link>
-                                        <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300'>
+                                        <Link to={`/manage-data`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Quản lý trang trại
+                                            </MenuItem>
+                                        </Link>
+                                        <Link to={`/all-cate`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Quản lý loại quả
+                                            </MenuItem>
+                                        </Link>
+                                        <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300 mt-1'>
                                             Đăng xuất
                                         </MenuItem>
                                     </MenuList>
@@ -170,7 +181,7 @@ const Header = (props: Props) => {
                             <Link to={'/'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>
                             </Link>
-                            <Link to={'products'}>
+                            <Link to={'/products'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Sản phẩm</li>
                             </Link>
                             <Link to={'news'}>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import avt from "../../img/avtfb.jpg"
 import grapeTree from "../../img/GrapeTree.png"
 import subImg1 from "../../img/subImg1.png";
@@ -17,31 +17,58 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { RiShieldCheckFill, RiShieldCheckLine } from "react-icons/ri";
 
 import Item from '../../components/client/component/Item';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { apiGetDetailProductById } from '../farm-manage/manage-farm.action';
+import { CiLocationOn } from 'react-icons/ci';
 
 type Props = {}
 
 const Product = (props: Props) => {
+  const productDetail = useAppSelector((state: any) => state.products)
+  // const allProducts = useAppSelector
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { id } = useParams<{ id: string }>();
+  useEffect(() => {
+    dispatch(apiGetDetailProductById(Number(id)));
+  }, [dispatch, id]);
+  const item = productDetail.result?.result
+  const formatPrice = (price: any) => {
+    const priceStr = price?.toString();
+    const lastThreeDigits = priceStr?.slice(-3); // lấy 3 số cuối
+    const restOfNumber = priceStr?.slice(0, -3); // lấy phần còn lại của số
+
+    if (restOfNumber) {
+      return `${restOfNumber}.${lastThreeDigits}`;
+    }
+    return lastThreeDigits;
+  };
+  // dispatch(apiGetDetailProductById(Number(id)));
+  // dispatch(apiGetDetailProductById(Number(id)));
+  // console.log("item?.userId", item?.userId);
   return (
     <>
-      <div className='text-left mx-auto w-[1440px] mt-3 mb-4'>
-        <span>Trang chủ / Rau củ quả nhiệt đới</span>
-      </div>
+      < div className='text-left mx-auto w-[1440px] mt-3 mb-4'>
+        <span>Trang chủ / Sản phẩm chi tiết</span>
+      </div >
       <div className='flex mx-auto w-[1440px]'>
         <div>
           <div className='flex gap-10 bg-white rounded-lg mt-5'>
             <div className='ml-2 mt-5'>
-              <img src={grapeTree} alt="" width={'100%'} />
+              {/* 510 380 */}
+              <img src={item?.image} alt="" width={'510px'} height={'380px'} />
               <div className='flex justify-center gap-3 pt-4 pb-2'>
-                <img src={subImg1} alt="" />
-                <img src={subImg2} alt="" />
+                <img src={`https://picsum.photos/93/80?grayscale`} alt="" />
+                <img src={`https://picsum.photos/93/80`} alt="" />
                 <img src={subImg3} alt="" />
-                <img src={subImg4} alt="" />
-                <img src={subImg5} alt="" />
+                <img src={`https://picsum.photos/93/80`} alt="" />
+                <img src={`https://picsum.photos/93/80/?blur`} alt="" />
               </div>
             </div>
             <div className='text-left mr-8'>
               <div className='text-xl font-semibold mt-5'>
-                <h3>Bưởi Da Xanh VietGAP (size 1.2-1.4 kg)</h3>
+                <h3>{item?.title ? item?.title : ""}</h3>
               </div>
 
               <div className='my-3'>
@@ -49,13 +76,14 @@ const Product = (props: Props) => {
               </div>
 
               <div>
-                <span className='text-red-500 font-semibold text-xl'>30.000đ/kg</span> <del className='text-gray-400 pl-5'>35.000đ/kg</del> <span className='text-white bg-green-light rounded-md p-1 ml-3'>-50%</span>
+                <span className='text-red-500 font-semibold text-xl'>{formatPrice(item?.price)}đ/{item?.unit}</span>
+                {/* <del className='text-gray-400 pl-5'>35.000đ/kg</del> <span className='text-white bg-green-light rounded-md p-1 ml-3'>-50%</span> */}
               </div>
 
               <div>
                 <ul className='list-disc ml-7 my-4 text-sm'>
                   <li><span>Ngày đăng bán: 22/02/2022</span></li>
-                  <li><span>Số lượt xem: 368</span></li>
+                  <li><span>Khối lượng - số lượng: {item?.amount}{item?.unit}</span></li>
                   <li><span>Đánh giá: ___(0)</span></li>
                 </ul>
               </div>
@@ -63,7 +91,7 @@ const Product = (props: Props) => {
               <div className='text-left'>
                 <label htmlFor="" className='mr-3'>Giao hàng từ</label>
                 <select name="" id="" className='text-left w-[250px] py-1 px-1 border border-gray-500 rounded-lg'>
-                  <option selected className='text-left'>Tất cả (mới nhất) </option>
+                  <option defaultValue={'selected'} className='text-left'>Tất cả (mới nhất) </option>
                   <option value="">Option 1</option>
                   <option value="">Option 2</option>
                   <option value="">Option 3</option>
@@ -112,12 +140,7 @@ const Product = (props: Props) => {
                 </div>
               </div>
               <div className='text-left px-1 text-wrap w-[900px]'>
-                <p>Xã Đại Minh (huyện Yên Bình, tỉnh Yên Bái) giáp ranh với huyện Đoan Hùng (tỉnh Phú Thọ) nằm cạnh bờ sông Chảy.
-                  Hiện vẫn còn nhiều cây bưởi cổ trên 100 tuổi được mệnh danh là “bưởi tiến vua” trên vùng đất ven sông Chảy.
-                  Vùng trồng bưởi ở xã Đại Minh có độ cao khoảng 500 đến 600 m so với mực nước biển. Đất trồng bưởi có độ tơi xốp cao, giàu mùn, nhiều dinh dưỡng. Trong vùng có lượng mưa bình quân lớn, khí hậu mát mẻ. Trên địa bàn có 780 hộ thì có tới 650 hộ trồng bưởi. Vài năm trở lại đây, được sự giúp đỡ của Viện nghiên cứu rau quả Trung ương, cán bộ khuyến nông huyện, xã và sự nỗ lực của bà con trong việc áp dụng những phương pháp khoa học kỹ thuật, cách chăm sóc mới, khiến bưởi ra quả nhiều hơn, năng suất cao hơn. Vì thế, diện tích bưởi cứ ngày một tăng lên.
-                  Bưởi Đại Minh ngon có tiếng, từ lâu đã trở thành đặc sản của vùng quê này và là niềm tự hào của người dân Yên Bái. Phát huy tiềm năng, thế mạnh sẵn có, Yên Bái đang tiếp tục nghiên cứu nâng cao chất lượng, sản lượng bưởi để mở rộng thị trường, xây dựng thương hiệu bưởi Đại Minh có chỗ đứng vững chắc trên thị trường. Bưởi Đại Minh hiện tại có rất nhiều loại Bưởi Tôm đỏ, Bưởi tôm vàng, Bưởi khả lĩnh, bưởi chua đại minh. Các cây bưởi ở đây rất sai quả, quả da mỏng, múi mọng. Bưởi ngọt mát có mùi thơm dịu.
-                  Lợi ích của việc ăn bưởi: Giúp tăng cường hệ thống miễn dịch, phòng chống sỏi thận, giúp đốt cháy chất béo tự nhiên, tăng cường trao đổi chất, giải độc gan, phòng chống lại căn bệnh ung thư tuyến tiền liệt, Ngăn ngừa ung thư phổi, Làm giảm lượng cholesterol xấu, giúp đối phó các bệnh về nướu.
-                  Vào mùa thu hoạch, bưởi Đại Minh được các thương lái tới tận nhà vườn để thu mua. Thậm chí các thương lái muốn có bưởi Đại Minh còn phải đến tận vườn bưởi từ khi trái bưởi còn nhỏ để thỏa thuận, đặt cọc với chủ nhà đến khi thu hoạch để họ giữ lại bán cho mình.</p>
+                <p>{item?.content}</p>
               </div>
               <div className='mt-7 mb-6'>
                 <img src={imgContent} alt="" className='mx-auto' />
@@ -306,9 +329,159 @@ const Product = (props: Props) => {
       <div className='mx-auto w-[1440px]'>
         <div className='mt-4 bg-white'>
           <div className='pt-4 -mb-8 text-green-light font-semibold text-2xl'><h1>SẢN PHẨM LIÊN QUAN</h1></div>
-          <Item mode="detail" />
+          <div className='flex justify-evenly py-5 mt-10'>
+            <div className='bg-white rounded-lg w-[280px] shadow-lg'>
+              <div>
+                <img src={subImg2} width={'280px'} height={'224px'} alt="" className='rounded-t-lg' />
+              </div>
+              <div className='my-2 font-semibold text-xl'>
+                <span>
+                  Bưởi da xanh
+                </span>
+              </div>
+              <div>
+                <div className='px-2 py-1 text-lg text-gray-500'>
+                  <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
+                </div>
+              </div>
+              <div className='flex justify-center text-[#FF9933] my-1'>
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+              </div>
+              <div className='flex justify-center gap-5'>
+                <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                  30.000 đ/kg
+                </span>
+                <del className='text-gray-400 my-auto text-lg w-fit'>
+                  35.000 đ/kg
+                </del>
+              </div>
+              <div>
+                <Link to={"detail-seller/1"}>
+                  <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                    <span className='font-semibold px-24'>Liên hệ</span>
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className='bg-white rounded-lg w-[280px] shadow-lg'>
+              <div>
+                <img src={subImg1} width={'280px'} height={'224px'} alt="" className='rounded-t-lg' />
+              </div>
+              <div className='my-2 font-semibold text-xl'>
+                <span>
+                  Bưởi da xanh
+                </span>
+              </div>
+              <div>
+                <div className='px-2 py-1 text-lg text-gray-500'>
+                  <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
+                </div>
+              </div>
+              <div className='flex justify-center text-[#FF9933] my-1'>
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+              </div>
+              <div className='flex justify-center gap-5'>
+                <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                  30.000 đ/kg
+                </span>
+                <del className='text-gray-400 my-auto text-lg w-fit'>
+                  35.000 đ/kg
+                </del>
+              </div>
+              <div>
+                <Link to={"detail-seller/1"}>
+                  <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                    <span className='font-semibold px-24'>Liên hệ</span>
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className='bg-white rounded-lg w-[280px] shadow-lg'>
+              <div>
+                <img src={subImg3} width={'280px'} height={'224px'} alt="" className='rounded-t-lg' />
+              </div>
+              <div className='my-2 font-semibold text-xl'>
+                <span>
+                  Bưởi da xanh
+                </span>
+              </div>
+              <div>
+                <div className='px-2 py-1 text-lg text-gray-500'>
+                  <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
+                </div>
+              </div>
+              <div className='flex justify-center text-[#FF9933] my-1'>
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+              </div>
+              <div className='flex justify-center gap-5'>
+                <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                  30.000 đ/kg
+                </span>
+                <del className='text-gray-400 my-auto text-lg w-fit'>
+                  35.000 đ/kg
+                </del>
+              </div>
+              <div>
+                <Link to={"detail-seller/1"}>
+                  <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                    <span className='font-semibold px-24'>Liên hệ</span>
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className='bg-white rounded-lg w-[280px] shadow-lg'>
+              <div>
+                <img src={subImg4} width={'280px'} height={'224px'} alt="" className='rounded-t-lg' />
+              </div>
+              <div className='my-2 font-semibold text-xl'>
+                <span>
+                  Bưởi da xanh
+                </span>
+              </div>
+              <div>
+                <div className='px-2 py-1 text-lg text-gray-500'>
+                  <span><CiLocationOn className='inline-block mb-1 pl-2 text-3xl text-green-light' /> Bắc Giang </span>
+                </div>
+              </div>
+              <div className='flex justify-center text-[#FF9933] my-1'>
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+                <IoMdStar className='text-xl' />
+              </div>
+              <div className='flex justify-center gap-5'>
+                <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                  30.000 đ/kg
+                </span>
+                <del className='text-gray-400 my-auto text-lg w-fit'>
+                  35.000 đ/kg
+                </del>
+              </div>
+              <div>
+                <Link to={"detail-seller/1"}>
+                  <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
+                    <span className='font-semibold px-24'>Liên hệ</span>
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </>
   )
 }

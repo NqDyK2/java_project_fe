@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Banner from '../../components/client/component/Banner'
 import Promotions from '../../components/client/component/Promotions'
 import Hint from '../../components/client/component/hint'
@@ -9,9 +9,16 @@ import imgRelatedInfomation1 from "../../img/relatedInfo1.png";
 import imgRelatedInfomation2 from "../../img/relatedInfo2.png";
 import imgRelatedInfomation3 from "../../img/relatedInfo3.png";
 import Branch from '../../components/client/component/Branch'
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore'
+import { apiGetAllPrd } from '../farm-manage/manage-farm.action'
 
 const Home = () => {
+    const { result, loading, error } = useAppSelector((state: any) => state.products.result)
+    const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        dispatch(apiGetAllPrd({page: 1, size: 4}))
+    }, [dispatch])
     const [promotions, setPromotions] = useState([
         {
             "id": 1,
@@ -62,13 +69,13 @@ const Home = () => {
                 <Promotions modePromotions={true} nameComponent='Chương trình khuyến mãi' data={promotions} />
                 <Category />
                 <Hint />
-                <Item name='Nông sản miền Bắc' />
-                <Item name='Hoa Quả' btnNext={true} heading={true} />
+                {/* <Item name='Nông sản miền Bắc' list={result?.productList} /> */}
+                <Item name='Hoa Quả' btnNext={true} heading={true} list={result?.productList}/>
                 <div className='mt-16 mb-5'>
                     <h1 className='text-3xl font-semibold text-green-light'>THÔNG TIN LIÊN QUAN</h1>
                 </div>
                 <div>
-                    <Promotions modePromotions={false} nameComponent='An toàn thông tin thực phẩm' data={relatedInfomation}/>
+                    <Promotions modePromotions={false} nameComponent='An toàn thông tin thực phẩm' data={relatedInfomation} />
                 </div>
                 <div>
                     <Branch />

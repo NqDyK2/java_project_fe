@@ -12,8 +12,13 @@ const axiosConfig: AxiosRequestConfig = {
     }
 };
 
-export const getAllCate = (userId: any) => {
-    const url = `/categories/info/${userId}`
+export const getAllCate = (userId: any, page: any, size:any) => {
+    let url: any;
+    if (page && size) {
+        url = `/categories/info/${userId}?page=${page}&size=${size}`
+    } else {
+        url = `/categories/info/${userId}`
+    }
     return instance.get(url)
 }
 

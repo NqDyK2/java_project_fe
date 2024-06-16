@@ -12,9 +12,9 @@ export const apiAddCate = createAsyncThunk("ADD_CATE", async (data: CateType) =>
     }
 })
 
-export const apiGetAllCate = createAsyncThunk("GET_ALLS_CATE", async (id: number) => {
+export const apiGetAllCate = createAsyncThunk("GET_ALLS_CATE", async (data: any) => {
     try {
-        const response = await getAllCate(id)
+        const response = await getAllCate(data.id, data.page, data.size)
         return response.data
     } catch (error) {
         console.log("Error:", error);

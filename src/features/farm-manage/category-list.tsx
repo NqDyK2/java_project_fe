@@ -50,19 +50,17 @@ const Category = (props: Props) => {
   const dispatch = useAppDispatch()
   const allCategories = useAppSelector((state: any) => state.category.result)
   const [page, setPage] = useState(1)
-  const [listAll, setListAll] = useState([])
-  const [totalP, setTotalPage] = useState(0)
   useEffect(() => {
     const local: any = localStorage.getItem("account")
     const getIdLocal = JSON.parse(local);
-    dispatch(apiGetAllCate(getIdLocal.id))
-  }, [dispatch])
+    dispatch(apiGetAllCate({ id: getIdLocal.id, page: page, size: 6 }))
+  }, [dispatch, page])
   const onChangePage = (index: any) => {
     setPage(index)
   }
   return (
     <>
-      <div className='flex flex-col h-[770px]'>
+      <div className='flex flex-col'>
         <div className="bg-gradient-to-b from-[#ABDF8A] to-white">
           <div className="py-20">
             <div className="mx-auto container bg-white dark:bg-gray-800 shadow rounded">
@@ -71,9 +69,10 @@ const Category = (props: Props) => {
                   <div className="flex items-center lg:border-l lg:border-r border-gray-300 dark:border-gray-200 py-3 lg:py-0 lg:px-6">
                     <ul className="flex justify-center items-center">
                       {
-                        [...Array(totalP).keys()].map((item, index) => (
+                        [...Array(allCategories.result?.totalPage).keys()].map((item, index) => (
+
                           <li key={index}>
-                            <span onClick={() => onChangePage(index)} className="flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none">{item + 1}</span>
+                            <span onClick={() => onChangePage(item + 1)} className="flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none">{item + 1}</span>
                           </li>
                         ))
                       }

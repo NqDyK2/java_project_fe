@@ -18,7 +18,7 @@ const Category = (props: Props) => {
     if (!event.target.matches(".dropbtn")) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
-      for (i = 0; i < dropdowns.length; i++) {
+      for (i = 0; i < dropdowns?.length; i++) {
         var openDropdown = dropdowns[i];
         openDropdown.classList.add("hidden");
       }
@@ -26,7 +26,7 @@ const Category = (props: Props) => {
   };
   function checkAll(element: any) {
     let rows = element.parentElement.parentElement.parentElement.nextElementSibling.children;
-    for (var i = 0; i < rows.length; i++) {
+    for (var i = 0; i < rows?.length; i++) {
       if (element.checked) {
         rows[i].classList.add("bg-gray-100");
         rows[i].classList.add("dark:bg-gray-700");

@@ -30,13 +30,11 @@ const MultiSelect: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
         }
     }, [dispatch, id]);
     const item = detailProduct.result?.result
-    const productCategoryIds = item?.categories;
+    // const productCategoryIds = item?.categories;
 
-    const selectedCategories = allCategories?.result?.categoryList.filter(cat =>
-        productCategoryIds?.includes(cat.id)
-    ).map(cat => cat.name);
-
-    console.log(selectedCategories);
+    // const selectedCategoriesName = allCategories?.result?.categoryList.filter(cat =>
+    //     productCategoryIds?.includes(cat.id)
+    // ).map(cat => cat.name);
 
     return (<Space style={{ width: '100%' }} direction="vertical">
         <Select
@@ -44,10 +42,10 @@ const MultiSelect: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
             allowClear
             style={{ width: '100%' }}
             placeholder="Chọn danh mục"
-            defaultValue={selectedCategories ? selectedCategories : []}
-            onChange={(value) => {
-                props.onChange(value);
-            }}
+            // defaultValue={selectedCategoriesName ? selectedCategoriesName : []}
+            // onChange={(value) => {
+            //     props.onChange(value);
+            // }}
             // onChange={handleChange}
             options={options}
             {...props as any}

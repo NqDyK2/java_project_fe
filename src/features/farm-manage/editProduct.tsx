@@ -57,7 +57,6 @@ const EditProduct = (props: Props) => {
         if (data.content == "" || data.content == item?.content) {
             data.content = null;
         }
-        data.categories = null
         dispatch(apiEditProduct({ id, data: data }))
             .unwrap().then(() => {
                 toast.success("Thêm sản phẩm thành công.")

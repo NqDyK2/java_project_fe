@@ -65,6 +65,26 @@ const ProductsList = (props: Props) => {
     const onChangePage = (index: any) => {
         setPage(index)
     }
+
+    const allCategories = useAppSelector((state: any) => state.category.result)
+
+    const local: any = localStorage.getItem("account")
+    const getIdLocal = JSON.parse(local);
+    useEffect(() => {
+        dispatch(apiGetAllCate(getIdLocal.id))
+    }, [dispatch])
+
+    const categoryMap = new Map();
+    allCategories?.result?.categoryList?.forEach(category => {
+        categoryMap.set(category.id, category.name);
+    });
+
+    // Lấy tên categories từ products
+    const productsWithCategories = list?.productList?.map(product => ({
+        ...product,
+        categoryNames: product.categories?.map(categoryId => categoryMap.get(categoryId))
+    }));
+
     return (
         <div className='flex flex-col '>
             <div className="bg-gradient-to-b from-[#ABDF8A] to-white">
@@ -77,7 +97,7 @@ const ProductsList = (props: Props) => {
                                         {
                                             [...Array(list?.totalPage).keys()].map((item, index) => (
                                                 <li key={index}>
-                                                    <span onClick={() => onChangePage(item + 1)} className={`flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none ${page == item +1 ? "underline" : ""}`}>{item + 1}</span>
+                                                    <span onClick={() => onChangePage(item + 1)} className={`flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none ${page == item + 1 ? "underline" : ""}`}>{item + 1}</span>
                                                 </li>
                                             ))
                                         }
@@ -123,12 +143,13 @@ const ProductsList = (props: Props) => {
                                         <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Giá</th>
                                         <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Đơn vị</th>
                                         <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Số lượng</th>
+                                        <th className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Danh mục</th>
                                         <td className="text-gray-600 dark:text-gray-400 font-normal pr-6 text-left text-sm tracking-normal leading-4">Thêm</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        list?.productList?.map((item: any) => (
+                                        productsWithCategories?.map((item: any) => (
                                             <tr key={item.id} className="h-24 border-gray-300 dark:border-gray-200 border-b">
                                                 <td className="pl-8 pr-6 text-left whitespace-no-wrap text-sm text-gray-800 dark:text-gray-100 tracking-normal leading-4">
                                                     <input type="checkbox" className="cursor-pointer relative w-5 h-5 border rounded border-gray-400 dark:border-gray-200 bg-white dark:bg-gray-800 outline-none" />
@@ -138,12 +159,13 @@ const ProductsList = (props: Props) => {
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.price ? item.price : "Thiếu thông tin"}</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.unit ? item.unit : "Thiếu thông tin"}</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.amount ? item.amount : "Thiếu thông tin"}</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-left">{item.categoryNames.join(', ')}</td>
                                                 <td className="pr-8 relative text-left">
                                                     {
                                                         openPopUps[item.id] && <div className={`dropdown-content mt-8 absolute left-0 -ml-12 shadow-md z-10 w-32`}>
                                                             <ul className="bg-white dark:bg-gray-800 shadow rounded py-1">
                                                                 <Link to={`/edit-product/${item.id}`}>
-                                                                <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Edit</li>
+                                                                    <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Edit</li>
                                                                 </Link>
                                                                 <li className="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-indigo-700 hover:text-white px-3 font-normal">Delete</li>
                                                             </ul>

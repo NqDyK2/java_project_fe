@@ -121,11 +121,13 @@ const Product = (props: Props) => {
                 </select>
               </div> */}
 
-              <div className='text-center mt-10 bg-green-light py-3 rounded-lg text-white text-xl font-semibold'>
-                <button>
-                  Liên hệ
-                </button>
-              </div>
+              <Link to={`/detail-seller/${item?.userId}`}>
+                <div className='text-center mt-10 bg-green-light py-3 rounded-lg text-white text-xl font-semibold'>
+                  <button>
+                    Liên hệ
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
           <div className='mt-4 bg-white rounded-lg'>

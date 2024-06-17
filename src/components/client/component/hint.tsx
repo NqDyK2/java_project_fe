@@ -16,7 +16,7 @@ const Hint = (props: Props) => {
                 <div className='flex justify-evenly py-5'>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
+                            <img src={dummyImg} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
                         </div>
                         <div className='my-2 font-semibold text-xl'>
                             <span>
@@ -37,11 +37,8 @@ const Hint = (props: Props) => {
                         </div>
                         <div className='flex justify-center gap-5'>
                             <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
+                                12.000 đ/Quả
                             </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
                         </div>
                         <div>
                             <Link to={"detail-seller/1"}>
@@ -53,11 +50,11 @@ const Hint = (props: Props) => {
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
+                            <img src={`https://dichothue.com.vn/upload/elfinder/cam-canh.jpg`} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
                         </div>
                         <div className='my-2 font-semibold text-xl'>
                             <span>
-                                Bưởi da xanh
+                                Cam canh
                             </span>
                         </div>
                         <div>
@@ -74,14 +71,11 @@ const Hint = (props: Props) => {
                         </div>
                         <div className='flex justify-center gap-5'>
                             <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                30.000 đ/kg
+                                32.000 đ/kg
                             </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
                         </div>
                         <div>
-                            <Link to={"detail-seller/1"}>
+                            <Link to={"detail-seller/3"}>
                                 <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
                                     <span className='font-semibold px-24'>Liên hệ</span>
                                 </button>
@@ -90,11 +84,11 @@ const Hint = (props: Props) => {
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
+                            <img src={`https://images2.thanhnien.vn/528068263637045248/2024/6/12/edit-502166b3-a83e-4a1e-8877-e741b029e21e-17181952941732106639029.jpeg`} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
                         </div>
                         <div className='my-2 font-semibold text-xl'>
                             <span>
-                                Bưởi da xanh
+                                Vải thiều
                             </span>
                         </div>
                         <div>
@@ -113,12 +107,9 @@ const Hint = (props: Props) => {
                             <span className='text-green-light text-xl font-semibold text-right  w-fit'>
                                 30.000 đ/kg
                             </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
                         </div>
                         <div>
-                            <Link to={"detail-seller/1"}>
+                            <Link to={"detail-seller/5"}>
                                 <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
                                     <span className='font-semibold px-24'>Liên hệ</span>
                                 </button>
@@ -127,11 +118,11 @@ const Hint = (props: Props) => {
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
-                            <img src={dummyImg} alt="" className='rounded-t-lg' />
+                            <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5agHxRI_JwW-blozp7P4ZEc8imP3UoVUdQA&s`} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
                         </div>
                         <div className='my-2 font-semibold text-xl'>
                             <span>
-                                Bưởi da xanh
+                                Nhãn lồng Hưng Yên
                             </span>
                         </div>
                         <div>
@@ -150,12 +141,9 @@ const Hint = (props: Props) => {
                             <span className='text-green-light text-xl font-semibold text-right  w-fit'>
                                 30.000 đ/kg
                             </span>
-                            <del className='text-gray-400 my-auto text-lg w-fit'>
-                                35.000 đ/kg
-                            </del>
                         </div>
                         <div>
-                            <Link to={"detail-seller/1"}>
+                            <Link to={"detail-seller/8"}>
                                 <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
                                     <span className='font-semibold px-24'>Liên hệ</span>
                                 </button>

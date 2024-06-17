@@ -6,7 +6,7 @@ const Sidebar = (props: Props) => {
     return (
         <>
             <ul aria-orientation="vertical" className=" py-6">
-                <li className="pl-6 cursor-pointer text-white text-sm leading-3 tracking-normal pb-4 pt-5 text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                <li className="pl-6 cursor-pointer text-sm leading-3 tracking-normal pb-4 pt-5 text-indigo-700 focus:text-indigo-700 focus:outline-none">
                     <div className="flex items-center">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -17,10 +17,10 @@ const Sidebar = (props: Props) => {
                                 <rect x={14} y={14} width={6} height={6} rx={1} />
                             </svg>
                         </div>
-                        <span className="ml-2">Dashboard</span>
+                        <span className="ml-2">Quản lý người dùng</span>
                     </div>
                 </li>
-                <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                {/* <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                     <div className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-puzzle" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" />
@@ -49,7 +49,7 @@ const Sidebar = (props: Props) => {
                         </svg>
                         <span className="ml-2">Deliverables</span>
                     </div>
-                </li>
+                </li> */}
             </ul>
         </>
 

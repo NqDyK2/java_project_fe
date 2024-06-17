@@ -63,6 +63,8 @@ export const updateCate = (id: any, infomation: any) => {
 }
 
 export const getProductsOfUser = (idUser: number, page?: number, size?: number) => {
+    console.log("idUser:", idUser);
+    
     let url: string;
     if (page && size) {
         url = `/products/user/${idUser}?page=${page}&size=${size}`

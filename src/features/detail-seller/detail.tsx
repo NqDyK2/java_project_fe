@@ -20,6 +20,7 @@ const DetailSeller = (props: Props) => {
   const { id } = useParams<{ id: string }>();
   const [modeProducts, setModeProducts] = useState(true)
   const sellerDetail = useAppSelector((state: any) => state.seller)
+  const [page, setPage] = useState(1)
   const { result, loadling, error } = useAppSelector((state: any) => state.editUser)
   const changeModeIntroduce = () => {
     setModeProducts(false)
@@ -30,9 +31,9 @@ const DetailSeller = (props: Props) => {
   }
 
   useEffect(() => {
-    dispatch(apiGetAllProductsOfUser(Number(id)));
+    dispatch(apiGetAllProductsOfUser({ id: Number(id), page: page, size: 6 }));
     dispatch(apiGetUser(Number(id)));
-  }, [dispatch, id]);
+  }, [dispatch, id, page]);
 
 
   const groupedArray = [];
@@ -42,7 +43,22 @@ const DetailSeller = (props: Props) => {
     groupedArray.push(listProducts?.slice(i, i + 3));
   }
 
+  const onChangePage = (index: any) => {
+    setPage(index);
+  }
 
+  const formatPrice = (price: any) => {
+    const priceStr = price.toString();
+    const lastThreeDigits = priceStr.slice(-3); // lấy 3 số cuối
+    const restOfNumber = priceStr.slice(0, -3); // lấy phần còn lại của số
+
+    if (restOfNumber) {
+      return `${restOfNumber}.${lastThreeDigits}`;
+    }
+    return lastThreeDigits;
+  };
+  console.log("sellerDetail:", sellerDetail);
+  
   return (
     <>
       <div className='w-[1440px] mx-auto'>
@@ -214,58 +230,72 @@ const DetailSeller = (props: Props) => {
               </div>
               {
                 modeProducts ?
-                  groupedArray.map((block: any, index) => (
-                    <div key={index} className={`flex ${block?.length == 3 ? "justify-evenly" : "ml-5"} pb-5`}>
-                      {block.map((item: any) => (
-                        <div key={item.id} className={`bg-white rounded-lg w-[280px] ${block?.length == 3 ? "" : "mx-5"} shadow-lg pt-3 `}>
-                          <div>
-                            <img src={item?.image ? item?.image : `https://bizweb.dktcdn.net/100/396/015/articles/e529a8dc22bd84a37f6f8ae6b8ce40d3.jpg?v=1679472706363`} alt="" className='rounded-t-lg w-[280px] h-[255px]' />
+                  <>
+                    {groupedArray.map((block: any, index) => (
+                      <div key={index} className={`flex ${block?.length == 3 ? "justify-evenly" : "ml-5"} pb-5`}>
+                        {block.map((item: any) => (
+                          <div key={item.id} className={`bg-white rounded-lg w-[280px] ${block?.length == 3 ? "" : "mx-5"} shadow-lg pt-3 `}>
+                            <div>
+                              <img src={item?.image ? item?.image : `https://bizweb.dktcdn.net/100/396/015/articles/e529a8dc22bd84a37f6f8ae6b8ce40d3.jpg?v=1679472706363`} alt="" className='rounded-t-lg w-[280px] h-[255px]' />
+                            </div>
+                            <div title={item?.title} className='my-2 font-semibold text-xl truncate'>
+                              <span>
+                                {item?.title}
+                              </span>
+                            </div>
+                            <div className='flex justify-center gap-5 pb-2'>
+                              <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                                {formatPrice(item.price)} đ/{item.unit}
+                              </span>
+                            </div>
                           </div>
-                          <div title={item?.title} className='my-2 font-semibold text-xl truncate'>
-                            <span>
-                              {item?.title}
-                            </span>
-                          </div>
-                          <div className='flex justify-center gap-5 pb-2'>
-                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                              30.000 đ/kg
-                            </span>
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                    ))}
+                    <div className='flex justify-center'>
+                      {
+                        [...Array(sellerDetail.result.result?.totalPage).keys()].map((item, index) => (
+                          <div key={index} onClick={() => onChangePage(item + 1)} className={`${item + 1 == sellerDetail.result.result?.pageNumber ? 'px-2 bg-green-light text-white rounded-sm' : 'border border-gray-400 px-2 rounded-sm cursor-pointer'} border border-gray-400 px-2 rounded-sm w-8 mx-2`}><span>{item + 1}</span></div>
+                        ))
+                      }
                     </div>
-                  ))
+                  </>
+                  // {
+                  //     [...Array(result.result?.totalPage).keys()].map((item, index) => (
+                  // <div key={index} onClick={() => onChangePage(item + 1)} className={`${item + 1 == result.result?.pageNumber ? 'px-2 bg-green-light text-white rounded-sm' : 'border border-gray-400 px-2 rounded-sm cursor-pointer'} border border-gray-400 px-2 rounded-sm`}><span>{item + 1}</span></div>
+                  // ))
+                  // }
                   : <><div className='flex justify-center px-3 my-3'>
                     <div className='w-full px-1'>
-                      <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image001-1637230850716366821507.jpg`} alt="" className='w-[315px] h-[236px] rounded-xl'/>
+                      <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image001-1637230850716366821507.jpg`} alt="" className='w-[315px] h-[236px] rounded-xl' />
                     </div>
                     <div className='w-full px-1'>
-                      <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                     </div>
                     <div className='w-full px-1'>
-                      <img src={`https://png.pngtree.com/thumb_back/fw800/background/20230804/pngtree-trees-full-of-apples-in-an-orchard-image_12998684.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      <img src={`https://png.pngtree.com/thumb_back/fw800/background/20230804/pngtree-trees-full-of-apples-in-an-orchard-image_12998684.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                     </div>
                   </div>
                     <div className='flex justify-center px-3 my-3'>
                       <div className='w-full px-1'>
-                        <img src={imgFarm1} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={imgFarm1} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                       <div className='w-full px-1'>
-                        <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image003-16372308507731681618491.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image003-16372308507731681618491.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                       <div className='w-full px-1'>
-                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                     </div>
                     <div className='flex justify-center px-3 my-3'>
                       <div className='w-full px-1'>
-                        <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgpMs7xSfE-vTiuM1Uej5G_muqQGb5s0CThg&s`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgpMs7xSfE-vTiuM1Uej5G_muqQGb5s0CThg&s`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                       <div className='w-full px-1'>
-                        <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                       <div className='w-full px-1'>
-                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl' />
                       </div>
                     </div>
                   </>

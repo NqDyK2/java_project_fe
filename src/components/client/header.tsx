@@ -26,6 +26,7 @@ const Header = (props: Props) => {
     const [statusAuth, setStatusAuth] = useState(false);
     const [fullName, setFullName] = useState("")
     const [idUser, setIdUser] = useState()
+    const [roles, setRoles] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("account")) {
@@ -33,9 +34,11 @@ const Header = (props: Props) => {
             local = JSON.parse(local)
             setIdUser(local.id)
             setFullName(local.fullName)
+            setRoles(local.roles)
             setStatusAuth(true)
         }
     }, [localStorage.getItem("account")])
+    
 
     const logoutBtn = async () => {
         await logout();
@@ -74,6 +77,11 @@ const Header = (props: Props) => {
                                         <Button placeholder={"Menu 2"} className='text-white ml-10 text-sm px-[8px] shadow-none w-fit hover:text-orange-300'>Xin chào, {fullName ? fullName : "Người dùng"}</Button>
                                     </MenuHandler>
                                     <MenuList placeholder={"Menu 2"} className='-mt-2'>
+                                        {roles.includes("ROLE_ADMIN") ? <Link to={`/admin/users`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Đi đến Admin
+                                            </MenuItem>
+                                        </Link> : ""}
                                         <Link to={`/infomation/${idUser}`}>
                                             <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Thông tin cá nhân
@@ -89,15 +97,20 @@ const Header = (props: Props) => {
                                                 Quản lý loại quả
                                             </MenuItem>
                                         </Link>
+                                        <Link to={`/all-prds`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Quản lý sản phẩm
+                                            </MenuItem>
+                                        </Link>
                                         <MenuItem placeholder={"Menu"} onClick={() => logoutBtn()} className='hover:border-none hover:text-orange-300 mt-1'>
                                             Đăng xuất
                                         </MenuItem>
                                     </MenuList>
                                 </Menu> : <div className='my-auto flex pl-8'>
-                                    <Link to={'login'}>
+                                    <Link to={'/login'}>
                                         <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><TiLockClosed className='inline-block text-xl mb-1 mr-2 hover:underline hover:text-orange-300' />Đăng nhập</span>
                                     </Link>
-                                    <Link to={'register'}>
+                                    <Link to={'/register'}>
                                         <span className='px-2 hover:underline hover:text-orange-300 cursor-pointer'><PiKeyFill className='inline-block text-lg mb-1 mr-2' />Đăng ký</span>
                                     </Link>
                                 </div>
@@ -127,7 +140,7 @@ const Header = (props: Props) => {
                         </div>
                         <div className='pt-7'>
                             <div className=' bg-main-color w-[200px] h-10 m-auto py-auto rounded-full text-white'>
-                                <button className='pt-2 text-center font-semibold'><GiVibratingSmartphone className='inline-block text-2xl mb-1 mr-2' />039 522 5277</button>
+                                <button className='pt-2 text-center font-semibold'><GiVibratingSmartphone className='inline-block text-2xl mb-1 mr-2' />0373 99 7970</button>
                             </div>
                         </div>
                     </div>
@@ -137,7 +150,7 @@ const Header = (props: Props) => {
                 <div className=' w-[1440px] mx-auto flex'>
                     <div className='bg-[#F4FFED] py-3'>
                         <span className='flex font-semibold '>
-                            <Menu
+                            {/* <Menu
                                 animate={{
                                     mount: { y: 0 },
                                     unmount: { y: 25 },
@@ -173,10 +186,10 @@ const Header = (props: Props) => {
                                     <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
 
                                 </MenuList>
-                            </Menu>
+                            </Menu> */}
                         </span>
                     </div>
-                    <div className='mx-auto text-center my-auto'>
+                    <div className='mx-auto text-center my-auto py-3'>
                         <ul className='' >
                             <Link to={'/'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>
@@ -187,8 +200,6 @@ const Header = (props: Props) => {
                             <Link to={'news'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Tin tức</li>
                             </Link>
-                            <li className='inline-block px-5 text-white'>Giao hàng</li>
-                            <li className='inline-block px-5 text-white'>Liên hệ</li>
                         </ul>
                     </div>
                 </div>

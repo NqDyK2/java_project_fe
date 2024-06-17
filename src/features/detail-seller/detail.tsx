@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import imgFarm1 from "../../img/farm1.png"
 import imgFarm2 from "../../img/farm2.png"
 import imgFarm3 from "../../img/farm3.png"
@@ -8,9 +8,41 @@ import music from "../../img/music-play.jpg";
 import { RiShieldCheckFill, RiShieldCheckLine } from 'react-icons/ri'
 import { IoMdStar } from 'react-icons/io'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { apiGetAllProductsOfUser } from './seller.action';
+import { apiGetUser } from '../admin/user/edit-user/editUser.action';
 type Props = {}
 
 const DetailSeller = (props: Props) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { id } = useParams<{ id: string }>();
+  const [modeProducts, setModeProducts] = useState(true)
+  const sellerDetail = useAppSelector((state: any) => state.seller)
+  const { result, loadling, error } = useAppSelector((state: any) => state.editUser)
+  const changeModeIntroduce = () => {
+    setModeProducts(false)
+  }
+
+  const changeModeProducts = () => {
+    setModeProducts(true)
+  }
+
+  useEffect(() => {
+    dispatch(apiGetAllProductsOfUser(Number(id)));
+    dispatch(apiGetUser(Number(id)));
+  }, [dispatch, id]);
+
+
+  const groupedArray = [];
+  const listProducts = sellerDetail.result?.result?.productList
+
+  for (let i = 0; i < listProducts?.length; i += 3) {
+    groupedArray.push(listProducts?.slice(i, i + 3));
+  }
+
+
   return (
     <>
       <div className='w-[1440px] mx-auto'>
@@ -22,7 +54,7 @@ const DetailSeller = (props: Props) => {
                   <img src="https://t3.ftcdn.net/jpg/01/63/13/30/240_F_163133061_TlMOMqgxAvBuwzLAjxOQ8v1FQ3OexfRG.jpg" className="w-full h-full object-cover rounded absolute shadow" />
                   <div className="absolute bg-black opacity-15 top-0 right-0 bottom-0 left-0 rounded" />
                   <div className="w-24 h-24 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-5 shadow flex items-center justify-center border-2 border-white">
-                    <img src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form2.jpg" className="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
+                    <img src={result.result?.avatar ? result.result?.avatar : "https://i.pinimg.com/736x/0d/64/98/0d64989794b1a4c9d89bff571d3d5842.jpg"} className="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
                     <div className="absolute top-0 right-0 bottom-0 left-0 rounded-full z-0" />
                   </div>
                 </div>
@@ -44,7 +76,7 @@ const DetailSeller = (props: Props) => {
               </div>
             </div>
             <div className='absolute mt-14 ml-6 font-semibold text-base'>
-              <h3>VƯỜN BƯỞI CHỊ ANH</h3>
+              <h3>Vườn nhà {result.result?.fullName}</h3>
             </div>
             <div className='absolute mt-[85px] flex ml-6'>
               <div>
@@ -71,12 +103,12 @@ const DetailSeller = (props: Props) => {
               </div>
               <div>
                 <span>
-                  Bố Hạ, Yên Thế, Bắc Giang
+                  {result.result?.address}
                 </span>
               </div>
             </div>
             <div className='bg-green-light mx-5 py-2 rounded-md text-white mt-2'>
-              <button>LIÊN HỆ</button>
+              <button>LIÊN HỆ: {result.result?.phone}</button>
             </div>
             <div className='mt-5 border border-gray-300 rounded-lg mx-5'>
               <div className='font-semibold text-left ml-5 mt-3'><span>Nông trại đối tác Vườn Xanh</span></div>
@@ -165,29 +197,14 @@ const DetailSeller = (props: Props) => {
           </div>
           <div className='w-[70%]'>
             <nav className='flex justify-around bg-white'>
-              <div className='p-5 font-semibold'>
+              <div onClick={() => changeModeProducts()} className={`p-5 font-semibold ${modeProducts ? "text-green-light border-t-2 border-t-green-light" : ""}`}>
                 <button>
                   SẢN PHẨM
                 </button>
               </div>
-              <div className='p-5 font-semibold text-green-light border-t-2 border-t-green-light'>
+              <div onClick={() => changeModeIntroduce()} className={`p-5 font-semibold ${modeProducts == false ? "text-green-light border-t-2 border-t-green-light" : ""}`}>
                 <button>
                   GIỚI THIỆU
-                </button>
-              </div>
-              <div className='p-5 font-semibold'>
-                <button>
-                  LIÊN HỆ
-                </button>
-              </div>
-              <div className='p-5 font-semibold'>
-                <button>
-                  ĐÁNH GIÁ
-                </button>
-              </div>
-              <div className='p-5 font-semibold'>
-                <button>
-                  TIN TỨC
                 </button>
               </div>
             </nav>
@@ -195,39 +212,64 @@ const DetailSeller = (props: Props) => {
               <div className='text-left ml-5 py-5 font-semibold'>
                 <span>Ảnh trang trại</span>
               </div>
-              <div className='flex justify-center px-3 my-3'>
-                <div className='w-full px-1'>
-                  <img src={imgFarm1} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm2} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm3} alt="" width={'100%'} />
-                </div>
-              </div>
-              <div className='flex justify-center px-3 my-3'>
-                <div className='w-full px-1'>
-                  <img src={imgFarm1} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm2} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm3} alt="" width={'100%'} />
-                </div>
-              </div>
-              <div className='flex justify-center px-3 my-3'>
-                <div className='w-full px-1'>
-                  <img src={imgFarm1} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm2} alt="" width={'100%'} />
-                </div>
-                <div className='w-full px-1'>
-                  <img src={imgFarm3} alt="" width={'100%'} />
-                </div>
-              </div>
+              {
+                modeProducts ?
+                  groupedArray.map((block: any, index) => (
+                    <div key={index} className={`flex ${block?.length == 3 ? "justify-evenly" : "ml-5"} pb-5`}>
+                      {block.map((item: any) => (
+                        <div key={item.id} className={`bg-white rounded-lg w-[280px] ${block?.length == 3 ? "" : "mx-5"} shadow-lg pt-3 `}>
+                          <div>
+                            <img src={item?.image ? item?.image : `https://bizweb.dktcdn.net/100/396/015/articles/e529a8dc22bd84a37f6f8ae6b8ce40d3.jpg?v=1679472706363`} alt="" className='rounded-t-lg w-[280px] h-[255px]' />
+                          </div>
+                          <div title={item?.title} className='my-2 font-semibold text-xl truncate'>
+                            <span>
+                              {item?.title}
+                            </span>
+                          </div>
+                          <div className='flex justify-center gap-5 pb-2'>
+                            <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                              30.000 đ/kg
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                  : <><div className='flex justify-center px-3 my-3'>
+                    <div className='w-full px-1'>
+                      <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image001-1637230850716366821507.jpg`} alt="" className='w-[315px] h-[236px] rounded-xl'/>
+                    </div>
+                    <div className='w-full px-1'>
+                      <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                    </div>
+                    <div className='w-full px-1'>
+                      <img src={`https://png.pngtree.com/thumb_back/fw800/background/20230804/pngtree-trees-full-of-apples-in-an-orchard-image_12998684.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                    </div>
+                  </div>
+                    <div className='flex justify-center px-3 my-3'>
+                      <div className='w-full px-1'>
+                        <img src={imgFarm1} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                      <div className='w-full px-1'>
+                        <img src={`https://danviet.mediacdn.vn/296231569849192448/2021/11/18/image003-16372308507731681618491.jpg`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                      <div className='w-full px-1'>
+                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                    </div>
+                    <div className='flex justify-center px-3 my-3'>
+                      <div className='w-full px-1'>
+                        <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgpMs7xSfE-vTiuM1Uej5G_muqQGb5s0CThg&s`} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                      <div className='w-full px-1'>
+                        <img src={imgFarm2} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                      <div className='w-full px-1'>
+                        <img src={imgFarm3} alt="" width={'100%'} className='w-[315px] h-[236px] rounded-xl'/>
+                      </div>
+                    </div>
+                  </>
+              }
             </section>
           </div>
         </div>

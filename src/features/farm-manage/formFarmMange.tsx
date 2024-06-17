@@ -26,7 +26,7 @@ function FormFarmManage() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const allCategories = useAppSelector((state: any) => state.category.result)
+    const allCategories = useAppSelector((state: any) => state.category)
     // const { resultPrds, loadingPrds, errorPrds } = useAppSelector((state: any) => state.category)
     const { register, handleSubmit, reset, control, formState: { errors } } = useForm<FormCategoryValue | FormProductsValue>()
 
@@ -49,6 +49,7 @@ function FormFarmManage() {
             dispatch(apiAddPrds(data))
                 .unwrap().then(() => {
                     toast.success("Thêm sản phẩm thành công.")
+                    navigate("/all-prds")
                     reset()
                 }).catch(() => {
                     toast.error("Đã có lỗi xảy ra!!!")
@@ -63,6 +64,9 @@ function FormFarmManage() {
                 })
         }
     };
+    if (allCategories.mode == true) {
+        navigate("/all-cate")
+    }
     return (
         <>
             <div className="bg-gradient-to-b from-[#ABDF8A] to-white">
@@ -80,7 +84,7 @@ function FormFarmManage() {
                                                             <div className="flex items-center instance group" onClick={() => changeToAddCate()}>
                                                                 <div className="svg-container">
                                                                     <svg
-                                                                        className="text-[#1E293B] group-hover:text-indigo-700"
+                                                                        className="text-[#1E293B] group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -126,7 +130,7 @@ function FormFarmManage() {
                                                                     </svg>
                                                                 </div>
                                                                 <div className="pl-3 heading-container">
-                                                                    <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700">
+                                                                    <p className="text-base font-medium leading-none text-slate-800 group-hover:text-green-light">
                                                                         Các loại quả
                                                                     </p>
                                                                 </div>
@@ -136,7 +140,7 @@ function FormFarmManage() {
                                                             <div className="flex items-center group " onClick={() => changeToAddPrd()}>
                                                                 <div className="svg-container">
                                                                     <svg
-                                                                        className="text-[#1E293B] group-hover:text-indigo-700"
+                                                                        className="text-[#1E293B] group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -164,8 +168,8 @@ function FormFarmManage() {
                                                                     </svg>
                                                                 </div>
                                                                 <div className="pl-3 heading-container">
-                                                                    <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700">
-                                                                        Sản phẩm - sản lượng
+                                                                    <p className="text-base font-medium leading-none text-slate-800 group-hover:text-green-light">
+                                                                        Sản phẩm
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -203,12 +207,12 @@ function FormFarmManage() {
                                                             >
                                                                 <div className="flex   gap-x-2 group">
                                                                     <p
-                                                                        className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600 group-hover:text-indigo-700 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:rounded w-full p-3"
+                                                                        className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600 group-hover:text-green-light mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:rounded w-full p-3"
                                                                         onClick={() => changeToAddCate()}
                                                                     >
                                                                         Các loại quả
                                                                         <svg
-                                                                            className=" group-hover:text-indigo-700"
+                                                                            className=" group-hover:text-green-light"
                                                                             width={20}
                                                                             height={20}
                                                                             viewBox="0 0 20 20"
@@ -256,12 +260,12 @@ function FormFarmManage() {
                                                                 </div>
                                                                 <div className="flex   gap-x-2 group">
                                                                     <p
-                                                                        className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600 group-hover:text-indigo-700 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:rounded w-full p-3"
+                                                                        className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600 group-hover:text-green-light mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:rounded w-full p-3"
                                                                         onClick={() => changeToAddPrd()}
                                                                     >
-                                                                        Sản phẩm - sản lượng
+                                                                        Sản phẩm
                                                                         <svg
-                                                                            className=" group-hover:text-indigo-700"
+                                                                            className=" group-hover:text-green-light"
                                                                             width={20}
                                                                             height={20}
                                                                             viewBox="0 0 20 20"
@@ -291,11 +295,11 @@ function FormFarmManage() {
                                                                 </div>
                                                                 <div className="flex gap-x-2 group">
                                                                     <p
-                                                                        className=" flex flex-row-reverse	 justify-end gap-x-2  text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                        className=" flex flex-row-reverse	 justify-end gap-x-2  text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                     >
                                                                         Location
                                                                         <svg
-                                                                            className=" group-hover:text-indigo-700"
+                                                                            className=" group-hover:text-green-light"
                                                                             width={20}
                                                                             height={20}
                                                                             viewBox="0 0 20 20"
@@ -319,11 +323,11 @@ function FormFarmManage() {
                                                                 </div>
                                                                 <div className="flex   gap-x-2 group">
                                                                     <p
-                                                                        className=" flex flex-row-reverse	 justify-end gap-x-2 text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                        className=" flex flex-row-reverse	 justify-end gap-x-2 text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                     >
                                                                         Customer
                                                                         <svg
-                                                                            className=" group-hover:text-indigo-700"
+                                                                            className=" group-hover:text-green-light"
                                                                             width={20}
                                                                             height={20}
                                                                             viewBox="0 0 20 20"
@@ -402,7 +406,7 @@ function FormFarmManage() {
                                                         <div className="flex items-center instance group" onClick={() => changeToAddCate()}>
                                                             <div className="svg-container">
                                                                 <svg
-                                                                    className="text-[#1E293B] group-hover:text-indigo-700"
+                                                                    className="text-[#1E293B] group-hover:text-green-light"
                                                                     width={20}
                                                                     height={20}
                                                                     viewBox="0 0 20 20"
@@ -448,7 +452,7 @@ function FormFarmManage() {
                                                                 </svg>
                                                             </div>
                                                             <div className="pl-3 heading-container">
-                                                                <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700">
+                                                                <p className="text-base font-medium leading-none text-slate-800 group-hover:text-green-light">
                                                                     Các loại quả
                                                                 </p>
                                                             </div>
@@ -458,7 +462,7 @@ function FormFarmManage() {
                                                         <div className="flex items-center group ">
                                                             <div className="svg-container">
                                                                 <svg
-                                                                    className="text-[#1E293B] group-hover:text-indigo-700"
+                                                                    className="text-[#1E293B] group-hover:text-green-light"
                                                                     width={20}
                                                                     height={20}
                                                                     viewBox="0 0 20 20"
@@ -486,8 +490,8 @@ function FormFarmManage() {
                                                                 </svg>
                                                             </div>
                                                             <div className="pl-3 heading-container">
-                                                                <p className="text-base font-medium leading-none text-slate-800 group-hover:text-indigo-700" onClick={() => changeToAddPrd()}>
-                                                                    Sản phẩm - sản lượng
+                                                                <p className="text-base font-medium leading-none text-slate-800 group-hover:text-green-light" onClick={() => changeToAddPrd()}>
+                                                                    Sản phẩm
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -525,12 +529,12 @@ function FormFarmManage() {
                                                         >
                                                             <div className="flex   gap-x-2 group">
                                                                 <p
-                                                                    className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600  mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                    className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600  mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                     onClick={() => changeToAddCate()}
                                                                 >
                                                                     Các loại quả
                                                                     <svg
-                                                                        className=" group-hover:text-indigo-700"
+                                                                        className=" group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -578,12 +582,12 @@ function FormFarmManage() {
                                                             </div>
                                                             <div className="flex   gap-x-2 group">
                                                                 <p
-                                                                    className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600  mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                    className="flex flex-row-reverse justify-end gap-x-2 text-base font-medium leading-none text-gray-600  mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                     onClick={() => changeToAddPrd()}
                                                                 >
-                                                                    Sản phẩm - sản lượng
+                                                                    Sản phẩm
                                                                     <svg
-                                                                        className=" group-hover:text-indigo-700"
+                                                                        className=" group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -613,11 +617,11 @@ function FormFarmManage() {
                                                             </div>
                                                             <div className="flex gap-x-2 group">
                                                                 <p
-                                                                    className=" flex flex-row-reverse	 justify-end gap-x-2  text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                    className=" flex flex-row-reverse	 justify-end gap-x-2  text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                 >
                                                                     Location
                                                                     <svg
-                                                                        className=" group-hover:text-indigo-700"
+                                                                        className=" group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -641,11 +645,11 @@ function FormFarmManage() {
                                                             </div>
                                                             <div className="flex   gap-x-2 group">
                                                                 <p
-                                                                    className=" flex flex-row-reverse	 justify-end gap-x-2 text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-indigo-700 group-hover:rounded w-full p-3"
+                                                                    className=" flex flex-row-reverse	 justify-end gap-x-2 text-base font-medium leading-none text-gray-600 mt-[1px] cursor-pointer group-hover:bg-indigo-100 group-hover:font-medium group-hover:text-green-light group-hover:rounded w-full p-3"
                                                                 >
                                                                     Customer
                                                                     <svg
-                                                                        className=" group-hover:text-indigo-700"
+                                                                        className=" group-hover:text-green-light"
                                                                         width={20}
                                                                         height={20}
                                                                         viewBox="0 0 20 20"
@@ -689,7 +693,7 @@ function FormFarmManage() {
                                                     Thêm sản phẩm
                                                 </p>
                                                 <div className="grid w-full grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-7 mt-7 ">
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
                                                             Tên sản phẩm
                                                         </p>
@@ -697,37 +701,37 @@ function FormFarmManage() {
                                                         <input {...register("title")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Giá - Giá sản phẩm:
+                                                            Giá:
                                                         </p>
                                                         <input {...register("price")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                         {/* end */}
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Khối lượng sản phẩm (Giá / khối lượng - Vd: 10.000đ/1kg)
+                                                            Đơn vị bán (Ví dụ: kg, quả)
                                                         </p>
                                                         <input {...register("unit")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
-                                                    <div>
+                                                    <div className="text-left">
                                                         <p className="text-base font-medium leading-none text-gray-800">
-                                                            Sản lượng sản xuất - Số lượng sản phẩm
+                                                            Số lượng tồn kho
                                                         </p>
                                                         <input {...register("amount")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     </div>
                                                 </div>
-                                                <div className="w-full pt-6">
+                                                <div className="w-full pt-6 text-left">
                                                     <p className="text-base font-medium leading-none text-gray-800">
-                                                        Link hình ảnh sản phẩm
+                                                        Liên kết ảnh sản phẩm
                                                     </p>
                                                     {/*-Dropdown*/}
                                                     <input {...register("image")} className="w-full p-3 mt-4 border border-gray-300 rounded outline-none focus:bg-gray-50" />
                                                     {/* end */}
                                                 </div>
-                                                <div className="pt-6">
+                                                <div className="pt-6 text-left">
                                                     <p className="text-base font-medium leading-none text-gray-800">
-                                                        Danh mục sản phẩm - Sản phẩm thuộc loại:
+                                                        Loại sản phẩm
                                                     </p>
                                                     <div className="w-full pt-6">
                                                         <Controller
@@ -743,11 +747,11 @@ function FormFarmManage() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="pt-6 border-gray-300 mt-2 px-7">
+                                            <div className="pt-6 border-gray-300 mt-2 px-7 ">
                                                 <p className="text-base font-semibold leading-4 text-gray-800">
-                                                    Mô tả sản phẩm
+                                                    Mô tả
                                                 </p>
-                                                <div className="mt-10 border border-gray-300 rounded">
+                                                <div className="mt-5 border border-gray-300 rounded">
                                                     <div className="flex flex-wrap items-center px-4 py-3 border-b border-gray-300">
                                                         <div className="flex h-full gap-2 p-2 rounded cursor-pointer hover:bg-blue-50 w-fit">
                                                             <p className="text-sm leading-none text-gray-600">
@@ -853,11 +857,11 @@ function FormFarmManage() {
                                             </div>
                                             <hr className="h-[1px] bg-gray-100 my-14" />
                                             <div className="flex flex-col flex-wrap items-center justify-center w-full px-7 lg:flex-row lg:justify-end md:justify-end gap-x-4 gap-y-4">
-                                                <button className="bg-white border-indigo-700 rounded hover:bg-gray-50 transform duration-300 ease-in-out text-sm font-medium px-6 py-4 text-indigo-700 border lg:max-w-[95px]  w-full ">
-                                                    Cancel
+                                                <button onClick={() => navigate(-1)} className="bg-white border-green-light rounded-lg hover:bg-gray-50 transform duration-300 ease-in-out text-sm font-medium px-6 py-4 text-green-light border lg:max-w-[95px]  w-full ">
+                                                    Hủy
                                                 </button>
-                                                <button className="bg-indigo-700 rounded hover:bg-indigo-600 transform duration-300 ease-in-out text-sm font-medium px-6 py-4 text-white lg:max-w-[144px] w-full ">
-                                                    Save Changes
+                                                <button className="bg-green-light hover:bg-green-600 transform duration-300 ease-in-out text-sm font-medium px-6 py-4 text-white lg:max-w-[144px] w-full rounded-lg">
+                                                    Thêm mới
                                                 </button>
                                             </div>
                                         </div>

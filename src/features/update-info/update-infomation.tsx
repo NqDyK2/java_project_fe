@@ -25,18 +25,30 @@ const UpdateUser = () => {
         }
     }, [dispatch, id]);
     if (result) {
-        // setValue("id", result.result?.id)
         setValue("fullName", result.result?.fullName ? result.result?.fullName : "Bổ sung thông tin")
         setValue("email", result.result?.email ? result.result?.email : "Bổ sung thông tin")
         setValue("address", result.result?.address ? result.result?.address : "Bổ sung thông tin")
         setValue("phone", result.result?.phone ? result.result?.phone : "Bổ sung thông tin")
     }
+
     const onSubmit = ((data: any) => {
+        if (data.fullName == "" || data.fullName == result.result?.fullName) {
+            data.fullName = null;
+        }
+        if (data.email == "" || data.email == result.result?.email) {
+            data.email = null;
+        }
+        if (data.address == "" || data.address == result.result?.address) {
+            data.address = null;
+        }
+        if (data.phone == "" || data.phone == result.result?.phone) {
+            data.phone = null;
+        }
         dispatch(apiEditUser({ id, data: data }))
             .unwrap()
             .then(() => {
                 toast.success("Sửa người dùng thành công")
-                navigate("/admin/users")
+                navigate(0)
             })
             .catch((error) => {
                 console.error('Failed to update product:', error);
@@ -45,7 +57,7 @@ const UpdateUser = () => {
 
     return (
         <>
-            <div className="h-[750px]">
+            <div className="h-[770px]">
                 <form onSubmit={handleSubmit(onSubmit)} className="">
                     <div className="bg-white w-[1440px] mx-auto mt-5 rounded-xl">
                         <div className="container mx-auto bg-white rounded p-5">
@@ -110,7 +122,7 @@ const UpdateUser = () => {
                                             <label htmlFor="FirstName" className="pb-2 text-sm font-bold text-gray-800">
                                                 Họ và tên
                                             </label>
-                                            <input {...register("fullName")} type="text" id="FirstName" name="firstName" required className="border border-gray-300 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" />
+                                            <input {...register("fullName")} type="text" required className="border border-gray-300 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" />
                                         </div>
                                         <div className="flex flex-col mb-6">
                                             <label htmlFor="Email" className="pb-2 text-sm font-bold text-gray-800">
@@ -124,7 +136,7 @@ const UpdateUser = () => {
                                                         <polyline points="3 7 12 13 21 7" />
                                                     </svg>
                                                 </div>
-                                                <input {...register("email")} type="text" id="Email" name="email" required className="pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-500" placeholder="example@gmail.com" />
+                                                <input {...register("email")} type="text" required className="pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-500" placeholder="example@gmail.com" />
                                             </div>
                                         </div>
                                     </div>
@@ -133,13 +145,13 @@ const UpdateUser = () => {
                                             <label htmlFor="State/Province" className="pb-2 text-sm font-bold text-gray-800">
                                                 Địa chỉ
                                             </label>
-                                            <input {...register("address")} type="text" id="State/Province" name="state" required className="border border-gray-300 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" placeholder="California" />
+                                            <input {...register("address")} type="text" required className="border border-gray-300 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" placeholder="California" />
                                         </div>
                                         <div className="flex flex-col mb-6">
                                             <label htmlFor="Country" className="pb-2 text-sm font-bold text-gray-800">
                                                 Số điện thoại
                                             </label>
-                                            <input {...register("phone")} type="text" id="Country" name="country" required className="border bg-transparent border-gray-300 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" placeholder="United States" />
+                                            <input {...register("phone")} type="text" required className="border bg-transparent border-gray-300 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500" placeholder="United States" />
                                         </div>
                                     </div>
                                 </div>

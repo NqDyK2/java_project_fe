@@ -17,7 +17,7 @@ export const addMore = (user: UserType) => {
 }
 
 export const getAllUser = (page?: any) => {
-    const url = `/users?page=${page}&size=${7}`
+    const url = `/users?page=${page}&size=${6}`
     // const url = `/users`
     return instance.get(url, axiosConfig);
 }

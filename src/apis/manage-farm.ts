@@ -12,7 +12,7 @@ const axiosConfig: AxiosRequestConfig = {
     }
 };
 
-export const getAllCate = (userId: any, page: any, size:any) => {
+export const getAllCate = (userId: any, page?: any, size?: any) => {
     let url: any;
     if (page && size) {
         url = `/categories/info/${userId}?page=${page}&size=${size}`
@@ -70,4 +70,9 @@ export const getProductsOfUser = (idUser: number, page?: number, size?: number) 
         url = `/products/user/${idUser}`
     }
     return instance.get(url)
+}
+
+export const updateProduct = (id: any, infomation: any) => {
+    const url = `/products/${id}`;
+    return instance.patch(url, infomation, axiosConfig)
 }

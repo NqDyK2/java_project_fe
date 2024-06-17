@@ -26,6 +26,7 @@ const Header = (props: Props) => {
     const [statusAuth, setStatusAuth] = useState(false);
     const [fullName, setFullName] = useState("")
     const [idUser, setIdUser] = useState()
+    const [roles, setRoles] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("account")) {
@@ -33,9 +34,11 @@ const Header = (props: Props) => {
             local = JSON.parse(local)
             setIdUser(local.id)
             setFullName(local.fullName)
+            setRoles(local.roles)
             setStatusAuth(true)
         }
     }, [localStorage.getItem("account")])
+    
 
     const logoutBtn = async () => {
         await logout();
@@ -74,6 +77,11 @@ const Header = (props: Props) => {
                                         <Button placeholder={"Menu 2"} className='text-white ml-10 text-sm px-[8px] shadow-none w-fit hover:text-orange-300'>Xin chào, {fullName ? fullName : "Người dùng"}</Button>
                                     </MenuHandler>
                                     <MenuList placeholder={"Menu 2"} className='-mt-2'>
+                                        {roles.includes("ROLE_ADMIN") ? <Link to={`/admin/users`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Đi đến Admin
+                                            </MenuItem>
+                                        </Link> : ""}
                                         <Link to={`/infomation/${idUser}`}>
                                             <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Thông tin cá nhân
@@ -142,7 +150,7 @@ const Header = (props: Props) => {
                 <div className=' w-[1440px] mx-auto flex'>
                     <div className='bg-[#F4FFED] py-3'>
                         <span className='flex font-semibold '>
-                            <Menu
+                            {/* <Menu
                                 animate={{
                                     mount: { y: 0 },
                                     unmount: { y: 25 },
@@ -178,10 +186,10 @@ const Header = (props: Props) => {
                                     <MenuItem placeholder={"Menu 2"} className='h-auto font-semibold py-3'>Menu Item 12</MenuItem>
 
                                 </MenuList>
-                            </Menu>
+                            </Menu> */}
                         </span>
                     </div>
-                    <div className='mx-auto text-center my-auto'>
+                    <div className='mx-auto text-center my-auto py-3'>
                         <ul className='' >
                             <Link to={'/'}>
                                 <li className='inline-block px-5 text-white hover:underline hover:text-orange-300'>Trang chủ</li>

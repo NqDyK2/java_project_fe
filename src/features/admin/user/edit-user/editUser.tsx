@@ -16,7 +16,7 @@ type FormValues = {
 }
 const EditUser = (props: Props) => {
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm<FormValues>()
-    const { result, loadling, error } = useAppSelector((state: any) => state.editUser)
+    const { result, loadling, error, mode } = useAppSelector((state: any) => state.editUser)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
@@ -27,17 +27,29 @@ const EditUser = (props: Props) => {
     }, [dispatch, id]);
     if (result) {
         // setValue("id", result.result?.id)
-        setValue("fullName", result.result?.fullName ? result.result?.fullName : "Chưa có thông tin")
-        setValue("email", result.result?.email ? result.result?.email : "Chưa có thông tin")
-        setValue("address", result.result?.address ? result.result?.address : "Chưa có thông tin")
-        setValue("phone", result.result?.phone ? result.result?.phone : "Chưa có thông tin")
+        setValue("fullName", result.result?.fullName ? result.result?.fullName : null)
+        setValue("email", result.result?.email ? result.result?.email : null)
+        setValue("address", result.result?.address ? result.result?.address : null)
+        setValue("phone", result.result?.phone ? result.result?.phone : null)
     }
     const onSubmit = ((data: any) => {
+        if(data.fullName == "" || data.fullName == result.result?.fullName) {
+            data.fullName = null;
+        }
+        if(data.email == "" || data.email == result.result?.email) {
+            data.email = null;
+        }
+        if(data.address == "" || data.address == result.result?.address) {
+            data.address = null;
+        }
+        if(data.phone == "" || data.phone == result.result?.phone) {
+            data.phone = null;
+        }
         dispatch(apiEditUser({ id, data: data }))
             .unwrap()
             .then(() => {
                 toast.success("Sửa người dùng thành công")
-                navigate("/admin/users")
+                navigate("/admin-users")
             })
             .catch((error) => {
                 console.error('Failed to update product:', error);
@@ -94,7 +106,7 @@ const EditUser = (props: Props) => {
                     <div className="px-5 py-4 rounded-lg mt-7">
                         <div className="text-center">
                             <button className=' xl:w-10/12 w-full text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
-                                Thêm người dùng
+                                Sửa người dùng
                             </button>
                         </div>
                     </div>

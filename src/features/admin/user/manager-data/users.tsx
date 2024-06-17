@@ -53,18 +53,9 @@ const Users = (props: Props) => {
   const allUser = useAppSelector((state: any) => state.allUsers)
   const [page, setPage] = useState(1)
   const [listAll, setListAll] = useState([])
-  const [totalP, setTotalPage] = useState(0)
   useEffect(() => {
     dispatch(getAllUsers(page))
-  }, [dispatch])
-
-  useEffect(() => {
-
-    const calTotalPage = Math.ceil(allUser.result?.result?.userList?.length / 5)
-    if (calTotalPage) {
-      setTotalPage(calTotalPage)
-    }
-  }, [allUser.result?.result?.userList])
+  }, [dispatch, page])
 
   const onChangePage = (index: any) => {
     setPage(index)
@@ -124,9 +115,9 @@ const Users = (props: Props) => {
                 <div className="flex items-center lg:border-l lg:border-r border-gray-300 dark:border-gray-200 py-3 lg:py-0 lg:px-6">
                   <ul className="flex justify-center items-center">
                     {
-                      [...Array(totalP).keys()].map((item, index) => (
+                      [...Array(allUser.result?.result?.totalPage).keys()].map((item, index) => (
                         <li key={index}>
-                          <span onClick={() => onChangePage(index)} className="flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none">{item + 1}</span>
+                          <span onClick={() => onChangePage(index+1)} className="flex text-indigo-700 hover:bg-indigo-600 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-1 rounded px-3 py-2 focus:outline-none">{item + 1}</span>
                         </li>
                       ))
                     }
@@ -148,13 +139,15 @@ const Users = (props: Props) => {
                 </div>
                 <div className="lg:ml-6 flex items-center">
                   <button className="bg-gray-200 transition duration-150 ease-in-out focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray hover:bg-gray-300 rounded text-indigo-700 px-5 h-8 flex items-center text-sm">Download All</button>
-                  <div className="text-white ml-4 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 w-8 h-8 rounded flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-plus" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <line x1={12} y1={5} x2={12} y2={19} />
-                      <line x1={5} y1={12} x2={19} y2={12} />
-                    </svg>
-                  </div>
+                  <Link to={'/admin/add-user'}>
+                    <div className="text-white ml-4 cursor-pointer focus:outline-none border border-transparent focus:border-gray-800 focus:shadow-outline-gray bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 w-8 h-8 rounded flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-plus" width={28} height={28} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1={12} y1={5} x2={12} y2={19} />
+                        <line x1={5} y1={12} x2={19} y2={12} />
+                      </svg>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

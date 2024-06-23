@@ -28,7 +28,12 @@ export const apiGetAllCate = createAsyncThunk("GET_ALLS_CATE", async (data: any)
 
 export const apiGetAllPrd = createAsyncThunk("GET_ALL_PRODUCTS", async (query: any) => {
     try {
-        const response = await getAllProducts(query.page, query.size)
+        let response: any
+        if (query.sortBy == '' && query.orderBy == '') {
+            response = await getAllProducts(query.page, query.size)
+        } else {
+            response = await getAllProducts(query.page, query.size, query.sortBy, query.orderBy)
+        }
         return response.data
     } catch (error) {
         console.log("Error:", error);

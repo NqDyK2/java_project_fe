@@ -22,9 +22,13 @@ export const getAllCate = (userId: any, page?: any, size?: any) => {
     return instance.get(url)
 }
 
-export const getAllProducts = (page?: any, size?: any) => {
+export const getAllProducts = (page?: any, size?: any, sortBy?: any, orderBy?: any) => {
     let url: string;
-    if (page && size) {
+    // &sortBy={sortBy}&orderBy={orderBy}&min={minPrice}&max={maxPrice}
+    if (page && size && orderBy && sortBy) {
+        url = `/products/info?page=${page}&size=${size}&sortBy=${sortBy}&orderBy=${orderBy}`
+    }
+    else if (page && size) {
         url = `/products/info?page=${page}&size=${size}`
     } else {
         url = `/products/info`
@@ -64,7 +68,7 @@ export const updateCate = (id: any, infomation: any) => {
 
 export const getProductsOfUser = (idUser: number, page?: number, size?: number) => {
     console.log("idUser:", idUser);
-    
+
     let url: string;
     if (page && size) {
         url = `/products/user/${idUser}?page=${page}&size=${size}`

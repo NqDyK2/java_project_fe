@@ -71,7 +71,7 @@ const Product = (props: Props) => {
   return (
     <>
       < div className='text-left mx-auto w-[1440px] mt-3 mb-4'>
-        <span>Trang chủ / Sản phẩm chi tiết</span>
+        <span><Link to={"/"}>Trang chủ</Link> / Sản phẩm chi tiết</span>
       </div >
       <div className='flex mx-auto w-[1440px]'>
         <div>

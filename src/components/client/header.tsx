@@ -123,9 +123,11 @@ const Header = (props: Props) => {
             <div>
                 <div className='w-[1440px] h-24 mx-auto'>
                     <div className='flex justify-between my-auto gap-3'>
-                        <div className='pt-3 '>
-                            <img src={imgLogo} alt="" width={240} />
-                        </div>
+                        <Link to={"/"}>
+                            <div className='pt-3 '>
+                                <img src={imgLogo} alt="" width={240} />
+                            </div>
+                        </Link>
                         <div className='flex-auto pt-6'>
                             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                             <div className="relative ml-12 mr-4">

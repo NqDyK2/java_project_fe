@@ -53,7 +53,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         debounceTimeoutRef.current = setTimeout(() => {
             setDebouncedMinVal(minVal);
             setDebouncedMaxVal(maxVal);
-        }, 1000);
+        }, 200);
 
         return () => {
             if (debounceTimeoutRef.current) {
@@ -68,7 +68,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     }, [debouncedMinVal, debouncedMaxVal, onChange]);
 
     return (
-        <div className="container mt-5 justify-center mb-10">
+        <div className="container2 mt-5 justify-center mb-10">
             <input
                 type="range"
                 min={min}

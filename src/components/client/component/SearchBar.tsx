@@ -64,7 +64,7 @@ const SearchBar = ({ onFocusChange }) => {
                     <input value={inputValue}
                         onFocus={() => onFocusChange(true)}
                         ref={inputRef}
-                        onChange={(e) => handleSearch(e.target.value)} type="text" className="block w-full pt-3 pr-4 pb-3 pl-[52px] ps-10 text-sm text-gray-900 shadow-lg bg-gray-50 rounded-2xl" placeholder="Tìm kiếm sản phẩm" required />
+                        onChange={(e) => handleSearch(e.target.value)} type="text" className="block w-full pt-3 pr-4 pb-3 pl-[54px] ps-10 text-sm text-gray-900 shadow-lg bg-gray-50 rounded-2xl" placeholder="Tìm kiếm sản phẩm" required />
                     <button type="submit" className="border-l border-gray-300 absolute end-2.5 bottom-1.5 font-medium text-base text-green-light px-3 py-1">Tìm kiếm</button>
                 </div>
             </div>

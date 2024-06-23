@@ -6,13 +6,16 @@ import "../../../style/multiRangeSlider.css";
 const MultiRangeSlider = ({ min, max, onChange }) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
+    const [debouncedMinVal, setDebouncedMinVal] = useState(min);
+    const [debouncedMaxVal, setDebouncedMaxVal] = useState(max);
     const minValRef = useRef(null);
     const maxValRef = useRef(null);
     const range = useRef(null);
+    const debounceTimeoutRef = useRef(null);
 
     // Convert to percentage
     const getPercent = useCallback(
-        (value) => Math.round(((value - min) / (max - min)) * 100),
+        (value: any) => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
     );
 
@@ -41,10 +44,28 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         }
     }, [maxVal, getPercent]);
 
+    // Debounce updating min and max values
+    useEffect(() => {
+        if (debounceTimeoutRef.current) {
+            clearTimeout(debounceTimeoutRef.current);
+        }
+
+        debounceTimeoutRef.current = setTimeout(() => {
+            setDebouncedMinVal(minVal);
+            setDebouncedMaxVal(maxVal);
+        }, 1000);
+
+        return () => {
+            if (debounceTimeoutRef.current) {
+                clearTimeout(debounceTimeoutRef.current);
+            }
+        };
+    }, [minVal, maxVal]);
+
     // Get min and max values when their state changes
     useEffect(() => {
-        onChange({ min: minVal, max: maxVal });
-    }, [minVal, maxVal, onChange]);
+        onChange({ min: debouncedMinVal, max: debouncedMaxVal });
+    }, [debouncedMinVal, debouncedMaxVal, onChange]);
 
     return (
         <div className="container mt-5 justify-center mb-10">

@@ -44,15 +44,22 @@ const Products = (props: Props) => {
     const [optionSort, setOptionSort] = useState(0);
     const [sortBy, setSortBy] = useState("");
     const [orderBy, setOrderBy] = useState("");
+    const [minPrice, setMinPrice] = useState(5000);
+    const [maxPrice, setMaxPrice] = useState(500000);
     const groupedArray = [];
 
     useEffect(() => {
-        dispatch(apiGetAllPrd({ page: page, size: selectedQuantityShow, sortBy: sortBy, orderBy: orderBy }))
-    }, [dispatch, page, selectedQuantityShow, optionSort, sortBy, orderBy])
+        dispatch(apiGetAllPrd({ page: page, size: selectedQuantityShow, sortBy: sortBy, orderBy: orderBy, min: minPrice, max: maxPrice }))
+    }, [dispatch, page, selectedQuantityShow, optionSort, sortBy, orderBy, minPrice, maxPrice])
 
     const handleChange = (event: any) => {
         setSelectedQuantityShow(event.target.value);
     };
+
+    const setSpacePrice = (min: any, max: any) => {
+        setMinPrice(min)
+        setMaxPrice(max)
+    }
 
     const handleChangeOptionSort = (e: any) => {
         const value = parseInt(e.target.value);
@@ -320,8 +327,9 @@ const Products = (props: Props) => {
                                 <MultiRangeSlider min={5000}
                                     max={500000}
                                     onChange={({ min, max }) =>
-                                        console.log(`min = ${min}, max = ${max}`)
-                                    } />
+                                        setSpacePrice(min, max)
+                                    }
+                                />
                             </div>
                         </div>
                     </div>

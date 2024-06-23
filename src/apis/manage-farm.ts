@@ -22,16 +22,12 @@ export const getAllCate = (userId: any, page?: any, size?: any) => {
     return instance.get(url)
 }
 
-export const getAllProducts = (page?: any, size?: any, sortBy?: any, orderBy?: any) => {
+export const getAllProducts = (page?: any, size?: any, sortBy?: any, orderBy?: any, minPrice?: any, maxPrice?: any) => {
     let url: string;
-    // &sortBy={sortBy}&orderBy={orderBy}&min={minPrice}&max={maxPrice}
-    if (page && size && orderBy && sortBy) {
-        url = `/products/info?page=${page}&size=${size}&sortBy=${sortBy}&orderBy=${orderBy}`
-    }
-    else if (page && size) {
-        url = `/products/info?page=${page}&size=${size}`
+    if (!orderBy || !sortBy) {
+        url = `/products/info?page=${page}&size=${size}&min=${minPrice}&max=${maxPrice}`
     } else {
-        url = `/products/info`
+        url = `/products/info?page=${page}&size=${size}&sortBy=${sortBy}&orderBy=${orderBy}&min=${minPrice}&max=${maxPrice}`
     }
     return instance.get(url, axiosConfig)
 }

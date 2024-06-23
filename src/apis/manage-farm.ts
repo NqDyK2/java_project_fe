@@ -78,3 +78,8 @@ export const updateProduct = (id: any, infomation: any) => {
     const url = `/products/${id}`;
     return instance.patch(url, infomation, axiosConfig)
 }
+
+export const searchProduct = (keyWord: any) => {
+    const url = `/products/find?q=${keyWord}`
+    return instance.get(url)
+}

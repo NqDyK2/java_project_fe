@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { CateType } from "../../types/cate";
-import { addCate, addPrds, getAllCate, getAllProducts, getDetailCate, updateCate, getDetailProduct, updateProduct } from "../../apis/manage-farm";
+import { addCate, addPrds, getAllCate, getAllProducts, getDetailCate, updateCate, getDetailProduct, updateProduct, searchProduct } from "../../apis/manage-farm";
 import { ProductType } from "../../types/products";
 
 export const apiAddCate = createAsyncThunk("ADD_CATE", async (data: CateType) => {
@@ -74,6 +74,15 @@ export const apiEditCategory = createAsyncThunk("EDIT_CATE", async (infomation: 
 export const apiEditProduct = createAsyncThunk("EDIT_PRODUCT", async (infomation: any) => {
     try {
         const response = await updateProduct(infomation.id, infomation.data)
+        return response.data
+    } catch (error) {
+        console.log("Error:", error);
+    }
+})
+
+export const apiSearchProducts = createAsyncThunk("SEARCH_PRODUCTS", async (q: any) => {
+    try {
+        const response = await searchProduct(q)
         return response.data
     } catch (error) {
         console.log("Error:", error);

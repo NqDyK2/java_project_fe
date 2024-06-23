@@ -17,7 +17,7 @@ const Home = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(apiGetAllPrd({page: 1, size: 4}))
+        dispatch(apiGetAllPrd({ page: 1, size: 4, min: 1, max: 1000000 }))
     }, [dispatch])
     const [promotions, setPromotions] = useState([
         {
@@ -70,7 +70,7 @@ const Home = () => {
                 <Category />
                 <Hint />
                 {/* <Item name='Nông sản miền Bắc' list={result?.productList} /> */}
-                <Item name='Hoa Quả' btnNext={true} heading={true} list={result?.productList}/>
+                <Item name='Hoa Quả' btnNext={true} heading={true} list={result?.productList} />
                 <div className='mt-16 mb-5'>
                     <h1 className='text-3xl font-semibold text-green-light'>THÔNG TIN LIÊN QUAN</h1>
                 </div>

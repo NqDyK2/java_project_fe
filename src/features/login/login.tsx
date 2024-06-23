@@ -72,11 +72,11 @@ const Login = (props: Props) => {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-5">
                                         <input {...register("username", { required: true })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="SDT/Email" />
-                                        {errors.username && <p className='text-left text-red-500'>Email không hợp lệ</p>}
+                                        {errors.username && <p className='text-left text-red-500'>Bạn cần kiểm tra lại tài khoản</p>}
                                     </div>
                                     <div className="mb-5">
                                         <input {...register("password", { required: true })} type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Mật khẩu" />
-                                        {errors.password && <p className='text-left text-red-500'>Mật khẩu phải có ít nhất 6 ký tự</p>}
+                                        {errors.password && <p className='text-left text-red-500'>Bạn cần kiểm tra lại mật khẩu</p>}
                                     </div>
                                     <div className='bg-[#AAD490] text-white p-2.5 rounded-lg'>
                                         <button className='w-full'>Đăng nhập</button>

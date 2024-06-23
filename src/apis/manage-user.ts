@@ -17,6 +17,13 @@ export const addMore = (user: UserType) => {
 }
 
 export const getAllUser = (page?: any) => {
+    const test = isAuthenticate(); // Lấy token mỗi khi hàm này được gọi
+
+    const axiosConfig: AxiosRequestConfig = {
+        headers: {
+            "utcJava": `${test?.token}` // Sử dụng Bearer authentication token ở đây
+        }
+    };
     const url = `/users?page=${page}&size=${6}`
     // const url = `/users`
     return instance.get(url, axiosConfig);

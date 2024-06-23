@@ -50,7 +50,7 @@ const Hint = (props: Props) => {
                     </div>
                     <div className='bg-white rounded-lg w-[280px] shadow-lg'>
                         <div>
-                            <img src={`https://dichothue.com.vn/upload/elfinder/cam-canh.jpg`} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
+                            <img src={`https://hoaquafuji.com/storage/app/media/cam-canh-gia-bao-nhieu-0-12.jpg`} alt="" className='rounded-t-lg w-[280px] h-[225px]' />
                         </div>
                         <div className='my-2 font-semibold text-xl'>
                             <span>

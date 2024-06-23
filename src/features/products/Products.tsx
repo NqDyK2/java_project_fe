@@ -123,6 +123,9 @@ const Products = (props: Props) => {
         }
         return lastThreeDigits;
     };
+
+    console.log("result.result?:", result);
+
     return (
         <>
             <div className='w-[1440px] mx-auto mt-3 text-left font-semibold'>
@@ -396,54 +399,60 @@ const Products = (props: Props) => {
                                 <span className='font-semibold text-xl'>GIÁ ƯU ĐÃI</span>
                             </div>
                             <div className='flex gap-3 px-3 pb-4'>
-                                <div className='flex gap-3 w-fit'>
-                                    <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
-                                    </div>
-                                    <div className='w-[260px] text-left'>
-                                        <div className='w-[200px]'>
-                                            <span className='font-semibold text-lg'>Bưởi da xanh Bắc Giang loại 1</span>
+                                <Link to={"/detail-seller/3"}>
+                                    <div className='flex gap-3 w-fit'>
+                                        <div>
+                                            <img src={"https://mia.vn/media/uploads/blog-du-lich/nho-ninh-thuan-nho-phan-rang-mon-qua-den-tu-thien-nhien-02-1658232915.jpg"} alt="" className='w-[120px] h-[130px]' />
                                         </div>
-                                        <div className='text-lg'>
-                                            <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='flex gap-3 w-fit'>
-                                    <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
-                                    </div>
-                                    <div className='w-[260px] text-left'>
-                                        <div className='w-[200px]'>
-                                            <span className='font-semibold text-lg'>Bưởi da xanh Bắc Giang loại 1</span>
-                                        </div>
-                                        <div className='text-lg'>
-                                            <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
+                                        <div className='w-[260px] text-left'>
+                                            <div className='w-[200px]'>
+                                                <span className='font-semibold text-lg'>Nho đỏ Ninh Thuận</span>
+                                            </div>
+                                            <div className='text-lg'>
+                                                <span>Giá bán:</span> <span className='text-green-light font-semibold'>91.000 đ/kg</span>
+                                            </div>
+                                            <div className='mt-4'>
+                                                <span className='bg-green-light text-white rounded-sm px-10 py-2 cursor-pointer'>Liên hệ</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='flex gap-3 w-fit'>
-                                    <div>
-                                        <img src={grapeFruitPromotions} alt="" className='h-[105%]' />
+                                </Link>
+                                <Link to={"/detail-seller/8"}>
+                                    <div className='flex gap-3 w-fit'>
+                                        <div>
+                                            <img src={"https://cdnphoto.dantri.com.vn/_TKRVJiRJbVxJ08tJm12ShozwZg=/thumb_w/680/dansinh/2024/04/29/7-1714406124068.jpg"} alt="" className='w-[120px] h-[130px]' />
+                                        </div>
+                                        <div className='w-[260px] text-left'>
+                                            <div className='w-[200px]'>
+                                                <span className='font-semibold text-lg'>Đào Sa Pa</span>
+                                            </div>
+                                            <div className='text-lg'>
+                                                <span>Giá bán:</span> <span className='text-green-light font-semibold'>49.000 đ/kg</span>
+                                            </div>
+                                            <div className='mt-4'>
+                                                <span className='bg-green-light text-white rounded-sm px-10 py-2 cursor-pointer'>Liên hệ</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className='w-[260px] text-left'>
-                                        <div className='w-[200px]'>
-                                            <span className='font-semibold text-lg'>Bưởi da xanh Bắc Giang loại 1</span>
+                                </Link>
+                                <Link to={"/detail-seller/5"}>
+                                    <div className='flex gap-3 w-fit'>
+                                        <div>
+                                            <img src={"https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/5/1225382/IMG_1747.jpeg"} alt="" className='w-[120px] h-[130px]' />
                                         </div>
-                                        <div className='text-lg'>
-                                            <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <span className='bg-green-light text-white rounded-sm px-10 py-2'>Liên hệ</span>
+                                        <div className='w-[260px] text-left'>
+                                            <div className='w-[200px]'>
+                                                <span className='font-semibold text-lg'>Sầu riêng Bình Thuận</span>
+                                            </div>
+                                            <div className='text-lg'>
+                                                <span>Giá bán:</span> <span className='text-green-light font-semibold'>30.000 đ/kg</span>
+                                            </div>
+                                            <div className='mt-4'>
+                                                <span className='bg-green-light text-white rounded-sm px-10 py-2 cursor-pointer'>Liên hệ</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                         <div className='mt-5 flex justify-between	'>
@@ -457,41 +466,45 @@ const Products = (props: Props) => {
                                 </select>
                             </div>
                             <div>
-                                <span>Hiển thị {result.result?.pageSize ? result.result?.pageSize : ""}/{result.result?.totalPage ? result.result?.totalCount : ""} sản phẩm</span>
+                                <span>Hiển thị {result.result?.pageSize > result.result?.productList?.length ? result.result?.productList?.length : result.result?.pageSize}/{result.result?.totalPage ? result.result?.totalCount : ""} sản phẩm</span>
                             </div>
                         </div>
                         <div className='bg-white pb-1 mb-10'>
                             {
-                                groupedArray.map((block: any, index) => (
-                                    <div key={index} className={`flex ${block?.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
-                                        {block.map((item: any) => (
-                                            <div key={item.id} className={`border border-gray-300 shadow-md ${block?.length == 4 ? "mx-5" : "mx-7"} w-full max-w-[245px] rounded-lg`}>
-                                                <div>
-                                                    <img src={item.image} alt="" className='rounded-lg px-2 pt-3 w-[245px] h-[165px]' />
-                                                </div>
-                                                <div className='text-xl font-semibold mt-5 truncate'>
-                                                    <span title={`${item.title}`}>{item.title}</span>
-                                                </div>
-                                                <div className='flex justify-center text-[#FF9933] my-2'>
-                                                    <IoMdStar className='text-xl' />
-                                                    <IoMdStar className='text-xl' />
-                                                    <IoMdStar className='text-xl' />
-                                                    <IoMdStar className='text-xl' />
-                                                    <IoMdStar className='text-xl' />
-                                                </div>
-                                                <div className='flex justify-center gap-5 mt-3'>
-                                                    <div className='text-sm font-semibold mt-0.5'><span>{item.unit}</span></div>
-                                                    <div><span className='text-green-light font-semibold'>{formatPrice(item.price)}đ</span></div>
-                                                </div>
+                                groupedArray.length > 0 ?
+                                    groupedArray.map((block: any, index) => (
+                                        <div key={index} className={`flex ${block?.length == 4 ? "justify-around" : ""} my-5 pt-2 pb-2`}>
+                                            {block.map((item: any) => (
                                                 <Link to={`detail/${item.id}`}>
-                                                    <div className='mt-7 mb-5'>
-                                                        <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                                    <div key={item.id} className={`border border-gray-300 shadow-md ${block?.length == 4 ? "mx-5" : "mx-7"} w-full max-w-[245px] rounded-lg`}>
+                                                        <div>
+                                                            <img src={item.image} alt="" className='rounded-lg px-2 pt-3 w-[245px] h-[165px]' />
+                                                        </div>
+                                                        <div className='text-xl font-semibold mt-5 truncate'>
+                                                            <span title={`${item.title}`}>{item.title}</span>
+                                                        </div>
+                                                        <div className='flex justify-center text-[#FF9933] my-2'>
+                                                            <IoMdStar className='text-xl' />
+                                                            <IoMdStar className='text-xl' />
+                                                            <IoMdStar className='text-xl' />
+                                                            <IoMdStar className='text-xl' />
+                                                            <IoMdStar className='text-xl' />
+                                                        </div>
+                                                        <div className='flex justify-center gap-5 mt-3'>
+                                                            <div className='text-sm font-semibold mt-0.5'><span>{item.unit}</span></div>
+                                                            <div><span className='text-green-light font-semibold'>{formatPrice(item.price)}đ</span></div>
+                                                        </div>
+                                                        <div className='mt-7 mb-5'>
+                                                            <span className='bg-green-light text-white rounded-sm px-20 py-2'>Mua ngay</span>
+                                                        </div>
                                                     </div>
                                                 </Link>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
+                                    ))
+                                    : <div className='py-5 mt-3'>
+                                        Không tìm thấy sản phẩm
                                     </div>
-                                ))
                             }
                         </div>
                         <div className='flex justify-center gap-4 mb-5'>

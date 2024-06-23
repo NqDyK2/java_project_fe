@@ -46,9 +46,11 @@ const Item = (props: Props) => {
                             <span>{props.name}</span>
                         </div>
                         <div className='mt-5'>
-                            <button className='border px-2 py-2 rounded-md border-green-light text-green-light text-sm'>
-                                <span>Xem đầy đủ <FaCaretRight className='inline-block mb-1 pl-2' /></span>
-                            </button>
+                            <Link to={"/products"}>
+                                <button className='border px-2 py-2 rounded-md border-green-light text-green-light text-sm'>
+                                    <span>Xem đầy đủ <FaCaretRight className='inline-block mb-1 pl-2' /></span>
+                                </button>
+                            </Link>
                         </div>
                     </div> : <div className='text-left font-bold text-2xl pt-3 px-16'>
                         <span>{props.name}</span>

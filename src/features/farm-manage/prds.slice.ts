@@ -6,6 +6,7 @@ interface Products {
     result: object | null
     error: string | null
     searchTerm: string | null
+    mode: boolean
 }
 
 const initialState: Products = {
@@ -13,6 +14,7 @@ const initialState: Products = {
     result: {},
     error: null,
     searchTerm: '',
+    mode: false,
 }
 
 const productSlice = createSlice({
@@ -29,6 +31,9 @@ const productSlice = createSlice({
         }).addCase(apiAddPrds.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
+            if (action.payload.status == 200) {
+                state.mode = true
+            }
         }).addCase(apiAddPrds.rejected, (state) => {
 
         }).addCase(apiGetAllPrd.pending, (state) => {

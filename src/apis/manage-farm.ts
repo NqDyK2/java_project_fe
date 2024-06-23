@@ -53,6 +53,13 @@ export const addCate = (infoCate: CateType) => {
 }
 
 export const addPrds = (infoPrds: ProductType) => {
+    const test = isAuthenticate(); // Lấy token mỗi khi hàm này được gọi
+
+    const axiosConfig: AxiosRequestConfig = {
+        headers: {
+            "utcJava": `${test?.token}` // Sử dụng Bearer authentication token ở đây
+        }
+    };
     const url = `/products`;
     return instance.post(url, infoPrds, axiosConfig)
 }

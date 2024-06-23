@@ -49,7 +49,7 @@ const EditUser = (props: Props) => {
             .unwrap()
             .then(() => {
                 toast.success("Sửa người dùng thành công")
-                navigate("/admin-users")
+                navigate("/admin/users")
             })
             .catch((error) => {
                 console.error('Failed to update product:', error);
@@ -66,13 +66,13 @@ const EditUser = (props: Props) => {
                             </div>
                         </div>
                         <div className='bg-gray-100 p-5 mt-5 rounded-xl'>
-                            <div className="mt-16 lg:flex justify-between">
-                                <div className="w-80">
+                            <div className="mt-16 lg:flex justify-center">
+                                {/* <div className="w-80">
                                     <div className="flex items-center">
                                         <h1 className="text-xl font-medium pr-2 leading-5 text-gray-800">Personal Information</h1>
                                     </div>
                                     <p className="mt-4 text-sm leading-5 text-gray-600">Information about the section could go here and a brief description of how this might be used.</p>
-                                </div>
+                                </div> */}
                                 <div>
                                     <div className="md:flex items-center lg:ml-24 lg:mt-0 mt-4">
                                         <div className="md:w-64 text-left">

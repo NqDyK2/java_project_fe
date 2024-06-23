@@ -8,6 +8,7 @@ import banana from '../../../img/banana.png'
 import litchiFruit from '../../../img/litchi-fruit.png'
 import mango from '../../../img/mango.png'
 import sweetPotato from '../../../img/sPotato.png'
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -19,9 +20,11 @@ const Category = (props: Props) => {
                     <div className='flex justify-between px-5 pt-5'>
                         <div><span className='font-bold text-2xl'>Danh mục sản phẩm</span></div>
                         <div>
-                            <button className='border px-2 py-1 rounded-md border-green-light text-green-light text-sm'>
-                                <span>Xem đầy đủ <FaCaretRight className='inline-block mb-1 pl-2'/></span>
-                            </button>
+                            <Link to={"/products"}>
+                                <button className='border px-2 py-1 rounded-md border-green-light text-green-light text-sm'>
+                                    <span>Xem đầy đủ <FaCaretRight className='inline-block mb-1 pl-2'/></span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className='flex justify-evenly py-10'>

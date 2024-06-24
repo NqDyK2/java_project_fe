@@ -22,12 +22,12 @@ export const getAllCate = (userId: any, page?: any, size?: any) => {
     return instance.get(url)
 }
 
-export const getAllProducts = (page?: any, size?: any) => {
+export const getAllProducts = (page?: any, size?: any, sortBy?: any, orderBy?: any, minPrice?: any, maxPrice?: any) => {
     let url: string;
-    if (page && size) {
-        url = `/products/info?page=${page}&size=${size}`
+    if (!orderBy || !sortBy) {
+        url = `/products/info?page=${page}&size=${size}&min=${minPrice}&max=${maxPrice}`
     } else {
-        url = `/products/info`
+        url = `/products/info?page=${page}&size=${size}&sortBy=${sortBy}&orderBy=${orderBy}&min=${minPrice}&max=${maxPrice}`
     }
     return instance.get(url, axiosConfig)
 }
@@ -53,6 +53,13 @@ export const addCate = (infoCate: CateType) => {
 }
 
 export const addPrds = (infoPrds: ProductType) => {
+    const test = isAuthenticate(); // Lấy token mỗi khi hàm này được gọi
+
+    const axiosConfig: AxiosRequestConfig = {
+        headers: {
+            "utcJava": `${test?.token}` // Sử dụng Bearer authentication token ở đây
+        }
+    };
     const url = `/products`;
     return instance.post(url, infoPrds, axiosConfig)
 }
@@ -64,7 +71,7 @@ export const updateCate = (id: any, infomation: any) => {
 
 export const getProductsOfUser = (idUser: number, page?: number, size?: number) => {
     console.log("idUser:", idUser);
-    
+
     let url: string;
     if (page && size) {
         url = `/products/user/${idUser}?page=${page}&size=${size}`
@@ -77,4 +84,9 @@ export const getProductsOfUser = (idUser: number, page?: number, size?: number) 
 export const updateProduct = (id: any, infomation: any) => {
     const url = `/products/${id}`;
     return instance.patch(url, infomation, axiosConfig)
+}
+
+export const searchProduct = (keyWord: any) => {
+    const url = `/products/find?q=${keyWord}`
+    return instance.get(url)
 }

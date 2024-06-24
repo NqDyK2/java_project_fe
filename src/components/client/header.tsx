@@ -19,6 +19,8 @@ import {
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { logout } from '../../apis/user';
 import { toast } from 'react-toastify';
+import SearchBar from './component/SearchBar';
+import { useAppSelector } from '../../hooks/useStore';
 type Props = {}
 
 const Header = (props: Props) => {
@@ -27,7 +29,11 @@ const Header = (props: Props) => {
     const [fullName, setFullName] = useState("")
     const [idUser, setIdUser] = useState()
     const [roles, setRoles] = useState([])
+    const [isFocused, setIsFocused] = useState(false);
     const navigate = useNavigate()
+
+    const searchResults = useAppSelector((state: any) => state.search.result);
+
     useEffect(() => {
         if (localStorage.getItem("account")) {
             let local: any = localStorage.getItem("account")
@@ -38,7 +44,6 @@ const Header = (props: Props) => {
             setStatusAuth(true)
         }
     }, [localStorage.getItem("account")])
-    
 
     const logoutBtn = async () => {
         await logout();
@@ -49,6 +54,17 @@ const Header = (props: Props) => {
             navigate(0)
         }, 2000);
     }
+
+    const formatPrice = (price: any) => {
+        const priceStr = price.toString();
+        const lastThreeDigits = priceStr.slice(-3); // lấy 3 số cuối
+        const restOfNumber = priceStr.slice(0, -3); // lấy phần còn lại của số
+
+        if (restOfNumber) {
+            return `${restOfNumber}.${lastThreeDigits}`;
+        }
+        return lastThreeDigits;
+    };
     return (
         <>
             {/* Top Header */}
@@ -123,27 +139,36 @@ const Header = (props: Props) => {
             <div>
                 <div className='w-[1440px] h-24 mx-auto'>
                     <div className='flex justify-between my-auto gap-3'>
-                        <div className='pt-3 '>
-                            <img src={imgLogo} alt="" width={240} />
-                        </div>
-                        <div className='flex-auto pt-6'>
-                            <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                            <div className="relative ml-12 mr-4">
-                                <div className="absolute inset-y-0 start-0 flex items-center ps-1 pointer-events-none">
-                                    <svg className="w-5 h-5 text-gray-500 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                    </svg>
-                                </div>
-                                <input type="search" id="default-search" className="block w-full pt-3 pr-4 pb-3 pl-14 ps-10 text-sm text-gray-900 shadow-lg bg-gray-50 rounded-2xl" placeholder="Tìm kiếm sản phẩm" required />
-                                <button type="submit" className="border-l border-gray-300 absolute end-2.5 bottom-1.5 font-medium text-base text-green-light px-3 py-1">Tìm kiếm</button>
+                        <Link to={"/"}>
+                            <div className='pt-3 '>
+                                <img src={imgLogo} alt="" width={240} />
                             </div>
-                        </div>
+                        </Link>
+                        <SearchBar onFocusChange={setIsFocused} />
                         <div className='pt-7'>
                             <div className=' bg-main-color w-[200px] h-10 m-auto py-auto rounded-full text-white'>
                                 <button className='pt-2 text-center font-semibold'><GiVibratingSmartphone className='inline-block text-2xl mb-1 mr-2' />0373 99 7970</button>
                             </div>
                         </div>
                     </div>
+                    {isFocused && (
+                        <div className="rounded-lg bg-white shadow-md my-0.5 pin-t pin-l w-[910px] ml-[302px] absolute z-10">
+                            <ul className='list-reset'>
+                                {searchResults.result?.productList?.map((product) => (
+                                    <li key={product.id} className=''>
+                                        <Link to={"/"}>
+                                            <div className='flex gap-5 cursor-pointer text-black text-sm hover:text-black leading-3 tracking-normal py-2 hover:bg-gray-100 px-3 font-normal'>
+                                                <div className='ml-10'>
+                                                    <img src={product.image} className="w-14 h-14 mx-auto object-cover rounded-full bg-[#f7f7f7]" alt="" />
+                                                </div>
+                                                <p className="my-auto text-left">{product.title}</p>
+                                                <p className="my-auto text-left">{formatPrice(product.price)}đ/{product.unit}</p>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>)}
                 </div>
             </div>
             <div className='bg-main-color'>

@@ -1,28 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiAddCate, apiAddPrds, apiEditProduct, apiGetAllPrd, apiGetDetailProductById } from "./manage-farm.action"
+import { apiAddCate, apiAddPrds, apiEditProduct, apiGetAllPrd, apiGetDetailProductById, apiSearchProducts } from "./manage-farm.action"
 
 interface Products {
     loading: boolean
     result: object | null
     error: string | null
+    searchTerm: string | null
+    mode: boolean
 }
 
 const initialState: Products = {
     loading: false,
     result: {},
     error: null,
+    searchTerm: '',
+    mode: false,
 }
 
 const productSlice = createSlice({
     name: "products",
     initialState,
-    reducers: {},
+    reducers: {
+        setSearchTerm: (state, action) => {
+            state.searchTerm = action.payload;
+        },
+    },
     extraReducers(builder) {
         builder.addCase(apiAddPrds.pending, (state) => {
             state.loading = true
         }).addCase(apiAddPrds.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
+            if (action.payload.status == 200) {
+                state.mode = true
+            }
         }).addCase(apiAddPrds.rejected, (state) => {
 
         }).addCase(apiGetAllPrd.pending, (state) => {
@@ -40,8 +51,13 @@ const productSlice = createSlice({
         }).addCase(apiEditProduct.fulfilled, (state, action) => {
             state.loading = false
             state.result = action.payload
+        }).addCase(apiSearchProducts.pending, (state) => {
+            state.loading = true
+        }).addCase(apiSearchProducts.fulfilled, (state, action) => {
+            state.loading = false
+            state.result = action.payload
         })
     },
 })
-
+export const { setSearchTerm } = productSlice.actions;
 export default productSlice.reducer

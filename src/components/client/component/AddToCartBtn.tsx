@@ -37,7 +37,9 @@ const AddToCartBtn = (props: any) => {
         }
         localStorage.setItem("cart", JSON.stringify(cart));
         toast.success("Đã thêm sản phẩm này vào giỏ hàng")
-        navigate(0)
+        setTimeout(() => {
+            navigate(0)
+        }, 1000)
     }
     return (
         <>

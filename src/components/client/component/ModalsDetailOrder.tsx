@@ -53,7 +53,7 @@ const ModalsDetailOrder: React.FC<ChildComponentProps> = ({ onClick, data, isAdm
                             </thead>
                             <tbody>
                                 {
-                                    data?.map((item: any) => (
+                                    isAdmin ? data?.orderDetailResponses.map((item: any) => (
                                         <tr key={item.id} className="h-24 border-gray-300 dark:border-gray-200 border-b">
                                             <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.productInfoResponse.title}</td>
                                             <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
@@ -64,7 +64,19 @@ const ModalsDetailOrder: React.FC<ChildComponentProps> = ({ onClick, data, isAdm
                                             <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.productInfoResponse.unit}</td>
                                             <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{formatPrice(item.productInfoResponse.price * item.quantity)}vnđ</td>
                                         </tr>
-                                    ))
+                                    )) :
+                                        data?.map((item: any) => (
+                                            <tr key={item.id} className="h-24 border-gray-300 dark:border-gray-200 border-b">
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.productInfoResponse.title}</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                                                    <img src={`${item.productInfoResponse.image}`} alt="" width={100} height={100} />
+                                                </td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.quantity}</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{formatPrice(item.productInfoResponse.price)}</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.productInfoResponse.unit}</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{formatPrice(item.productInfoResponse.price * item.quantity)}vnđ</td>
+                                            </tr>
+                                        ))
                                 }
                             </tbody>
                         </table>

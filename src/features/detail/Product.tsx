@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import avt from "../../img/avtfb.jpg"
 import grapeTree from "../../img/GrapeTree.png"
 import subImg1 from "../../img/subImg1.png";
@@ -22,6 +22,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { apiGetAllCate, apiGetDetailProductById } from '../farm-manage/manage-farm.action';
 import { CiLocationOn } from 'react-icons/ci';
 import { apiGetUser } from '../admin/user/edit-user/editUser.action';
+import AddToCartBtn from '../../components/client/component/AddToCartBtn';
 
 type Props = {}
 
@@ -65,9 +66,18 @@ const Product = (props: Props) => {
     }
     return lastThreeDigits;
   };
-  // dispatch(apiGetDetailProductById(Number(id)));
-  // dispatch(apiGetDetailProductById(Number(id)));
-  // console.log("item?.userId", item?.userId);
+  const [count, setCount] = useState(1);
+
+  const addCount = () => {
+    setCount((prev) => (prev + 1 >= item?.amount ? item?.amount : prev + 1));
+  };
+
+  const minusCount = () => {
+    if (count > 0) {
+      setCount((prev) => (prev - 1 < 1 ? 1 : prev - 1));
+    }
+  };
+
   return (
     <>
       < div className='text-left mx-auto w-[1440px] mt-3 mb-4'>
@@ -120,7 +130,19 @@ const Product = (props: Props) => {
                   <option value="">Option 3</option>
                 </select>
               </div> */}
-
+              <div className="flex flex-row justify-between">
+                <p className=" font-medium text-base leading-4 text-gray-600">Điều chỉnh số lượng</p>
+                <div className="flex">
+                  <span onClick={minusCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">
+                    -
+                  </span>
+                  <input id="counter" aria-label="input" className="border border-gray-300 h-full text-center w-14 pb-1" type="text" min={1} max={item?.amount} value={count} onChange={(e) => (e.target.value > item?.amount ? setCount(item?.amount) : setCount(Number(e.target.value)))} />
+                  <span onClick={addCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1 ">
+                    +
+                  </span>
+                </div>
+              </div>
+              <AddToCartBtn item={{item, count}} />
               <Link to={`/detail-seller/${item?.userId}`}>
                 <div className='text-center mt-10 bg-green-light py-3 rounded-lg text-white text-xl font-semibold'>
                   <button>

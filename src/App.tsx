@@ -21,6 +21,11 @@ import Category from "./features/farm-manage/category-list"
 import EditCategory from "./features/farm-manage/editCategory"
 import ProductsList from "./features/farm-manage/products-list"
 import EditProduct from "./features/farm-manage/editProduct"
+import Cart from "./components/client/component/Cart"
+import CheckOut from "./features/checkout/CheckOut"
+import OrderOfUser from "./features/checkout/OrderOfUser"
+import OderUser from "./features/admin/orders/OderUser"
+
 
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> { }
@@ -28,6 +33,7 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
   return (
     <StoreProvider>
       <div className="App bg-gray-100 overflow-x-hidden	">
+        <Cart />
         <Routes>
           <Route element={<ClientLayout />} >
             <Route index path="/" element={<Home />} />
@@ -41,7 +47,8 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="edit-category/:id" element={<EditCategory />} />
             <Route path="all-prds" element={<ProductsList />} />
             <Route path="edit-product/:id" element={<EditProduct />} />
-
+            <Route path="check-out/:id" element={<CheckOut />} />
+            <Route path="orders/:id" element={<OrderOfUser />} />
           </Route>
           <Route path="products" element={<ClientLayout />}>
             <Route path={`detail/:id`} element={<Product />} />
@@ -52,11 +59,11 @@ const App: React.FC<IProps> = (props: IProps): JSX.Element => {
             <Route path="users" element={<Users />} />
             <Route path="add-user" element={<AddUser />} />
             <Route path={`:id/edit-user`} element={<EditUser />} />
+            <Route path="orders" element={<OderUser />}/>
           </Route>
         </Routes>
       </div>
     </StoreProvider>
-
   )
 }
 

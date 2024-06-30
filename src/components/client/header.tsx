@@ -103,6 +103,11 @@ const Header = (props: Props) => {
                                                 Thông tin cá nhân
                                             </MenuItem>
                                         </Link>
+                                        <Link to={`/orders/${idUser}`}>
+                                            <MenuItem placeholder={"Menu"} className='my-1'>
+                                                Kiểm tra đơn hàng
+                                            </MenuItem>
+                                        </Link>
                                         <Link to={`/manage-data`}>
                                             <MenuItem placeholder={"Menu"} className='my-1'>
                                                 Quản lý trang trại

@@ -107,14 +107,14 @@ const OrderOfUser = (props: Props) => {
                                 </thead>
                                 <tbody>
                                     {
-                                        allOrderOfUser?.map((item: any) => (
+                                        allOrderOfUser?.data?.map((item: any) => (
                                             <tr key={item.orderId} className="h-24 border-gray-300 dark:border-gray-200 border-b">
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.note}</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.address}</td>
                                                 <td className="pr-6 whitespace-no-wrap">
                                                     <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">{item.phone}</p>
                                                 </td>
-                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{formatPrice(item.totalAmount)}vnđ</td>
+                                                <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{formatPrice(item.totalAmount)} đ</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.orderDetailResponses.length}</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{funcConvertStatus(item.status)}</td>
                                                 <th className="text-center text-gray-600 dark:text-gray-400 font-normal pr-6 text-sm tracking-normal leading-4">

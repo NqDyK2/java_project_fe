@@ -4,7 +4,7 @@ import { OrderType } from "../../types/order"
 
 interface Slice {
     loading: boolean
-    result: OrderType[]
+    result: any
     error: string | null
 }
 

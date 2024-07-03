@@ -8,6 +8,8 @@ import categorySlice from '../features/farm-manage/cate.slice';
 import productSlice from '../features/farm-manage/prds.slice';
 import sellerSlice from '../features/detail-seller/seller.slice';
 import searchSlice from '../features/farm-manage/search.slice';
+import orderSlice from '../features/checkout/order.slice'
+import orderAdminSlice from '../features/admin/orders/orderAdmin.slice';
 // import RoomsSlice from "@client/features/rooms/room.slice";
 // import AuthSlice from '@client/features/auth/Auth.slice';
 // import ApartmentSlice from '@client/features/apartment/Apartment.slice';
@@ -25,7 +27,9 @@ const rootReducer = combineReducers({
     category: categorySlice,
     products: productSlice,
     seller: sellerSlice,
-    search: searchSlice
+    search: searchSlice,
+    order: orderSlice,
+    orderAdmin: orderAdminSlice
 });
 export const store = configureStore({
     reducer: rootReducer,

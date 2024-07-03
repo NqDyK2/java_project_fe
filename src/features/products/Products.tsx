@@ -124,7 +124,6 @@ const Products = (props: Props) => {
         return lastThreeDigits;
     };
 
-    console.log("result.result?:", result);
 
     return (
         <>

@@ -58,6 +58,8 @@ const Category = (props: Props) => {
   const onChangePage = (index: any) => {
     setPage(index)
   }
+  console.log( allCategories);
+  
   return (
     <>
       <div className='flex flex-col'>

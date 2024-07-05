@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../../../style/cart.css"
 import { GiShoppingCart } from "react-icons/gi";
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { context } from '../../../App';
 
 type Props = {}
 
@@ -20,6 +21,7 @@ const Cart = (props: Props) => {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [count, setCount] = useState(1);
+    const contextState = React.useContext(context)
 
     useEffect(() => {
         // Lấy dữ liệu từ localStorage khi component được mount
@@ -61,7 +63,7 @@ const Cart = (props: Props) => {
         let local: any = localStorage.getItem("account")
         local = JSON.parse(local)
         setShow(!show)
-        navigate(`check-out/${local.id}`)
+        // navigate(`check-out/${local.id}`)
     }
     return (
         <>
@@ -69,7 +71,7 @@ const Cart = (props: Props) => {
                 hideCart ? "" : <div onClick={() => setShow(!show)} className="bg-[#AAD490] flex justify-center items-center px-2 rounded-full hover:text-white hover:bg-[#50A41C]" id="back-to-top">
                     <div className="relative py-2 hover:text-white">
                         <div className="t-0 absolute left-5 top-0.5">
-                            <p className="flex h-1 w-1 items-center justify-center rounded-full p-2 text-xs text-white bg-red-500">{cartItems.length}</p>
+                            <p className="flex h-1 w-1 items-center justify-center rounded-full p-2 text-xs text-white bg-red-500">{contextState?.cartItems.length > 0 ? contextState?.cartItems.length : cartItems.length}</p>
                         </div>
                         <GiShoppingCart className="file: h-8 w-8 text-white" />
                     </div>

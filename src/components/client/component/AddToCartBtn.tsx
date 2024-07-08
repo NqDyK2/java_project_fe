@@ -3,6 +3,7 @@ import "../../../style/addToCart.css"
 import { GiShoppingCart } from "react-icons/gi";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { context } from '../../../App';
 
 type Props = {}
 
@@ -26,6 +27,7 @@ const AddToCartBtn = (props: any) => {
     };
     let cartLength = [];
     cartLength.push(filteredData)
+    const contextState = React.useContext(context)
     const handleAddCart = () => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const productIndex = cart.findIndex(item => item.id === id);
@@ -36,10 +38,11 @@ const AddToCartBtn = (props: any) => {
             cart.push(filteredData);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        contextState.setCartItems(cart)
         toast.success("Đã thêm sản phẩm này vào giỏ hàng")
-        setTimeout(() => {
-            navigate(0)
-        }, 1000)
+        // setTimeout(() => {
+            // navigate(0)
+        // }, 1000)
     }
     return (
         <>

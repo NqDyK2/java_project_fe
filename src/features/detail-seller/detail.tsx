@@ -8,7 +8,7 @@ import music from "../../img/music-play.jpg";
 import { RiShieldCheckFill, RiShieldCheckLine } from 'react-icons/ri'
 import { IoMdStar } from 'react-icons/io'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import { apiGetAllProductsOfUser } from './seller.action';
 import { apiGetUser } from '../admin/user/edit-user/editUser.action';
@@ -58,7 +58,7 @@ const DetailSeller = (props: Props) => {
     return lastThreeDigits;
   };
   console.log("sellerDetail:", sellerDetail);
-  
+
   return (
     <>
       <div className='w-[1440px] mx-auto'>
@@ -234,21 +234,23 @@ const DetailSeller = (props: Props) => {
                     {groupedArray.map((block: any, index) => (
                       <div key={index} className={`flex ${block?.length == 3 ? "justify-evenly" : "ml-5"} pb-5`}>
                         {block.map((item: any) => (
-                          <div key={item.id} className={`bg-white rounded-lg w-[280px] ${block?.length == 3 ? "" : "mx-5"} shadow-lg pt-3 `}>
-                            <div>
-                              <img src={item?.image ? item?.image : `https://bizweb.dktcdn.net/100/396/015/articles/e529a8dc22bd84a37f6f8ae6b8ce40d3.jpg?v=1679472706363`} alt="" className='rounded-t-lg w-[280px] h-[255px]' />
+                          <Link to={`/products/detail/${item.id}`}>
+                            <div key={item.id} className={`bg-white rounded-lg w-[280px] ${block?.length == 3 ? "" : "mx-5"} shadow-lg pt-3 `}>
+                              <div>
+                                <img src={item?.image ? item?.image : `https://bizweb.dktcdn.net/100/396/015/articles/e529a8dc22bd84a37f6f8ae6b8ce40d3.jpg?v=1679472706363`} alt="" className='rounded-t-lg w-[280px] h-[255px]' />
+                              </div>
+                              <div title={item?.title} className='my-2 font-semibold text-xl truncate'>
+                                <span>
+                                  {item?.title}
+                                </span>
+                              </div>
+                              <div className='flex justify-center gap-5 pb-2'>
+                                <span className='text-green-light text-xl font-semibold text-right  w-fit'>
+                                  {formatPrice(item.price)} đ/{item.unit}
+                                </span>
+                              </div>
                             </div>
-                            <div title={item?.title} className='my-2 font-semibold text-xl truncate'>
-                              <span>
-                                {item?.title}
-                              </span>
-                            </div>
-                            <div className='flex justify-center gap-5 pb-2'>
-                              <span className='text-green-light text-xl font-semibold text-right  w-fit'>
-                                {formatPrice(item.price)} đ/{item.unit}
-                              </span>
-                            </div>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                     ))}

@@ -95,9 +95,9 @@ const Item = (props: Props) => {
                                     </span>
                                 </div>
                                 <div>
-                                    <Link to={`detail-seller/${item.userId}`}>
+                                    <Link to={`/products/detail/${item.id}`}>
                                         <button className='border px-2 py-2 my-4 border-green-light text-white text-sm bg-green-light rounded-md'>
-                                            <span className='font-semibold px-24'>Liên hệ</span>
+                                            <span className='font-semibold px-24'>Mua ngay</span>
                                         </button>
                                     </Link>
                                 </div>

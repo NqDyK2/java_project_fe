@@ -14,9 +14,11 @@ const OrderOfUser = (props: Props) => {
     const [detailOrder, setDetailOrder] = useState();
     const [showModal, setShowModal] = useState(false);
     const [statusCode, setStatusCode] = useState(0)
+
     useEffect(() => {
         dispatch(apiGetOrderByUser({ userId: id, status: statusCode }))
     }, [dispatch, statusCode])
+    console.log("allOrderOfUser", allOrderOfUser);
 
     const formatPrice = (price: any) => {
         const priceStr = price?.toString();
@@ -69,7 +71,7 @@ const OrderOfUser = (props: Props) => {
 
     return (
         <>
-            <div>
+            <div className=''>
                 <h1 className="text-4xl font-black leading-10 text-gray-800 pt-5">Đơn hàng</h1>
                 <div className="pb-20 pt-5">
                     <div className="mx-auto container bg-white dark:bg-gray-800 shadow rounded">
@@ -107,7 +109,7 @@ const OrderOfUser = (props: Props) => {
                                 </thead>
                                 <tbody>
                                     {
-                                        allOrderOfUser?.data?.map((item: any) => (
+                                        allOrderOfUser?.map((item: any) => (
                                             <tr key={item.orderId} className="h-24 border-gray-300 dark:border-gray-200 border-b">
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.note}</td>
                                                 <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">{item.address}</td>

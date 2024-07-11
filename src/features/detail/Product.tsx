@@ -142,7 +142,7 @@ const Product = (props: Props) => {
                   </span>
                 </div>
               </div>
-              <AddToCartBtn item={{item, count}} />
+              <AddToCartBtn item={{ item, count }} />
               <Link to={`/detail-seller/${item?.userId}`}>
                 <div className='text-center mt-10 bg-green-light py-3 rounded-lg text-white text-xl font-semibold'>
                   <button>
@@ -226,7 +226,9 @@ const Product = (props: Props) => {
             </div>
             <div className='flex justify-center gap-2 mt-4 pb-4'>
               <div className='border border-gray-400 px-9 py-1 text-sm rounded-md'><button>Theo dõi +</button></div>
-              <div className='px-9 py-1 text-sm bg-green-light text-white rounded-md'><button>Xem cửa hàng</button></div>
+              <Link to={`/detail-seller/${user?.id}`}>
+                <div className='px-9 py-1 text-sm bg-green-light text-white rounded-md'><button>Xem cửa hàng</button></div>
+              </Link>
             </div>
           </div>
 

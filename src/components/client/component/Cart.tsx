@@ -63,7 +63,7 @@ const Cart = (props: Props) => {
         let local: any = localStorage.getItem("account")
         local = JSON.parse(local)
         setShow(!show)
-        // navigate(`check-out/${local.id}`)
+        navigate(`check-out/${local.id}`)
     }
     return (
         <>

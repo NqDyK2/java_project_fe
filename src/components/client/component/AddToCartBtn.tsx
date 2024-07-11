@@ -41,7 +41,7 @@ const AddToCartBtn = (props: any) => {
         contextState.setCartItems(cart)
         toast.success("Đã thêm sản phẩm này vào giỏ hàng")
         // setTimeout(() => {
-            // navigate(0)
+            navigate(0)
         // }, 1000)
     }
     return (

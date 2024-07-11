@@ -163,7 +163,7 @@ const Users = (props: Props) => {
                         <td className="pr-6 whitespace-no-wrap">
                           <div className="flex items-center">
                             <div className="h-8 w-8">
-                              <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" className="h-full w-full rounded-full overflow-hidden shadow" />
+                              <img src={`${item.avatar ? item.avatar : `https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png`}`} className="h-full w-full rounded-full overflow-hidden shadow" />
                             </div>
                             <p className="ml-2 text-gray-800 dark:text-gray-100 tracking-normal leading-4 text-sm">{item.fullName ? item.fullName : "Thiếu thông tin"}</p>
                           </div>

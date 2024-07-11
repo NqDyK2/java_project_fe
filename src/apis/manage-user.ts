@@ -41,5 +41,12 @@ export const getUser = (id: any) => {
 
 export const editUser = (id: any, infomation: any) => {
     const url = `/users/${id}`
+    const test = isAuthenticate()
+
+    const axiosConfig: AxiosRequestConfig = {
+        headers: {
+            "utcJava": `${test?.token}` // Sử dụng Bearer authentication token ở đây
+        }
+    };
     return instance.patch(url, infomation, axiosConfig);
 }

@@ -70,13 +70,15 @@ const CheckOut = (props: Props) => {
     }
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm<FormOrderValue>()
-    if (result) {
-        setValue("note", result.result?.fullName ? result.result?.fullName : "Bổ sung thông tin")
-        setValue("email", result.result?.email ? result.result?.email : "Bổ sung thông tin")
-        setValue("address", result.result?.address ? result.result?.address : "Bổ sung thông tin")
-        setValue("phone", result.result?.phone ? result.result?.phone : "Bổ sung thông tin")
-        setValue("username", result.result?.username ? result.result?.username : "Bổ sung thông tin")
-    }
+    useEffect(() => {
+        if (result) {
+            setValue("note", result.result?.fullName ? result.result?.fullName : "Bổ sung thông tin")
+            setValue("email", result.result?.email ? result.result?.email : "Bổ sung thông tin")
+            setValue("address", result.result?.address ? result.result?.address : "Bổ sung thông tin")
+            setValue("phone", result.result?.phone ? result.result?.phone : "Bổ sung thông tin")
+            setValue("username", result.result?.username ? result.result?.username : "Bổ sung thông tin")
+        }
+    }, [result, setValue])
 
     const onSubmit: SubmitHandler<FormOrderValue> = (data) => {
         const { note, phone, address } = data;

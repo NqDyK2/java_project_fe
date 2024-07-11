@@ -71,7 +71,7 @@ const OrderOfUser = (props: Props) => {
 
     return (
         <>
-            <div className=''>
+            <div className='flex flex-col h-[790px]'>
                 <h1 className="text-4xl font-black leading-10 text-gray-800 pt-5">Đơn hàng</h1>
                 <div className="pb-20 pt-5">
                     <div className="mx-auto container bg-white dark:bg-gray-800 shadow rounded">
